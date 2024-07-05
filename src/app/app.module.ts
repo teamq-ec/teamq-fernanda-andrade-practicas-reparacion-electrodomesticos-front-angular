@@ -16,7 +16,6 @@ import { ProductComponent } from './pages/product/product.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
     RegisterComponent,
     NotfoundComponent,
     PaymentComponent,
