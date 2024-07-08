@@ -86,8 +86,12 @@ export class RegisterComponent {
         this.showAlert = true;
       },
       (error) => {
-        console.error(error);
+        alert('Register failed');
       }
     );
+  }
+
+  goToLogin() {
+    this.router.navigate(['/auth/login']);
   }
 }

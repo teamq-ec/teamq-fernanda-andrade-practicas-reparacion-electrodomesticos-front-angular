@@ -1,20 +1,39 @@
 <div class="relative min-h-screen flex items-center justify-center bg-gray-50">
-  <img src="https://cdn.leonardo.ai/users/cd51cec9-f292-4284-8ae6-61c2234291b9/generations/bf4f6a5d-81cf-4489-9b79-a68301c0425a/Default_A_vibrant_digital_illustration_of_a_cozy_kitchen_scene_0.jpg" alt="Fondo" class="absolute inset-0 w-full h-full object-cover z-0">
+  <img
+    src="https://cdn.leonardo.ai/users/cd51cec9-f292-4284-8ae6-61c2234291b9/generations/bf4f6a5d-81cf-4489-9b79-a68301c0425a/Default_A_vibrant_digital_illustration_of_a_cozy_kitchen_scene_0.jpg"
+    alt="Fondo" class="absolute inset-0 w-full h-full object-cover z-0">
   <div class="absolute inset-0 bg-gray-900/50 z-0"></div>
-  <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 px-4 pt-12 pb-24 sm:px-6 sm:pt-16 sm:pb-32 lg:px-8">
+  <div
+    class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 px-4 pt-12 pb-24 sm:px-6 sm:pt-16 sm:pb-32 lg:px-8">
+
     <div class="relative hidden lg:block">
-      <img src="https://cdn.leonardo.ai/users/cd51cec9-f292-4284-8ae6-61c2234291b9/generations/bf4f6a5d-81cf-4489-9b79-a68301c0425a/Default_A_vibrant_digital_illustration_of_a_cozy_kitchen_scene_3.jpg" alt="Lado" class="w-full h-full object-cover rounded-lg shadow-lg">
+      <img
+        src="https://cdn.leonardo.ai/users/cd51cec9-f292-4284-8ae6-61c2234291b9/generations/bf4f6a5d-81cf-4489-9b79-a68301c0425a/Default_A_vibrant_digital_illustration_of_a_cozy_kitchen_scene_3.jpg"
+        alt="Lado" class="w-full h-full object-cover rounded-lg shadow-lg">
     </div>
     <div class="bg-white p-8 rounded-lg shadow-lg lg:-ml-1">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+        <img class="mx-auto h-10 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+          alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Iniciar sesión en su cuenta
+        </h2>
+      </div>
+
+      <div class="absolute top-20 right-325 z-10">
+        <button (click)="goToHome()"
+          class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          title="Go to Home">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
 
-
-        <form class="space-y-6" action="#" method="POST" >
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6" action="#" method="POST">
           <div>
             <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
             <div class="mt-1">
@@ -28,11 +47,9 @@
           </div>
 
           <div class="mt-1">
-            <input id="password" name="password" type="password" autocomplete="current-password" required
+            <input id="password" name="password" formControlName="password" type="password"
+              autocomplete="current-password" required
               class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-          </div>
-          <div class="flex items-center justify-between">
-            <a href="#" class="text-sm font-semibold text-indigo-600 hover:text-indigo-500">Forgot password?</a>
           </div>
 
           <div>
@@ -41,10 +58,12 @@
               Sign in
             </button>
           </div>
-        </form>        <p class="mt-10 text-center text-sm text-gray-500">
-          Not a member?
-          <a href="#" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Start a 14 day free trial</a>
+        </form>
+        <p class="mt-10 text-center text-sm text-gray-500">
+          ¿No tienes cuenta?
+          <a routerLink="/auth/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">Regístrate aquí</a>
         </p>
+
       </div>
     </div>
   </div>

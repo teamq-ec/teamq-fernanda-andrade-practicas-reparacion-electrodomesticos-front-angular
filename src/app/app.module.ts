@@ -12,6 +12,7 @@ import { HeaderComponent } from './pages/components/header/header.component';
 import { ProductComponent } from './pages/product/product.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './components/auth/auth.module';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AuthModule } from './components/auth/auth.module';
 
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

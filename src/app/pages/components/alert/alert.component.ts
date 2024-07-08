@@ -10,9 +10,8 @@ export class AlertComponent {
 
   private readonly router = inject(Router);
 
-  navigateRegister() {
-    this.router.navigate(['/register']);
+  goToLogin() {
+    this.router.navigate(['/auth/login']);
   }
-
 
 }

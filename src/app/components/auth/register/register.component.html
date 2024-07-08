@@ -1,4 +1,3 @@
-<!-- register.component.html -->
 <div class="relative min-h-screen flex items-center justify-center bg-gray-50">
   <img
     src="https://cdn.leonardo.ai/users/cd51cec9-f292-4284-8ae6-61c2234291b9/generations/bf4f6a5d-81cf-4489-9b79-a68301c0425a/Default_A_vibrant_digital_illustration_of_a_cozy_kitchen_scene_0.jpg"
@@ -17,6 +16,18 @@
           alt="Your Company">
         <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta en solo unos segundos. ¡Es fácil y rápido!
         </h2>
+      </div>
+
+      <div class="absolute top-20 right-325 z-10">
+        <button (click)="goToLogin()"
+          class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          title="Go to Login">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
+          </svg>
+        </button>
       </div>
 
       <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-md">
