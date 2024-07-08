@@ -21,7 +21,7 @@ jobs:
       - name: Build app
         run: |
           npm install
-          npm install -g @angular/cli@15.0.3 > /dev/null
+          npm install -g @angular/cli > /dev/null
           ng build --configuration=qa --base-href /
       - name: Create artifact
         env:
@@ -62,7 +62,6 @@ jobs:
             # Delete dist folder
             echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/qa/frontend/dist"
  
-
  
             # Remove tmp directory
             rm -rf /tmp/artifacts
