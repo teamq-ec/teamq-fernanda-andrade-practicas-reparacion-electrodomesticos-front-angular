@@ -1,0 +1,67 @@
+name: 🚀 Deploy Angular to Dev
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+  deploy-artifact:
+    name: "Deploy artifact"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get last repository version
+        uses: actions/checkout@v2
+
+      - name: Configure Node 18
+        uses: actions/setup-node@v3
+        with:
+            node-version: 18.19.X
+
+      - name: Build app
+        run: |
+          npm install
+          npm install -g @angular/cli > /dev/null
+          ng build --configuration=devtest --base-href /
+      - name: Create artifact
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+        run: tar -czf "${GITHUB_SHA}".tar.gz dist
+
+      - name: Upload to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          source: ${{ github.sha }}.tar.gz
+          target: /tmp/artifacts
+
+      - name: Extract files and create directories
+        uses: appleboy/ssh-action@master
+        env:
+          GITHUB_SHA: ${{ github.sha }}
+          SERVER_PASSWORD: ${{ secrets.SERVER_PASSWORD }}
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: ${{ secrets.SERVER_PORT }}
+          envs: GITHUB_SHA, SERVER_PASSWORD
+          script: |
+            # Create application folder
+            echo ${SERVER_PASSWORD} | sudo -S mkdir -p "${{ secrets.DEPLOY_PATH }}/dev/frontend"
+
+            echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/dev/frontend/*"
+
+            # Extract the tar file into our release directory
+            echo ${SERVER_PASSWORD} | sudo -S tar xzf /tmp/artifacts/${GITHUB_SHA}.tar.gz -C "${{ secrets.DEPLOY_PATH }}/dev/frontend"
+
+            # Move dist folder
+            echo ${SERVER_PASSWORD} | sudo -S cp -a "${{ secrets.DEPLOY_PATH }}/dev/frontend/dist/${{ secrets.ANGULAR_APP_NAME }}/." ${{ secrets.DEPLOY_PATH }}/dev/frontend
+
+            # Delete dist folder
+            echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/dev/frontend/dist"
+            # Remove tmp directory
+            rm -rf /tmp/artifacts
