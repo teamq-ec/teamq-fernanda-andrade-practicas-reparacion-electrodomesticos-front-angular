@@ -2,7 +2,7 @@ name: 🚀 Deploy Angular to Dev
 
 on:
   push:
-    branches:
+    branches: 
       - develop
 
 jobs:
@@ -10,19 +10,19 @@ jobs:
     name: "Deploy artifact"
     runs-on: ubuntu-latest
     steps:
-      - name: Get last repository version
-        uses: actions/checkout@v2
+      - name: Get last repository version        
+        uses: actions/checkout@v3
 
       - name: Configure Node 18
         uses: actions/setup-node@v3
         with:
-            node-version: 18.19.X
+          node-version: 18.x
 
       - name: Build app
         run: |
           npm install
           npm install -g @angular/cli > /dev/null
-          ng build --configuration=devtest --base-href /
+          ng build --base-href /
       - name: Create artifact
         env:
           GITHUB_SHA: ${{ github.sha }}
@@ -52,15 +52,13 @@ jobs:
           script: |
             # Create application folder
             echo ${SERVER_PASSWORD} | sudo -S mkdir -p "${{ secrets.DEPLOY_PATH }}/dev/frontend"
-
-            echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/dev/frontend/*"
-
+            
             # Extract the tar file into our release directory
             echo ${SERVER_PASSWORD} | sudo -S tar xzf /tmp/artifacts/${GITHUB_SHA}.tar.gz -C "${{ secrets.DEPLOY_PATH }}/dev/frontend"
-
+            
             # Move dist folder
             echo ${SERVER_PASSWORD} | sudo -S cp -a "${{ secrets.DEPLOY_PATH }}/dev/frontend/dist/${{ secrets.ANGULAR_APP_NAME }}/." ${{ secrets.DEPLOY_PATH }}/dev/frontend
-
+            
             # Delete dist folder
             echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/dev/frontend/dist"
             # Remove tmp directory
