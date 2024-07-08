@@ -62,6 +62,7 @@ jobs:
             # Delete dist folder
             echo ${SERVER_PASSWORD} | sudo -S rm -rf "${{ secrets.DEPLOY_PATH }}/qa/frontend/dist"
  
+
  
             # Remove tmp directory
             rm -rf /tmp/artifacts
