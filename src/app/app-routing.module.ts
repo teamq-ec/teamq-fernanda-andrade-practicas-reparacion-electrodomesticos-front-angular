@@ -13,6 +13,15 @@ const routes: Routes =
     path: 'home',
     component: DashboardComponent
   },
+  {
+    path: 'auth',
+    loadChildren: () =>
+      import('./components/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
+    path: '**',
+    redirectTo: '/home'
+  }
 ];
 
 @NgModule({
