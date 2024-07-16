@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 
 @Component({
   selector: 'app-login',
@@ -9,6 +10,9 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  private readonly dataTransferService: DataTransferServiceService = inject(
+    DataTransferServiceService
+  );
   private formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
@@ -16,7 +20,13 @@ export class LoginComponent {
   loginForm: FormGroup;
 
   constructor() {
-    this.loginForm = this.formBuilder.group({
+    this.loginForm = this.buildForm();
+
+    this.getLocalStorageData();
+  }
+
+  buildForm(): FormGroup {
+    return (this.loginForm = this.formBuilder.group({
       email: [
         '',
         [
@@ -27,7 +37,7 @@ export class LoginComponent {
         ],
       ],
       password: ['', [Validators.required]],
-    });
+    }));
   }
 
   onSubmit() {
@@ -43,6 +53,13 @@ export class LoginComponent {
       );
     } else {
       alert('Login failed');
+    }
+  }
+
+  getLocalStorageData(): void {
+    const formData = this.dataTransferService.getData();
+    if (formData) {
+      this.loginForm.patchValue(formData);
     }
   }
 
