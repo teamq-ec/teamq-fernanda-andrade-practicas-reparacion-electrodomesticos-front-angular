@@ -1,32 +1,39 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AuthModule } from './components/auth/auth.module';
+
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-import { LoginComponent } from './components/auth/login/login.component';
-import { RegisterComponent } from './components/auth/register/register.component';
-
-import { PaymentComponent } from './pages/payment/payment.component';
-
-import { ProductComponent } from './pages/product/product.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HeaderComponent } from './pages/components/header/header.component';
 import { FooterComponent } from './pages/components/footer/footer.component';
+import { PaymentComponent } from './pages/payment/payment.component';
+import { ProductComponent } from './pages/product/product.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    LoginComponent,
-    RegisterComponent,
+    NotfoundComponent,
     PaymentComponent,
     HeaderComponent,
     FooterComponent,
-    ProductComponent
+    ProductComponent,
+
   ],
   imports: [
+    CommonModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
