@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { RegexConstants } from 'src/app/constants/regex.constants';
+import { ImageConstants } from 'src/app/constants/images.constants';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-register',
@@ -16,9 +19,13 @@ export class RegisterComponent {
 
   public form: FormGroup;
   public showAlert: boolean = false;
+  public kitchenImage: String;
+  public kitchenImageTwo: String;
 
   constructor() {
     this.form = this.buildForm();
+    this.kitchenImage = ImageConstants.kitchen;
+    this.kitchenImageTwo = ImageConstants.kitchenTwo;
   }
 
   buildForm(): FormGroup {
@@ -44,18 +51,14 @@ export class RegisterComponent {
           '',
           [
             Validators.required,
-            Validators.pattern(
-              /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-            ),
+            Validators.pattern(RegexConstants.email),
           ],
         ],
         password: [
           '',
           [
             Validators.required,
-            Validators.pattern(
-              /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/
-            ),
+            Validators.pattern(RegexConstants.password),
           ],
         ],
         confirm_password: ['', Validators.required],
@@ -92,6 +95,6 @@ export class RegisterComponent {
   }
 
   goToLogin() {
-    this.router.navigate(['/auth/login']);
+    this.router.navigate([RoutesConstants.login]);
   }
 }

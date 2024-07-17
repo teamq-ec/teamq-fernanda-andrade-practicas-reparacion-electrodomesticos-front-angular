@@ -2,6 +2,9 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
+import { RegexConstants } from 'src/app/constants/regex.constants';
+import { ImageConstants } from 'src/app/constants/images.constants';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-login',
@@ -14,20 +17,26 @@ export class LoginComponent {
   private readonly router = inject(Router);
 
   loginForm: FormGroup;
+  public kitchenImage: String;
+  public kitchenImageTwo: String;
 
   constructor() {
-    this.loginForm = this.formBuilder.group({
+    this.loginForm = this.buildForm();
+    this.kitchenImage = ImageConstants.kitchen;
+    this.kitchenImageTwo = ImageConstants.kitchenTwo;
+  }
+
+  buildForm(): FormGroup {
+    return (this.loginForm = this.formBuilder.group({
       email: [
         '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-          ),
-        ],
+        [Validators.required, Validators.pattern(RegexConstants.email)],
       ],
-      password: ['', [Validators.required]],
-    });
+      password: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.password)],
+      ],
+    }));
   }
 
   onSubmit() {
@@ -47,10 +56,10 @@ export class LoginComponent {
   }
 
   navigate() {
-    this.router.navigate(['/pages/register']);
+    this.router.navigate([RoutesConstants.register]);
   }
 
   goToHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate([RoutesConstants.home]);
   }
 }
