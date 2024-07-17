@@ -11,10 +11,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HeaderComponent } from './pages/components/header/header.component';
-import { FormProductModule } from "./pages/components/form-product/form-product.module";
-import { FooterModule } from "./pages/components/footer/footer.module";
-
-
+import { FormProductModule } from './pages/components/form-product/form-product.module';
+import { FooterModule } from './pages/components/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -31,9 +29,9 @@ import { FooterModule } from "./pages/components/footer/footer.module";
     HttpClientModule,
     AuthModule,
     FormProductModule,
-    FooterModule
-],
+    FooterModule,
+  ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
