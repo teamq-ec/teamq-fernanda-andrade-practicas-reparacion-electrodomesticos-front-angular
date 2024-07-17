@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { RegisterModule } from './register/register.module';
 import { LoginModule } from './login/login.module';
+import { AlertLoginRegisterComponent } from './components/alert-login-register/alert-login-register.component';
 
 @NgModule({
   declarations: [],

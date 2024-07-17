@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../service/auth.service';
 import { User } from 'src/app/models/user';
 import { Router } from '@angular/router';
+import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 
 @Component({
   selector: 'app-register',
@@ -10,15 +11,21 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  private readonly dataTransferService: DataTransferServiceService = inject(
+    DataTransferServiceService
+  );
   private formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
 
   public form: FormGroup;
   public showAlert: boolean = false;
+  public formData: any;
 
   constructor() {
     this.form = this.buildForm();
+
+    this.getLocalStorageData();
   }
 
   buildForm(): FormGroup {
@@ -64,6 +71,13 @@ export class RegisterComponent {
       },
       { validator: this.passwordMatchValidator }
     );
+  }
+
+  getLocalStorageData(): void {
+    const formData = this.dataTransferService.getData();
+    if (formData) {
+      this.form.patchValue(formData);
+    }
   }
 
   isFieldInvalid(field: string): boolean {

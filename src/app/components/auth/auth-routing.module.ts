@@ -3,29 +3,19 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
-const routes: Routes =
-[
-  {
-    path: '',
-    redirectTo: 'login', // Por ejemplo, redirige a la página de login por defecto
-    pathMatch: 'full'
-  },
+const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
   },
-  {
-    path: '**', // Manejar cualquier otra ruta no definida dentro de 'auth'
-    redirectTo: 'login'
-  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

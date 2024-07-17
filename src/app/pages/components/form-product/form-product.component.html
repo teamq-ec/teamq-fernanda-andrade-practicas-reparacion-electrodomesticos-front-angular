@@ -1,103 +1,243 @@
 <div class="bg-white">
-  <div class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+  <div
+    class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
     <div>
       <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">¡Contáctanos Hoy!</h2>
-      <p class="mt-4 text-gray-500">Visita nuestro sitio web www.appliancecare.com o llámanos al 1-800-123-4567 para programar una cita o recibir más información. ¡No esperes más y mantén tu hogar en perfecto funcionamiento con ApplianceCare!</p>
+      <p class="mt-4 text-gray-500">Visita nuestro sitio web www.appliancecare.com o llámanos al 1-800-123-4567 para
+        programar una cita o recibir más información. ¡No esperes más y mantén tu hogar en perfecto funcionamiento con
+        ApplianceCare!</p>
 
       <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 mt-8">
-        <img src="https://i.pinimg.com/564x/e6/bf/d2/e6bfd29d843ea47649824286b4142877.jpg" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes." class="rounded-lg bg-gray-100">
-        <img src="https://i.pinimg.com/564x/35/3e/d7/353ed734f8daed731235fce4e358d2e6.jpg" alt="Top down view of walnut card tray with embedded magnets and card groove." class="rounded-lg bg-gray-100">
-        <img src="https://i.pinimg.com/564x/c4/b4/7b/c4b47bf2aa50aa03384a47290fed0f54.jpg" alt="Side of walnut card tray with card groove and recessed card area." class="rounded-lg bg-gray-100">
-        <img src="https://i.pinimg.com/564x/18/b6/5e/18b65e480311588611a928c0feb5388d.jpg" alt="Walnut card tray filled with cards and card angled in dedicated groove." class="rounded-lg bg-gray-100">
+        <img src="https://i.pinimg.com/564x/e6/bf/d2/e6bfd29d843ea47649824286b4142877.jpg"
+          alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+          class="rounded-lg bg-gray-100">
+        <img src="https://i.pinimg.com/564x/35/3e/d7/353ed734f8daed731235fce4e358d2e6.jpg"
+          alt="Top down view of walnut card tray with embedded magnets and card groove." class="rounded-lg bg-gray-100">
+        <img src="https://i.pinimg.com/564x/c4/b4/7b/c4b47bf2aa50aa03384a47290fed0f54.jpg"
+          alt="Side of walnut card tray with card groove and recessed card area." class="rounded-lg bg-gray-100">
+        <img src="https://i.pinimg.com/564x/18/b6/5e/18b65e480311588611a928c0feb5388d.jpg"
+          alt="Walnut card tray filled with cards and card angled in dedicated groove." class="rounded-lg bg-gray-100">
       </div>
     </div>
 
     <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
-      <form>
-        <div class="space-y-12">
+
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+
+
+        <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)" style="margin-top: 30px;">
           <div class="border-b border-gray-900/10 pb-12">
-            <h3 class="text-lg font-medium leading-6 text-gray-900">Cover photo</h3>
-            <p class="mt-2 text-sm text-gray-600">Upload a photo for your profile</p>
-            <div class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
-              <div class="text-center">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">Imagen del Electrodoméstico</h3>
+            <p class="mt-2 text-sm text-gray-600">Sube una foto del electrodoméstico que necesita mantenimiento</p>
+
+            <div
+              class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative">
+              <div class="text-center" *ngIf="!imageSrc">
                 <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path fill-rule="evenodd" d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z" clip-rule="evenodd" />
+                  <path fill-rule="evenodd"
+                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                    clip-rule="evenodd" />
                 </svg>
                 <div class="mt-4 flex text-sm text-gray-600">
-                  <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                    <span>Upload a file</span>
-                    <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                  <label for="damaged-appliance-image"
+                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                    <span>Subir un archivo</span>
+                    <input id="damaged-appliance-image" formControlName="damaged_appliance_image" type="file"
+                      class="sr-only" required (change)="onFileChange($event)">
                   </label>
-                  <p class="pl-1">or drag and drop</p>
+                  <p class="pl-1">o arrastra y suelta</p>
                 </div>
-                <p class="text-xs text-gray-600">PNG, JPG, GIF up to 10MB</p>
+                <p class="text-xs text-gray-600">PNG, JPG, GIF hasta 10MB</p>
+              </div>
+              <div *ngIf="imageSrc" class="relative">
+                <img [src]="imageSrc" alt="Imagen subida"
+                  class="mt-4 rounded-md w-24 h-24 object-cover border border-gray-300 shadow-sm" />
+                <button type="button" class="absolute top-0 right-0 m-2 bg-red-600 text-white rounded-full p-2 text-xl"
+                  (click)="removeImage()">
+                  <span class="sr-only">Eliminar imagen</span>
+                  &times;
+                </button>
+                <button type="button" pButton label="Cambiar Imagen" class="btn btn-warning mt-3"
+                  (click)="chooseFile()"></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-b border-gray-900/10 pb-12">
+
+          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">Información de solicitud del
+            solicitante</h2>
+          <p class="mt-1 text-sm text-gray-600">Proporcione detalles sobre su usted.</p>
+
+          <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
+            <div>
+              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+              <div class="mt-2">
+                <input id="first_name" name="first_name" type="text" formControlName="first_name"
+                  class="block w-full rounded-md border border-gray-300 py-1.5 px-3 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('first_name')" placeholder="Ingrese su nombre">
+              </div>
+              <div
+                *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
+                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">Correo
+                Electrónico</label>
+              <div class="mt-2">
+                <input id="email-address" name="email" type="email" formControlName="email" autocomplete="email"
+                  class="block w-full rounded-md border border-gray-300 py-1.5 px-3 text-gray-900 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="Ingrese su correo electrónico">
+              </div>
+              <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
+                <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
+                <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">Ingrese un correo válido
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="border-b border-gray-900/10 pb-12">
-            <h2 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h2>
-            <p class="mt-1 text-sm text-gray-600">Use a permanent address where you can receive mail.</p>
+          <hr class="col-span-2 my-6 border-t-2 border-black-300">
 
-            <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-              <div class="sm:col-span-3">
-                <label for="first-name" class="block text-sm font-medium leading-6 text-gray-900">First name</label>
-                <div class="mt-2">
-                  <input type="text" name="first-name" id="first-name" autocomplete="given-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">Información de solicitud de
+            servicio</h2>
+          <p class="mt-1 text-sm text-gray-600">Proporcione detalles sobre su solicitud de servicio.</p>
+
+          <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" style="margin-top: 30px;">
+            <div class="sm:col-span-3">
+              <label for="appliance-type" class="block text-sm font-medium leading-6 text-gray-900">Tipo de
+                aparato</label>
+              <div class="mt-2">
+                <select id="appliance-type" formControlName="appliance_type" name="appliance-type"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('appliance_type')">
+                  <option value="">Select...</option>
+                  <option>Refrigerator</option>
+                  <option>Washing Machine</option>
+                  <option>Dryer</option>
+                  <option>Oven</option>
+                </select>
               </div>
-
-              <div class="sm:col-span-3">
-                <label for="last-name" class="block text-sm font-medium leading-6 text-gray-900">Last name</label>
-                <div class="mt-2">
-                  <input type="text" name="last-name" id="last-name" autocomplete="family-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+              <div
+                *ngIf="form.get('appliance_type')?.invalid && (form.get('appliance_type')?.dirty || form.get('appliance_type')?.touched)">
+                <div *ngIf="form.get('appliance_type')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
               </div>
+            </div>
 
-              <div class="sm:col-span-4">
-                <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
-                <div class="mt-2">
-                  <input id="email" name="email" type="email" autocomplete="email" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+            <div class="sm:col-span-3">
+              <label for="brand" class="block text-sm font-medium leading-6 text-gray-900">Marca</label>
+              <div class="mt-2">
+                <select id="brand" formControlName="brand" name="brand"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('brand')">
+                  <option value="">Select...</option>
+                  <option>Samsung</option>
+                  <option>LG</option>
+                  <option>Whirlpool</option>
+                  <option>GE</option>
+                </select>
               </div>
-
-              <div class="sm:col-span-3">
-                <label for="country" class="block text-sm font-medium leading-6 text-gray-900">Country</label>
-                <div class="mt-2">
-                  <select id="country" name="country" autocomplete="country-name" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6">
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
-                  </select>
-                </div>
+              <div *ngIf="form.get('brand')?.invalid && (form.get('brand')?.dirty || form.get('brand')?.touched)">
+                <div *ngIf="form.get('brand')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
               </div>
+            </div>
 
-              <div class="col-span-full">
-                <label for="street-address" class="block text-sm font-medium leading-6 text-gray-900">Street address</label>
-                <div class="mt-2">
-                  <input type="text" name="street-address" id="street-address" autocomplete="street-address" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+            <div class="sm:col-span-6">
+              <label for="problem-details" class="block text-sm font-medium leading-6 text-gray-900">Detalles del
+                problema</label>
+              <div class="mt-2">
+                <textarea id="problem-details" formControlName="problem_details" name="problem-details" rows="3"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('problem_details')"></textarea>
               </div>
-
-              <div class="sm:col-span-2 sm:col-start-1">
-                <label for="city" class="block text-sm font-medium leading-6 text-gray-900">City</label>
-                <div class="mt-2">
-                  <input type="text" name="city" id="city" autocomplete="address-level2" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+              <div
+                *ngIf="form.get('problem_details')?.invalid && (form.get('problem_details')?.dirty || form.get('problem_details')?.touched)">
+                <div *ngIf="form.get('problem_details')?.errors?.['required']" class="text-red-500 text-sm">Este campo
+                  es requerido</div>
               </div>
+            </div>
 
-              <div class="sm:col-span-2">
-                <label for="region" class="block text-sm font-medium leading-6 text-gray-900">State / Province</label>
-                <div class="mt-2">
-                  <input type="text" name="region" id="region" autocomplete="address-level1" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+            <div class="sm:col-span-6">
+              <label for="collection-address" class="block text-sm font-medium leading-6 text-gray-900">Dirección de la
+                colección</label>
+              <div class="mt-2">
+                <input type="text" formControlName="collection_address" id="collection-address"
+                  autocomplete="street-address"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('collection_address')">
               </div>
+              <div
+                *ngIf="form.get('collection_address')?.invalid && (form.get('collection_address')?.dirty || form.get('collection_address')?.touched)">
+                <div *ngIf="form.get('collection_address')?.errors?.['required']" class="text-red-500 text-sm">Este
+                  campo es requerido</div>
+              </div>
+            </div>
 
-              <div class="sm:col-span-2">
-                <label for="postal-code" class="block text-sm font-medium leading-6 text-gray-900">ZIP / Postal code</label>
-                <div class="mt-2">
-                  <input type="text" name="postal-code" id="postal-code" autocomplete="postal-code" class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-                </div>
+            <div class="sm:col-span-3">
+              <label for="service-type" class="block text-sm font-medium leading-6 text-gray-900">Tipo de
+                servicio</label>
+              <div class="mt-2">
+                <select id="service-type" formControlName="service_type" name="service-type"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('service_type')">
+                  <option value="">Select...</option>
+                  <option>Repair</option>
+                  <option>Maintenance</option>
+                </select>
+              </div>
+              <div
+                *ngIf="form.get('service_type')?.invalid && (form.get('service_type')?.dirty || form.get('service_type')?.touched)">
+                <div *ngIf="form.get('service_type')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="preferred-contact-method" class="block text-sm font-medium leading-6 text-gray-900">
+                Método de Contacto Preferido</label>
+              <div class="mt-2">
+                <select id="preferred-contact-method" formControlName="preferred_contact_method"
+                  name="preferred-contact-method"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('preferred_contact_method')">
+                  <option value="">Select...</option>
+                  <option>Email</option>
+                  <option>Phone</option>
+                </select>
+              </div>
+              <div
+                *ngIf="form.get('preferred_contact_method')?.invalid && (form.get('preferred_contact_method')?.dirty || form.get('preferred_contact_method')?.touched)">
+                <div *ngIf="form.get('preferred_contact_method')?.errors?.['required']" class="text-red-500 text-sm">
+                  Este campo es requerido</div>
+              </div>
+            </div>
+
+            <div class="sm:col-span-2 sm:col-start-1">
+              <label for="state" class="block text-sm font-medium leading-6 text-gray-900">Estado</label>
+              <div class="mt-2">
+                <select id="state" formControlName="state" name="state"
+                  class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  required [class.border-red-500]="isFieldInvalid('state')">
+                  <option value="">Select...</option>
+                  <option>California</option>
+                  <option>Texas</option>
+                  <option>New York</option>
+                  <option>Florida</option>
+                </select>
+              </div>
+              <div *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
+                <div *ngIf="form.get('state')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
               </div>
             </div>
           </div>
@@ -105,9 +245,15 @@
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
           <button type="button" class="text-sm font-semibold leading-6 text-gray-900">Cancel</button>
-          <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
+          <button type="submit"
+            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Submit</button>
         </div>
       </form>
+
     </div>
   </div>
+</div>
+
+<div *ngIf="showAlert" class="fixed inset-0 flex items-center justify-center z-50">
+  <app-alert-login-register></app-alert-login-register>
 </div>
