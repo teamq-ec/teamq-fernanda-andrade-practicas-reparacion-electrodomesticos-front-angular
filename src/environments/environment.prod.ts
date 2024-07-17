@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.fer.andrade.practicas.teamq.biz/', // Ruta API para producción
+  apiUrl: 'https://api.fer.andrade.practicas.teamq.biz/api', // Ruta API para producción
 };
