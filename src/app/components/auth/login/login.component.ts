@@ -45,6 +45,10 @@ export class LoginComponent {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
+          console.log('Login Response:', response);
+          localStorage.setItem('token', response.accessToken);
+          localStorage.setItem('userName', response.user.first_name);
+          localStorage.setItem('userLastName', response.user.last_name);
           this.goToHome();
         },
         (error) => {
@@ -68,6 +72,6 @@ export class LoginComponent {
   }
 
   goToHome() {
-    this.router.navigate(['/home']);
+    this.router.navigate(['/pages/home']);
   }
 }
