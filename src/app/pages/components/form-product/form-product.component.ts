@@ -49,7 +49,7 @@ export class FormProductComponent {
       ],
       service_type: ['', [Validators.required]],
       preferred_contact_method: ['', [Validators.required]],
-      phone_number: ['', [Validators.required]],
+      phone_number: [],
       damaged_appliance_image: [null, Validators.required],
       state: [
         '',
