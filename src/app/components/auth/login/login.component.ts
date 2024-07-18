@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../service/auth.service';
 import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
+import { RegexConstants } from 'src/app/constants/regex.constants';
+import { ImageConstants } from 'src/app/constants/images.constants';
+import { UrlsConstants } from 'src/app/constants/urls.constants';
 
 @Component({
   selector: 'app-login',
@@ -18,34 +22,35 @@ export class LoginComponent {
   private readonly router = inject(Router);
 
   loginForm: FormGroup;
+  public kitchenImage: String;
+  public kitchenImageTwo: String;
+  urls = UrlsConstants;
 
   constructor() {
     this.loginForm = this.buildForm();
-
     this.getLocalStorageData();
+    this.kitchenImage = ImageConstants.kitchen;
+    this.kitchenImageTwo = ImageConstants.kitchenTwo;
   }
 
   buildForm(): FormGroup {
     return (this.loginForm = this.formBuilder.group({
       email: [
         '',
-        [
-          Validators.required,
-          Validators.pattern(
-            /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-          ),
-        ],
+        [Validators.required, Validators.pattern(RegexConstants.email)],
       ],
-      password: ['', [Validators.required]],
+      password: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.password)],
+      ],
     }));
   }
 
-  onSubmit() {
+  onSubmit(): void {
     if (this.loginForm.valid) {
       const { email, password } = this.loginForm.value;
       this.authService.login(email, password).subscribe(
         (response) => {
-          console.log('Login Response:', response);
           localStorage.setItem('token', response.accessToken);
           localStorage.setItem('userName', response.user.first_name);
           localStorage.setItem('userLastName', response.user.last_name);
@@ -67,11 +72,11 @@ export class LoginComponent {
     }
   }
 
-  navigate() {
-    this.router.navigate(['/pages/register']);
+  navigate(): void {
+    this.router.navigate([RoutesConstants.register]);
   }
 
-  goToHome() {
-    this.router.navigate(['/pages/home']);
+  goToHome(): void {
+    this.router.navigate([RoutesConstants.home]);
   }
 }

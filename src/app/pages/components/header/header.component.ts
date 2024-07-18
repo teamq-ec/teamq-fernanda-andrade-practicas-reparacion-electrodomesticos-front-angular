@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UrlsConstants } from 'src/app/constants/urls.constants';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isOpen = false;
+  urls = UrlsConstants;
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
