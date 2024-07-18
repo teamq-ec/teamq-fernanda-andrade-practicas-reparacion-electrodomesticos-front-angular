@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataTransferServiceService } from '../../services/data-transfer-service.service';
 import { Router } from '@angular/router';
+import { PROVINCES_ECUADOR } from 'src/app/constants/constants';
 
 @Component({
   selector: 'app-form-product',
@@ -19,6 +20,7 @@ export class FormProductComponent {
   public imageSrc: string | ArrayBuffer | null = null;
   public files: File[] = [];
   public showAlert: boolean = false;
+  provinces = PROVINCES_ECUADOR;
 
   constructor() {
     this.form = this.buildForm();

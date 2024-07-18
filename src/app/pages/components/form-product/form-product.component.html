@@ -242,10 +242,7 @@
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('state')">
                   <option value="">Select...</option>
-                  <option>California</option>
-                  <option>Texas</option>
-                  <option>New York</option>
-                  <option>Florida</option>
+                  <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
                 </select>
               </div>
               <div *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
