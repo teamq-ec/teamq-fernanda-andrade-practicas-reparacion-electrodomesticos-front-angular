@@ -27,6 +27,7 @@ export class FormProductComponent {
   private buildForm(): FormGroup {
     return this.formBuilder.group({
       first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
       email: ['', [Validators.required]],
       appliance_type: ['', [Validators.required]],
       brand: [
@@ -38,7 +39,7 @@ export class FormProductComponent {
         ],
       ],
       problem_details: ['', [Validators.required, Validators.minLength(5)]],
-      collection_address: [
+      address: [
         '',
         [
           Validators.required,
@@ -48,6 +49,7 @@ export class FormProductComponent {
       ],
       service_type: ['', [Validators.required]],
       preferred_contact_method: ['', [Validators.required]],
+      phone_number: ['', [Validators.required]],
       damaged_appliance_image: [null, Validators.required],
       state: [
         '',
