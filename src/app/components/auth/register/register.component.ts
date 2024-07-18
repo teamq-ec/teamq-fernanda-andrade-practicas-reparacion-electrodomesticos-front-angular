@@ -8,6 +8,7 @@ import { ImageConstants } from 'src/app/constants/images.constants';
 import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -95,6 +96,7 @@ export class RegisterComponent {
       }
     );
   }
+
 
   goToLogin() : void{
     this.router.navigate([RoutesConstants.login]);
