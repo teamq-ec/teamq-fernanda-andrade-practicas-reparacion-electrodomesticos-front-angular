@@ -25,7 +25,6 @@ export class MenuComponent {
   }
 
   toggleMenu() {
-    console.log('entroo a toggle');
     this.showMenu = !this.showMenu;
   }
 
