@@ -11,21 +11,15 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { HeaderComponent } from './pages/components/header/header.component';
-import { FooterComponent } from './pages/components/footer/footer.component';
-import { PaymentComponent } from './pages/payment/payment.component';
-import { ProductComponent } from './pages/product/product.component';
-
+import { FormProductModule } from './pages/components/form-product/form-product.module';
+import { FooterModule } from './pages/components/footer/footer.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
     NotfoundComponent,
-    PaymentComponent,
     HeaderComponent,
-    FooterComponent,
-    ProductComponent,
-
   ],
   imports: [
     CommonModule,
@@ -33,9 +27,11 @@ import { ProductComponent } from './pages/product/product.component';
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AuthModule
+    AuthModule,
+    FormProductModule,
+    FooterModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

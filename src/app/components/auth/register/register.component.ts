@@ -6,6 +6,8 @@ import { Router } from '@angular/router';
 import { RegexConstants } from 'src/app/constants/regex.constants';
 import { ImageConstants } from 'src/app/constants/images.constants';
 import { RoutesConstants } from 'src/app/constants/routes.constants';
+import { UrlsConstants } from 'src/app/constants/urls.constants';
+
 
 @Component({
   selector: 'app-register',
@@ -21,6 +23,7 @@ export class RegisterComponent {
   public showAlert: boolean = false;
   public kitchenImage: String;
   public kitchenImageTwo: String;
+  urls = UrlsConstants;
 
   constructor() {
     this.form = this.buildForm();
@@ -83,7 +86,7 @@ export class RegisterComponent {
     return null;
   }
 
-  onSubmit() {
+  onSubmit() : void{
     this.authService.register(this.form.value).subscribe(
       (response: User) => {
         this.showAlert = true;
@@ -94,7 +97,8 @@ export class RegisterComponent {
     );
   }
 
-  goToLogin() {
+
+  goToLogin() : void{
     this.router.navigate([RoutesConstants.login]);
   }
 }
