@@ -67,10 +67,10 @@ export class FormProductComponent {
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field);
-    return control ? control.invalid && (control.dirty || control.touched) : false;
+    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    return control.invalid && (control.dirty || control.touched);
   }
-
+  
   public onSubmit(): void {
     if (this.form.invalid) {
       this.showAlertForm = true;
@@ -121,7 +121,7 @@ export class FormProductComponent {
   onAlertClosed() {
     this.showAlertForm = false;
   }
-  
+
   public chooseFile(): void {
     const inputElement = document.getElementById(
       'damaged-appliance-image'
