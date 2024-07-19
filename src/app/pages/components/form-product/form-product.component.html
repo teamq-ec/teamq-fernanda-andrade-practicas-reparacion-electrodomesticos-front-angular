@@ -287,3 +287,7 @@
   <app-alert-login-register></app-alert-login-register>
 </div>
 
+<div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
+  <app-alert-form (alertClosed)="onAlertClosed()"></app-alert-form>
+</div>
+

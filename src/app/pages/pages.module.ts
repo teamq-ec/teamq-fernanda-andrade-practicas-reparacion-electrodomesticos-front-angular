@@ -8,10 +8,12 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import { HomeModule } from './home/home.module';
 import { MenuModule } from './components/menu/menu.module';
+import { AlertFormComponent } from './components/alert-form/alert-form.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,

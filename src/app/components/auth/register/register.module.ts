@@ -5,6 +5,7 @@ import { RegisterRoutingModule } from './register-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './register.component';
 import { AlertModule } from 'src/app/pages/components/alert/alert.module';
+import { AlertFormModule } from 'src/app/pages/components/alert-form/alert-form.module';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { AlertModule } from 'src/app/pages/components/alert/alert.module';
     CommonModule,
     RegisterRoutingModule,
     ReactiveFormsModule,
-    AlertModule
+    AlertModule,
+    AlertFormModule
   ]
 })
 export class RegisterModule { }
