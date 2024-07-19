@@ -9,6 +9,7 @@ import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
