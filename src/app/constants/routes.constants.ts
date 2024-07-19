@@ -3,5 +3,3 @@ export const RoutesConstants = {
     register: '/auth/register',
     home: '',
   };
-
-  

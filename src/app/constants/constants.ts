@@ -26,5 +26,3 @@ export const PROVINCES_ECUADOR = [
     'Zamora-Chinchipe'
   ];
 
-  
-  
