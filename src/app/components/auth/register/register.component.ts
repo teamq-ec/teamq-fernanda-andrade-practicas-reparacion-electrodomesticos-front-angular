@@ -29,6 +29,7 @@ export class RegisterComponent {
   public kitchenImageTwo: String;
   urls = UrlsConstants;
   public showPassword: boolean = false;
+  public showAlertForm: boolean = false;
 
   constructor() {
     this.form = this.buildForm();
@@ -84,6 +85,13 @@ export class RegisterComponent {
   }
 
   onSubmit(): void {
+    if (this.form.invalid) {
+      this.showAlertForm = true;
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.get(key)?.markAsTouched();
+      });
+      return;
+    }
     this.authService.register(this.form.value).subscribe(
       (response: User) => {
         this.showAlert = true;
@@ -101,5 +109,10 @@ export class RegisterComponent {
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
+
+  onAlertClosed() {
+    this.showAlertForm = false;
+  }
+  
 }
 

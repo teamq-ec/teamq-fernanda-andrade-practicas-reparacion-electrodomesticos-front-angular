@@ -20,6 +20,8 @@ export class FormProductComponent {
   public imageSrc: string | ArrayBuffer | null = null;
   public files: File[] = [];
   public showAlert: boolean = false;
+  public showAlertForm: boolean = false;
+
   provinces = PROVINCES_ECUADOR;
 
   constructor() {
@@ -64,13 +66,17 @@ export class FormProductComponent {
     });
   }
 
-  public isFieldInvalid(field: string): boolean {
+  isFieldInvalid(field: string): boolean {
     const control = this.form.get(field);
-    return !!(control?.invalid && (control.dirty || control.touched));
+    return control ? control.invalid && (control.dirty || control.touched) : false;
   }
 
   public onSubmit(): void {
     if (this.form.invalid) {
+      this.showAlertForm = true;
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.get(key)?.markAsTouched();
+      });
       return;
     }
 
@@ -112,6 +118,10 @@ export class FormProductComponent {
     }
   }
 
+  onAlertClosed() {
+    this.showAlertForm = false;
+  }
+  
   public chooseFile(): void {
     const inputElement = document.getElementById(
       'damaged-appliance-image'
