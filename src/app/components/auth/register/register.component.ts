@@ -27,6 +27,7 @@ export class RegisterComponent {
   public kitchenImage: String;
   public kitchenImageTwo: String;
   urls = UrlsConstants;
+  public showPassword: boolean = false;
 
   constructor() {
     this.form = this.buildForm();
@@ -36,44 +37,35 @@ export class RegisterComponent {
   }
 
   buildForm(): FormGroup {
-    return this.formBuilder.group(
-      {
-        first_name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(40),
-          ],
+    return this.formBuilder.group({
+      first_name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(40),
         ],
-        last_name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(40),
-          ],
+      ],
+      last_name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(40),
         ],
-        email: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(RegexConstants.email),
-          ],
-        ],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(RegexConstants.password),
-          ],
-        ],
-        confirm_password: ['', Validators.required],
-        phone_number: ['', Validators.required],
-        address: ['', Validators.required],
-      },
-      { validator: this.passwordMatchValidator }
-    );
+      ],
+      email: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.email)],
+      ],
+      password: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.password)],
+      ],
+      confirm_password: ['', Validators.required],
+      phone_number: ['', Validators.required],
+      address: ['', Validators.required],
+    });
   }
 
   isFieldInvalid(field: string): boolean {
@@ -83,13 +75,6 @@ export class RegisterComponent {
       : false;
   }
 
-  passwordMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
-    if (form.get('password')?.value !== form.get('confirm_password')?.value) {
-      return { passwordMismatch: true };
-    }
-    return null;
-  }
-
   getLocalStorageData(): void {
     const formData = this.dataTransferService.getData();
     if (formData) {
@@ -97,7 +82,7 @@ export class RegisterComponent {
     }
   }
 
-  onSubmit() : void{
+  onSubmit(): void {
     this.authService.register(this.form.value).subscribe(
       (response: User) => {
         this.showAlert = true;
@@ -108,7 +93,12 @@ export class RegisterComponent {
     );
   }
 
-  goToLogin() : void{
+  goToLogin(): void {
     this.router.navigate([RoutesConstants.login]);
   }
+
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
 }
+
