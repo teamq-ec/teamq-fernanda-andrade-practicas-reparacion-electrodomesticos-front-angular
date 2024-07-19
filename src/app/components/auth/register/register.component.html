@@ -85,15 +85,17 @@
             <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
               Contraseña <span class="text-red-500">*</span>
             </label>
-            <div class="mt-2 relative">
-              <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
-                formControlName="password"
-                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
-                placeholder="Ingrese su contraseña">
-              <button type="button" (click)="togglePasswordVisibility()"
-                class="absolute inset-y-0 right-0 pr-3 flex items-center text-purple-600">
-                <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
-              </button>
+            <div class="div">
+              <div class="mt-2 relative">
+                <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                  formControlName="password"
+                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
+                  placeholder="Ingrese su contraseña">
+                <button type="button" (click)="togglePasswordVisibility()"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center text-purple-600">
+                  <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+              </div>
               <div
                 *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
                 <div *ngIf="form.get('password')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
