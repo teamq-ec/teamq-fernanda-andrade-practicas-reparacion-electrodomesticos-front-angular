@@ -71,11 +71,10 @@ export class RegisterComponent {
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field);
-    return control?.invalid && (control.dirty || control.touched)
-      ? true
-      : false;
+    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    return control.invalid && (control.dirty || control.touched);
   }
+  
 
   getLocalStorageData(): void {
     const formData = this.dataTransferService.getData();
