@@ -7,6 +7,7 @@ import { RegexConstants } from 'src/app/constants/regex.constants';
 import { ImageConstants } from 'src/app/constants/images.constants';
 import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
+import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 
 @Component({
   selector: 'app-register',
@@ -14,6 +15,9 @@ import { UrlsConstants } from 'src/app/constants/urls.constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  private readonly dataTransferService: DataTransferServiceService = inject(
+    DataTransferServiceService
+  );
   private formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
@@ -26,6 +30,7 @@ export class RegisterComponent {
 
   constructor() {
     this.form = this.buildForm();
+    this.getLocalStorageData();
     this.kitchenImage = ImageConstants.kitchen;
     this.kitchenImageTwo = ImageConstants.kitchenTwo;
   }
@@ -83,6 +88,13 @@ export class RegisterComponent {
       return { passwordMismatch: true };
     }
     return null;
+  }
+
+  getLocalStorageData(): void {
+    const formData = this.dataTransferService.getData();
+    if (formData) {
+      this.form.patchValue(formData);
+    }
   }
 
   onSubmit() : void{
