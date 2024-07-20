@@ -8,6 +8,8 @@ import { MenuComponent } from './components/menu/menu.component';
 
 import { HomeModule } from './home/home.module';
 import { MenuModule } from './components/menu/menu.module';
+import { FooterModule } from './components/footer/footer.module';
+import { DashboardModule } from './dashboard/dashboard.module';
 
 
 @NgModule({
@@ -17,6 +19,9 @@ import { MenuModule } from './components/menu/menu.module';
     PagesRoutingModule,
     FormProductModule,
     ReactiveFormsModule,
+    FooterModule,
+    DashboardModule,
+    FooterModule,
   ]
 })
 export class PagesModule { }
