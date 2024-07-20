@@ -8,6 +8,7 @@ import { ImageConstants } from 'src/app/constants/images.constants';
 import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -31,7 +32,7 @@ export class RegisterComponent {
   public showPassword: boolean = false;
   public showAlertForm: boolean = false;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.form = this.buildForm();
     this.getLocalStorageData();
     this.kitchenImage = ImageConstants.kitchen;
@@ -74,7 +75,6 @@ export class RegisterComponent {
     const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
     return control.invalid && (control.dirty || control.touched);
   }
-  
 
   getLocalStorageData(): void {
     const formData = this.dataTransferService.getData();
