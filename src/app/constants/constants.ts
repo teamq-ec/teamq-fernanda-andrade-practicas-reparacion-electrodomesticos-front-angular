@@ -25,4 +25,4 @@ export const PROVINCES_ECUADOR = [
     'Sucumbíos',
     'Zamora-Chinchipe'
   ];
-  
+

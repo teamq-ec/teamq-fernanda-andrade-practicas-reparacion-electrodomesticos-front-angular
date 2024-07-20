@@ -25,6 +25,7 @@ export class LoginComponent {
   public kitchenImage: String;
   public kitchenImageTwo: String;
   urls = UrlsConstants;
+  public showPassword: boolean = false;
 
   constructor() {
     this.loginForm = this.buildForm();
@@ -79,4 +80,13 @@ export class LoginComponent {
   goToHome(): void {
     this.router.navigate([RoutesConstants.home]);
   }
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+  isFieldInvalid(field: string): boolean {
+    const control = this.loginForm.get(field) ?? { invalid: false, dirty: false, touched: false };
+    return control.invalid && (control.dirty || control.touched);
+  }
+  
 }
+

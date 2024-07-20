@@ -12,8 +12,10 @@ import { FooterModule } from './components/footer/footer.module';
 import { DashboardModule } from './dashboard/dashboard.module';
 
 
+
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,

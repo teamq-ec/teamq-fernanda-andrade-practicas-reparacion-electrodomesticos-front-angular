@@ -1,18 +1,16 @@
 <div class="relative min-h-screen flex items-center justify-center bg-gray-50">
-  <img
-  [src]="kitchenImage" alt="Fondo" class="absolute inset-0 w-full h-full object-cover z-0">
+  <img [src]="kitchenImage" alt="Fondo" class="absolute inset-0 w-full h-full object-cover z-0">
   <div class="absolute inset-0 bg-gray-900/50 z-0"></div>
   <div
     class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 px-4 pt-12 pb-24 sm:px-6 sm:pt-16 sm:pb-32 lg:px-8">
     <div class="relative hidden lg:block">
-      <img [src]="kitchenImageTwo"
-        alt="Lado" class="w-full h-full object-cover rounded-lg shadow-lg">
+      <img [src]="kitchenImageTwo" alt="Lado" class="w-full h-full object-cover rounded-lg shadow-lg">
     </div>
     <div class="bg-white p-8 rounded-lg shadow-lg lg:-ml-1">
       <div class="sm:mx-auto sm:w-full sm:max-w-md">
-        <img class="mx-auto h-10 w-auto" [src]="urls.logos.logo"
-          alt="Your Company">
-        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta en solo unos segundos. ¡Es fácil y rápido!
+        <img class="mx-auto h-10 w-auto" [src]="urls.logos.logo" alt="Your Company">
+        <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Crea tu cuenta en solo
+          unos segundos. ¡Es fácil y rápido!
         </h2>
       </div>
 
@@ -20,10 +18,8 @@
         <button (click)="goToLogin()"
           class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           title="Go to Login">
-          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M15 19l-7-7 7-7"></path>
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
       </div>
@@ -32,7 +28,8 @@
         <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6" action="#" method="POST">
           <div class="grid grid-cols-2 gap-x-4">
             <div>
-              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">Nombre</label>
+              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">Nombre<span
+                  class="text-red-500">*</span></label>
               <div class="mt-1">
                 <input id="first_name" formControlName="first_name" name="first_name" type="text"
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
@@ -49,7 +46,8 @@
               </div>
             </div>
             <div>
-              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">Apellido</label>
+              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">Apellido <span
+                  class="text-red-500">*</span></label>
               <div class="mt-1">
                 <input id="last_name" formControlName="last_name" name="last_name" type="text" autocomplete="last_name"
                   required [class.border-red-500]="isFieldInvalid('last_name')"
@@ -68,7 +66,8 @@
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address</label>
+            <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Email address <span
+                class="text-red-500">*</span></label>
             <div class="mt-1">
               <input id="email" formControlName="email" name="email" type="email" autocomplete="email" required
                 [class.border-red-500]="isFieldInvalid('email')"
@@ -82,41 +81,53 @@
             </div>
           </div>
 
-
-          <div>
-            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Contraseña</label>
-            <div class="mt-1">
-              <input id="password" formControlName="password" name="password" type="password"
-                autocomplete="current-password" required [class.border-red-500]="isFieldInvalid('password')"
-                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+          <div class="sm:col-span-3">
+            <label for="password" class="block text-sm font-medium leading-6 text-gray-900">
+              Contraseña <span class="text-red-500">*</span>
+            </label>
+            <div class="div">
+              <div class="mt-2 relative">
+                <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                  formControlName="password"
+                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
+                  placeholder="Ingrese su contraseña">
+                <button type="button" (click)="togglePasswordVisibility()"
+                  class="absolute inset-y-0 right-0 pr-3 flex items-center text-purple-600">
+                  <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </button>
+              </div>
+              <div
+                *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+                <div *ngIf="form.get('password')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
+                <div *ngIf="form.get('password')?.errors?.['pattern']" class="text-red-500 text-sm">
+                  La contraseña debe contener al menos una mayúscula, una minúscula, un número y un carácter especial
+                </div>
+              </div>
             </div>
-            <div
-              *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
-              <div *ngIf="form.get('password')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
-                requerido</div>
-              <div *ngIf="form.get('password')?.errors?.['pattern']" class="text-red-500 text-sm">Contraseña no válida
+          </div>
+
+          <div class="sm:col-span-3" *ngIf="form.get('preferred_contact_method')?.value === 'Celular'">
+            <label for="phone_number" class="block text-sm font-medium leading-6 text-gray-900">
+              Número de Celular <span class="text-red-500">*</span><span class="text-red-500">*</span>
+            </label>
+            <div class="mt-2 relative">
+              <input id="phone_number" name="phone_number" type="tel" formControlName="phone_number"
+                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                placeholder="(123) 456-7890" pattern="[0-9]*">
+              <div
+                *ngIf="form.get('phone_number')?.invalid && (form.get('phone_number')?.dirty || form.get('phone_number')?.touched)">
+                <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
+                  requerido</div>
+                <div *ngIf="form.get('phone_number')?.errors?.['pattern']" class="text-red-500 text-sm">Solo se permiten
+                  números</div>
               </div>
             </div>
           </div>
 
           <div>
-            <label for="phone_number" class="block text-sm font-medium leading-6 text-gray-900">Numero de
-              Telefono</label>
-            <div class="mt-1">
-              <input id="phone_number" formControlName="phone_number" name="phone_number" type="text"
-                autocomplete="phone_number" required [class.border-red-500]="isFieldInvalid('phone_number')"
-                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-            </div>
-            <div
-              *ngIf="form.get('phone_number')?.invalid && (form.get('phone_number')?.dirty || form.get('phone_number')?.touched)">
-              <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">Este campo es
-                requerido</div>
-            </div>
-          </div>
-
-          <div>
             <label for="address" class="block text-sm font-medium leading-6 text-gray-900">Direccion de
-              domicilio</label>
+              domicilio <span class="text-red-500">*</span></label>
             <div class="mt-1">
               <input id="address" formControlName="address" name="address" type="text" autocomplete="address" required
                 [class.border-red-500]="isFieldInvalid('address')"
@@ -142,4 +153,8 @@
       </div>
     </div>
   </div>
+</div>
+
+<div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
+  <app-alert-form (alertClosed)="onAlertClosed()"></app-alert-form>
 </div>
