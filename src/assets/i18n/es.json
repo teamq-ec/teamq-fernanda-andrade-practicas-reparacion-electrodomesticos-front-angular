@@ -1,0 +1,49 @@
+{
+  "login": {
+    "title": "Iniciar sesión en su cuenta",
+    "emailLabel": "Dirección de correo electrónico",
+    "passwordLabel": "Contraseña",
+    "signInButton": "Iniciar sesión",
+    "registerPrompt": "¿No tienes cuenta?",
+    "registerLink": "Regístrate aquí"
+  },
+  "register": {
+    "title": "Crea tu cuenta en solo unos segundos. ¡Es fácil y rápido!",
+    "firstNameLabel": "Nombre",
+    "lastNameLabel": "Apellido",
+    "emailLabel": "Dirección de correo electrónico",
+    "passwordLabel": "Contraseña",
+    "phoneNumberLabel": "Número de teléfono",
+    "addressLabel": "Dirección de domicilio",
+    "signUpButton": "Registrarse",
+    "requiredFieldError": "Este campo es requerido",
+    "minlengthError": "El campo debe contener al menos 1 carácter",
+    "maxlengthError": "El campo debe contener como máximo 40 caracteres",
+    "invalidEmailError": "Correo electrónico no válido",
+    "invalidPasswordError": "Contraseña no válida"
+  },
+  "home": {
+    "title": "¿Problemas con tu electrodoméstico?",
+    "description": "En Appliance Care, nos especializamos en mantenimiento y reparación de electrodomésticos de alta calidad. Nuestros técnicos certificados resuelven cualquier problema para que tus electrodomésticos funcionen como nuevos.",
+    "startButton": "Empezar",
+    "brandsTitle": "Algunas de las marcas que atendemos incluyen"
+  },
+  "dashboard": {
+    "welcomeMessage": "¡Bienvenid@, {{ userName }} {{ userLastName }} a Appliance Care!",
+    "description": "Nos alegra tenerte de vuelta. Explora nuestros servicios de mantenimiento y reparación de electrodomésticos y encuentra la solución perfecta para tus necesidades.",
+    "articles": {
+      "registration": {
+        "title": "Registro de Electrodomésticos",
+        "description": "Registra tus electrodomésticos para recibir soporte técnico especializado. Mantén un registro organizado y accede a la información de tus equipos de manera fácil y rápida."
+      },
+      "tracking": {
+        "title": "Seguimiento de Productos",
+        "description": "Consulta tus productos registrados y su historial. Verifica el tiempo de entrega de tus nuevos productos y mantén un seguimiento de tus electrodomésticos."
+      },
+      "payments": {
+        "title": "Gestión de Pagos",
+        "description": "Administra tus pagos de manera rápida y segura. Consulta tu historial de pagos y realiza nuevos pagos para los servicios de reparación y mantenimiento de tus electrodomésticos."
+      }
+    }
+  }
+}
