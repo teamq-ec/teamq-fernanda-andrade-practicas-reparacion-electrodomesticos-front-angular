@@ -3,13 +3,15 @@ import { CommonModule } from '@angular/common';
 
 import { AlertRoutingModule } from './alert-routing.module';
 import { AlertComponent } from './alert.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 @NgModule({
   declarations: [AlertComponent],
   imports: [
     CommonModule,
-    AlertRoutingModule
+    AlertRoutingModule,
+    TranslateModule
   ],
   exports: [AlertComponent] 
 })

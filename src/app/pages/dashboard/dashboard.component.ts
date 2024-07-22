@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-dashboard',
