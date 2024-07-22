@@ -30,7 +30,7 @@
                 <input id="first_name" formControlName="first_name" name="first_name" type="text"
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Ingrese su Nombre">
+                  placeholder="{{ 'formProduct.FIRST_NAME_LABEL' | translate }}">
               </div>
               <div
                 *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
@@ -46,7 +46,7 @@
                 <input id="last_name" formControlName="last_name" name="last_name" type="text" autocomplete="last_name"
                   required [class.border-red-500]="isFieldInvalid('last_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Ingrese su Apellido">
+                  placeholder="{{ 'formProduct.LAST_NAME_LABEL' | translate }}">
               </div>
               <div
                 *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
@@ -61,7 +61,7 @@
               <div class="mt-2">
                 <input id="email-address" name="email" type="email" formControlName="email" autocomplete="email"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="Ingrese su correo electrónico">
+                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
                 <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.EMAIL_REQUIRED' | translate }}</div>
