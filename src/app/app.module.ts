@@ -11,6 +11,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 
+import { HomeModule } from './pages/home/home.module';
+import { DashboardModule } from './pages/dashboard/dashboard.module';
+import { ApplianceRegistrationModule } from './pages/appliance-registration/appliance-registration.module';
+
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
@@ -21,6 +25,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     CommonModule,
     BrowserModule,
     AppRoutingModule,
+    HomeModule,
+    ApplianceRegistrationModule,
+    DashboardModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({

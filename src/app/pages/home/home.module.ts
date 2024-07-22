@@ -4,7 +4,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { MenuModule } from '../components/menu/menu.module';
 import { FooterModule } from '../components/footer/footer.module';
-import { AppModule } from 'src/app/app.module';
 import { TranslateModule } from '@ngx-translate/core';
 
 

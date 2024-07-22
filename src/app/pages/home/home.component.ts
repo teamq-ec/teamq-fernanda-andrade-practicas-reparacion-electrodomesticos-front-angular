@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ImageConstants } from 'src/app/constants/images.constants';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent {
   public homepages: String;
   public avatar: String;
   isOpen = false;
+  RoutesConstants = RoutesConstants;
 
   constructor() {
     this.homepages = ImageConstants.homepages;

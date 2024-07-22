@@ -3,4 +3,5 @@ export const RoutesConstants = {
     register: '/auth/register',
     home: '',
     daashboar: '/pages/home',
+    form: '/pages/form',
   };
