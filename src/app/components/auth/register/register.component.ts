@@ -7,6 +7,8 @@ import { RegexConstants } from 'src/app/constants/regex.constants';
 import { ImageConstants } from 'src/app/constants/images.constants';
 import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
+import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -15,6 +17,9 @@ import { UrlsConstants } from 'src/app/constants/urls.constants';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
+  private readonly dataTransferService: DataTransferServiceService = inject(
+    DataTransferServiceService
+  );
   private formBuilder = inject(FormBuilder);
   private readonly authService = inject(AuthService);
   private readonly router = inject(Router);
@@ -24,69 +29,68 @@ export class RegisterComponent {
   public kitchenImage: String;
   public kitchenImageTwo: String;
   urls = UrlsConstants;
+  public showPassword: boolean = false;
+  public showAlertForm: boolean = false;
 
-  constructor() {
+  constructor(private translate: TranslateService) {
     this.form = this.buildForm();
+    this.getLocalStorageData();
     this.kitchenImage = ImageConstants.kitchen;
     this.kitchenImageTwo = ImageConstants.kitchenTwo;
   }
 
   buildForm(): FormGroup {
-    return this.formBuilder.group(
-      {
-        first_name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(40),
-          ],
+    return this.formBuilder.group({
+      first_name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(40),
         ],
-        last_name: [
-          '',
-          [
-            Validators.required,
-            Validators.minLength(1),
-            Validators.maxLength(40),
-          ],
+      ],
+      last_name: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(40),
         ],
-        email: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(RegexConstants.email),
-          ],
-        ],
-        password: [
-          '',
-          [
-            Validators.required,
-            Validators.pattern(RegexConstants.password),
-          ],
-        ],
-        confirm_password: ['', Validators.required],
-        phone_number: ['', Validators.required],
-        address: ['', Validators.required],
-      },
-      { validator: this.passwordMatchValidator }
-    );
+      ],
+      email: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.email)],
+      ],
+      password: [
+        '',
+        [Validators.required, Validators.pattern(RegexConstants.password)],
+      ],
+      confirm_password: ['', Validators.required],
+      phone_number: ['', Validators.required],
+      address: ['', Validators.required],
+    });
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field);
-    return control?.invalid && (control.dirty || control.touched)
-      ? true
-      : false;
+    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    return control.invalid && (control.dirty || control.touched);
   }
 
-  passwordMatchValidator(form: FormGroup): { [key: string]: boolean } | null {
-    if (form.get('password')?.value !== form.get('confirm_password')?.value) {
-      return { passwordMismatch: true };
+  getLocalStorageData(): void {
+    const formData = this.dataTransferService.getData();
+    if (formData) {
+      this.form.patchValue(formData);
     }
-    return null;
   }
 
-  onSubmit() : void{
+  onSubmit(): void {
+    if (this.form.invalid) {
+      this.showAlertForm = true;
+      Object.keys(this.form.controls).forEach(key => {
+        this.form.get(key)?.markAsTouched();
+      });
+      return;
+    }
     this.authService.register(this.form.value).subscribe(
       (response: User) => {
         this.showAlert = true;
@@ -97,8 +101,17 @@ export class RegisterComponent {
     );
   }
 
-
-  goToLogin() : void{
+  goToLogin(): void {
     this.router.navigate([RoutesConstants.login]);
   }
+
+  public togglePasswordVisibility(): void {
+    this.showPassword = !this.showPassword;
+  }
+
+  onAlertClosed(): void {
+    this.showAlertForm = false;
+  }
+  
 }
+
