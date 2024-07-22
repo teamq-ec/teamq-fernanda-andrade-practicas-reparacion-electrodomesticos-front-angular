@@ -78,7 +78,7 @@ export class LoginComponent {
   }
 
   goToHome(): void {
-    this.router.navigate([RoutesConstants.daashboar]);
+    this.router.navigate([RoutesConstants.dashboard]);
   }
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
