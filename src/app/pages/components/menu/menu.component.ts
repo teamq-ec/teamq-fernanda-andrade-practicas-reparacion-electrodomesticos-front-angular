@@ -1,9 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/components/service/auth.service';
 import { ImageConstants } from 'src/app/constants/images.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { TranslationService } from '../../services/translation.service';
+import { LanguageConstants } from 'src/app/constants/language-constants';
 
 @Component({
   selector: 'app-menu',
@@ -18,6 +19,9 @@ export class MenuComponent {
   showMenu: boolean = false;
   urls = UrlsConstants;
   public avatar: String;
+  showMenuI: boolean = false;
+  currentLanguage: 'en' | 'es' = 'es';
+  languages = LanguageConstants;
 
   constructor(private translationService: TranslationService) {
     this.avatar = ImageConstants.avatar;
@@ -29,25 +33,29 @@ export class MenuComponent {
     this.showMenu = !this.showMenu;
   }
 
-   logout() {
+  toggleMenuI() {
+    this.showMenuI = !this.showMenuI;
+  }
+
+  closeMenu() {
+    this.showMenuI = false;
+  }
+
+  logout() {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
     localStorage.removeItem('userLastName');
     this.router.navigate(['']);
   }
 
-  changeLanguage(language: string) {
+  changeLanguage(language: 'en' | 'es', event: Event) {
+    event.preventDefault(); 
     this.translationService.setLanguage(language);
+    this.currentLanguage = language;
+    this.closeMenu();
   }
-  
-  getFlagUrl(language: string): string {
-    switch (language) {
-      case 'en':
-        return 'https://alicante.salesianos.edu/colegio/wp-content/uploads/sites/2/2017/10/plurilinguismo_bandera_ingles-min.png';
-      case 'es':
-        return 'https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5IZAt5eY5pr6hVl8AWydSB_Es70Dib6y7mi4vTq9o9ShULUD9yl7-5nOc6FHT7L6VghMTgWB3Eb9HXBTWIdUaG0etAuj492_z1ozloh0C9io0ErpBBajE9TfO_l9ELHtXFglb_9FCueU/s1600/LISA.png" alt="" class="block h-auto w-5 flex-shrink-0'; // URL de la bandera en español
-      default:
-        return ''; 
-    }
+
+  getFlagUrl(language: 'en' | 'es'): string {
+    return LanguageConstants[language];
   }
 }

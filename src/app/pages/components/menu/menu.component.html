@@ -24,17 +24,23 @@
     </div>
 
     
-    <div class="hidden lg:ml-8 lg:flex">
-      <a href="#" (click)="changeLanguage('en')" class="flex items-center text-gray-700 hover:text-gray-800">
-        <img [src]="getFlagUrl('en')" alt="English" class="block h-auto w-5 flex-shrink-0">
-        <span class="ml-3 block text-sm font-medium">EN</span>
-        <span class="sr-only">Change language to English</span>
-      </a>
-      <a href="#" (click)="changeLanguage('es')" class="flex items-center text-gray-700 hover:text-gray-800">
-        <img [src]="getFlagUrl('es')" alt="Spanish" class="block h-auto w-5 flex-shrink-0">
-        <span class="ml-3 block text-sm font-medium">ES</span>
-        <span class="sr-only">Change language to Spanish</span>
-      </a>
+    <div class="hidden lg:flex lg:ml-8" (clickOutside)="closeMenu()">
+      <div class="relative">
+        <button (click)="toggleMenuI()" class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+          <img [src]="getFlagUrl(currentLanguage)" alt="Current Language" class="block h-auto w-5 flex-shrink-0 rounded-full">
+          <span class="ml-3 block text-sm font-medium">{{ currentLanguage.toUpperCase() }}</span>
+        </button>
+        <div *ngIf="showMenuI" class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg">
+          <a href="#" (click)="changeLanguage('en', $event)" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+            <img [src]="getFlagUrl('en')" alt="English" class="block h-auto w-5 flex-shrink-0 rounded-full">
+            <span class="ml-3 text-sm font-medium">English</span>
+          </a>
+          <a href="#" (click)="changeLanguage('es', $event)" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+            <img [src]="getFlagUrl('es')" alt="Spanish" class="block h-auto w-5 flex-shrink-0 rounded-full">
+            <span class="ml-3 text-sm font-medium">Español</span>
+          </a>
+        </div>
+      </div>
     </div>
 
     <div class="hidden lg:flex lg:flex-1 lg:justify-end items-center relative">
