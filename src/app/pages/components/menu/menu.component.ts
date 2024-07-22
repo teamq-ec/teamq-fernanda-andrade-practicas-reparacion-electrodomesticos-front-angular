@@ -29,15 +29,15 @@ export class MenuComponent {
     this.userLastName = localStorage.getItem('userLastName');
   }
 
-  toggleMenu() {
+  toggleMenu() : void{
     this.showMenu = !this.showMenu;
   }
 
-  toggleMenuI() {
+  toggleMenuI(): void {
     this.showMenuI = !this.showMenuI;
   }
 
-  closeMenu() {
+  closeMenu(): void {
     this.showMenuI = false;
   }
 
@@ -48,7 +48,7 @@ export class MenuComponent {
     this.router.navigate(['']);
   }
 
-  changeLanguage(language: 'en' | 'es', event: Event) {
+  changeLanguage(language: 'en' | 'es', event: Event) : void{
     event.preventDefault(); 
     this.translationService.setLanguage(language);
     this.currentLanguage = language;
