@@ -9,7 +9,7 @@ export class AlertFormComponent {
   @Output() alertClosed = new EventEmitter<void>();
   isOpen = true; 
 
-  closeAlert() {
+  closeAlert(): void {
     this.alertClosed.emit();
   }
 
