@@ -108,7 +108,7 @@ export class RegisterComponent {
     this.showPassword = !this.showPassword;
   }
 
-  onAlertClosed() {
+  onAlertClosed(): void {
     this.showAlertForm = false;
   }
   

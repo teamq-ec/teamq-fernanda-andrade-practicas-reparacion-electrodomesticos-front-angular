@@ -32,7 +32,7 @@
                 <input id="first_name" formControlName="first_name" name="first_name" type="text"
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Ingrese su Nombre">
+                  placeholder="{{ 'formProduct.FIRST_NAME_LABEL' | translate }}">
               </div>
               <div
                 *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
@@ -51,7 +51,7 @@
                 <input id="last_name" formControlName="last_name" name="last_name" type="text" autocomplete="last_name"
                   required [class.border-red-500]="isFieldInvalid('last_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  placeholder="Ingrese su Apellido">
+                  placeholder="{{ 'formProduct.LAST_NAME_LABEL' | translate }}">
               </div>
               <div
                 *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
@@ -70,7 +70,7 @@
               <div class="mt-2">
                 <input id="email-address" name="email" type="email" formControlName="email" autocomplete="email"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="Ingrese su correo electrónico">
+                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
                 <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{
@@ -117,7 +117,7 @@
                   <div class="mt-4 flex text-sm text-gray-600">
                     <label for="damaged-appliance-image"
                       class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                      <span>Subir un archivo</span>
+                      <span>{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</span>
                       <input id="damaged-appliance-image" formControlName="damaged_appliance_image" type="file"
                         class="sr-only" required (change)="getFile($event)">
                     </label>
@@ -137,26 +137,24 @@
           </div>
 
           <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" style="margin-top: 30px;">
-            <div class="sm:col-span-3">
-              <label for="appliance-type" class="block text-sm font-medium leading-6 text-gray-900">{{
-                'formProduct.APPLIANCE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
-              <div class="mt-2">
-                <select id="appliance-type" formControlName="appliance_type" name="appliance-type"
-                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('appliance_type')">
-                  <option value="">{{ 'formProduct.APPLIANCE_TYPE_PLACEHOLDER' | translate }}</option>
-                  <option>Refrigerador</option>
-                  <option>Lavadora</option>
-                  <option>Secadora</option>
-                  <option>Horno</option>
-                </select>
+              <div class="sm:col-span-3">
+                <label for="appliance-type" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
+                <div class="mt-2">
+                  <select id="appliance-type" formControlName="appliance_type" name="appliance-type"
+                    class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                    required [class.border-red-500]="isFieldInvalid('appliance_type')">
+                    <option value="">{{ 'formProduct.APPLIANCE_TYPE_PLACEHOLDER' | translate }}</option>
+                    <option value="refrigerator">{{ 'formProduct.APPLIANCE_TYPE_REFRIGERATOR' | translate }}</option>
+                    <option value="washer">{{ 'formProduct.APPLIANCE_TYPE_WASHER' | translate }}</option>
+                    <option value="dryer">{{ 'formProduct.APPLIANCE_TYPE_DRYER' | translate }}</option>
+                    <option value="oven">{{ 'formProduct.APPLIANCE_TYPE_OVEN' | translate }}</option>
+                  </select>
+                </div>
+                <div
+                  *ngIf="form.get('appliance_type')?.invalid && (form.get('appliance_type')?.dirty || form.get('appliance_type')?.touched)">
+                  <div *ngIf="form.get('appliance_type')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.APPLIANCE_TYPE_REQUIRED' | translate }}</div>
+                </div>
               </div>
-              <div
-                *ngIf="form.get('appliance_type')?.invalid && (form.get('appliance_type')?.dirty || form.get('appliance_type')?.touched)">
-                <div *ngIf="form.get('appliance_type')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.APPLIANCE_TYPE_REQUIRED' | translate }}</div>
-              </div>
-            </div>
 
 
             <div class="sm:col-span-3">
@@ -166,7 +164,7 @@
                 <select id="brand" formControlName="brand" name="brand"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('brand')">
-                  <option value="">Select...</option>
+                  <option value="">{{ 'formProduct.BRAND_PLACEHOLDER' | translate }}</option>
                   <option>Samsung</option>
                   <option>LG</option>
                   <option>Whirlpool</option>
@@ -179,6 +177,7 @@
               </div>
             </div>
 
+
             <div class="sm:col-span-6">
               <label for="problem-details" class="block text-sm font-medium leading-6 text-gray-900">{{
                 'formProduct.PROBLEM_DETAILS_LABEL' | translate }}<span class="text-red-500">*</span></label>
@@ -186,7 +185,7 @@
                 <textarea id="problem-details" formControlName="problem_details" name="problem-details" rows="3"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('problem_details')"
-                  placeholder="Detalles del problema"></textarea>
+                  placeholder="{{ 'formProduct.PROBLEM_DETAILS_LABEL' | translate }}"></textarea>
               </div>
               <div
                 *ngIf="form.get('problem_details')?.invalid && (form.get('problem_details')?.dirty || form.get('problem_details')?.touched)">
@@ -195,13 +194,14 @@
               </div>
             </div>
 
+            
             <div class="sm:col-span-6">
               <label for="address" class="block text-sm font-medium leading-6 text-gray-900"> {{
                 'formProduct.ADDRESS_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <input type="text" formControlName="address" id="address" autocomplete="street-address"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('address')" placeholder="Dirección del domicilio">
+                  required [class.border-red-500]="isFieldInvalid('address')" placeholder="{{ 'formProduct.ADDRESS_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('address')?.invalid && (form.get('address')?.dirty || form.get('address')?.touched)">
                 <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{
@@ -209,22 +209,20 @@
               </div>
             </div>
 
+
             <div class="sm:col-span-3">
-              <label for="service-type" class="block text-sm font-medium leading-6 text-gray-900"> {{
-                'formProduct.SERVICE_TYPE_LABEL' | translate }}<span class="text-red-500">*</span></label>
+              <label for="service-type" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.SERVICE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <select id="service-type" formControlName="service_type" name="service-type"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('service_type')">
-                  <option value="">Select...</option>
-                  <option>Reparar</option>
-                  <option>Mantenimiento</option>
+                  <option value="">{{ 'formProduct.SERVICE_TYPE_PLACEHOLDER' | translate }}</option>
+                  <option value="repair">{{ 'formProduct.SERVICE_TYPE_REPAIR' | translate }}</option>
+                  <option value="maintenance">{{ 'formProduct.SERVICE_TYPE_MAINTENANCE' | translate }}</option>
                 </select>
               </div>
-              <div
-                *ngIf="form.get('service_type')?.invalid && (form.get('service_type')?.dirty || form.get('service_type')?.touched)">
-                <div *ngIf="form.get('service_type')?.errors?.['required']" class="text-red-500 text-sm"> {{
-                  'formProduct.SERVICE_TYPE_REQUIRED' | translate }}</div>
+              <div *ngIf="form.get('service_type')?.invalid && (form.get('service_type')?.dirty || form.get('service_type')?.touched)">
+                <div *ngIf="form.get('service_type')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.SERVICE_TYPE_REQUIRED' | translate }}</div>
               </div>
             </div>
 
@@ -236,9 +234,9 @@
                   name="preferred-contact-method"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('preferred_contact_method')">
-                  <option value="">Seleccione...</option>
-                  <option>Correo</option>
-                  <option>Celular</option>
+                  <option value="">{{ 'formProduct.CONTACT_METHOD_PLACEHOLDER' | translate }}</option>
+                  <option value="email">{{ 'formProduct.EMAIL' | translate }}</option>
+                  <option value="Celular">{{ 'formProduct.PHONE' | translate }}</option>
                 </select>
               </div>
               <div
@@ -255,7 +253,7 @@
                 <select id="state" formControlName="state" name="state"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('state')">
-                  <option value="">Select...</option>
+                  <option value="">{{ 'formProduct.PROVINCE_PLACEHOLDER' | translate }}</option>
                   <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
                 </select>
               </div>
