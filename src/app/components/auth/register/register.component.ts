@@ -65,7 +65,6 @@ export class RegisterComponent {
         '',
         [Validators.required, Validators.pattern(RegexConstants.password)],
       ],
-      confirm_password: ['', Validators.required],
       phone_number: ['', Validators.required],
       address: ['', Validators.required],
     });

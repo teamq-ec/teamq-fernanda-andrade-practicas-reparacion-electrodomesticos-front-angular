@@ -3,27 +3,16 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { FormProductModule } from './components/form-product/form-product.module';
-import { ReactiveFormsModule } from '@angular/forms';
-import { MenuComponent } from './components/menu/menu.component';
 
-import { HomeModule } from './home/home.module';
-import { MenuModule } from './components/menu/menu.module';
-import { FooterModule } from './components/footer/footer.module';
-import { DashboardModule } from './dashboard/dashboard.module';
-
-
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
     CommonModule,
     PagesRoutingModule,
     FormProductModule,
-    ReactiveFormsModule,
-    FooterModule,
-    DashboardModule,
-    FooterModule,
-  ]
+    TranslateModule,
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

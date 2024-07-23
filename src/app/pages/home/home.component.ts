@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ImageConstants } from 'src/app/constants/images.constants';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-home',
@@ -12,8 +14,10 @@ export class HomeComponent {
   public homepages: String;
   public avatar: String;
   isOpen = false;
+  RoutesConstants = RoutesConstants;
+  userId: string | null = localStorage.getItem('userId');
 
-  constructor() {
+  constructor(private activatedRoute: ActivatedRoute) {
     this.homepages = ImageConstants.homepages;
     this.avatar = ImageConstants.avatar;
     this.userName = localStorage.getItem('userName');
@@ -22,5 +26,13 @@ export class HomeComponent {
 
   toggleMenu(): void {
     this.isOpen = !this.isOpen;
+  }
+
+  getFormRoute(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.form.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
   }
 }

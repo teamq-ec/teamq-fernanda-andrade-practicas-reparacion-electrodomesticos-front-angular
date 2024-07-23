@@ -2,7 +2,8 @@
   <div
     class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
     <div>
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ 'formProduct.CONTACT_US_TITLE' | translate }}</h2>
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ 'formProduct.CONTACT_US_TITLE' |
+        translate }}</h2>
       <p class="mt-4 text-gray-500">{{ 'formProduct.CONTACT_US_DESCRIPTION' | translate }}</p>
       <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 mt-8">
         <img src="https://i.pinimg.com/564x/e6/bf/d2/e6bfd29d843ea47649824286b4142877.jpg"
@@ -19,13 +20,14 @@
     <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="border-b border-gray-900/10 pb-12">
-          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{ 'formProduct.APPLICANT_INFO_TITLE' | translate }}</h2>
+          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{
+            'formProduct.APPLICANT_INFO_TITLE' | translate }}</h2>
           <p class="mt-1 text-sm text-gray-600">{{ 'formProduct.APPLICANT_INFO_DESCRIPTION' | translate }}</p>
           <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
 
             <div>
-              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.FIRST_NAME_LABEL' | translate }}<span
-                  class="text-red-500">*</span></label>
+              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.FIRST_NAME_LABEL' | translate }}<span class="text-red-500">*</span></label>
               <div class="mt-1">
                 <input id="first_name" formControlName="first_name" name="first_name" type="text"
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
@@ -34,14 +36,17 @@
               </div>
               <div
                 *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
-                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.FIRST_NAME_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{ 'formProduct.FIRST_NAME_MINLENGTH' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{ 'formProduct.FIRST_NAME_MAXLENGTH' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.FIRST_NAME_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
+                  'formProduct.FIRST_NAME_MINLENGTH' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
+                  'formProduct.FIRST_NAME_MAXLENGTH' | translate }}</div>
               </div>
             </div>
             <div>
-              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.LAST_NAME_LABEL' | translate }} <span
-                  class="text-red-500">*</span></label>
+              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.LAST_NAME_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-1">
                 <input id="last_name" formControlName="last_name" name="last_name" type="text" autocomplete="last_name"
                   required [class.border-red-500]="isFieldInvalid('last_name')"
@@ -50,34 +55,41 @@
               </div>
               <div
                 *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
-                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.LAST_NAME_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{ 'formProduct.LAST_NAME_MINLENGTH' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{ 'formProduct.LAST_NAME_MAXLENGTH' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.LAST_NAME_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
+                  'formProduct.LAST_NAME_MINLENGTH' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
+                  'formProduct.LAST_NAME_MAXLENGTH' | translate }}</div>
               </div>
             </div>
 
             <div>
-              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.EMAIL_LABEL' | translate }}<span class="text-red-500">*</span></label>
+              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.EMAIL_LABEL' | translate }}<span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <input id="email-address" name="email" type="email" formControlName="email" autocomplete="email"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('email')" placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
-                <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.EMAIL_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">{{ 'formProduct.EMAIL_INVALID' | translate }}
+                <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.EMAIL_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">{{
+                  'formProduct.EMAIL_INVALID' | translate }}
                 </div>
               </div>
             </div>
           </div>
           <hr class="col-span-2 my-6 border-t-2 border-black-300">
-          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{ 'formProduct.SERVICE_REQUEST_TITLE' | translate }}</h2>
+          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{
+            'formProduct.SERVICE_REQUEST_TITLE' | translate }}</h2>
           <p class="mt-1 text-sm text-gray-600">{{ 'formProduct.SERVICE_REQUEST_DESCRIPTION' | translate }}</p>
           <hr class="col-span-2 my-6 border-t-2 border-black-300">
           <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)" style="margin-top: 30px;">
             <div class="border-b border-gray-900/10 pb-12">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_IMAGE_LABEL' | translate }} <span
-                  class="text-red-500">*</span></h3>
+              <h3 class="text-lg font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_IMAGE_LABEL' | translate
+                }} <span class="text-red-500">*</span></h3>
               <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' | translate }}</p>
               <div
                 class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative"
@@ -114,9 +126,12 @@
                   <p class="text-xs text-gray-600">{{ 'formProduct.FILE_FORMATS_ALLOWED' | translate }}</p>
                 </div>
               </div>
+
+
               <div
                 *ngIf="form.get('damaged_appliance_image')?.invalid && (form.get('damaged_appliance_image')?.dirty || form.get('damaged_appliance_image')?.touched)">
-                <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.IMAGE_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.IMAGE_REQUIRED' | translate }}</div>
               </div>
             </div>
           </div>
@@ -143,8 +158,8 @@
 
 
             <div class="sm:col-span-3">
-              <label for="brand" class="block text-sm font-medium leading-6 text-gray-900"> {{ 'formProduct.BRAND_LABEL' | translate }} <span
-                  class="text-red-500">*</span></label>
+              <label for="brand" class="block text-sm font-medium leading-6 text-gray-900"> {{ 'formProduct.BRAND_LABEL'
+                | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <select id="brand" formControlName="brand" name="brand"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -157,13 +172,15 @@
                 </select>
               </div>
               <div *ngIf="form.get('brand')?.invalid && (form.get('brand')?.dirty || form.get('brand')?.touched)">
-                <div *ngIf="form.get('brand')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.BRAND_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('brand')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.BRAND_REQUIRED' | translate }}</div>
               </div>
             </div>
 
 
             <div class="sm:col-span-6">
-              <label for="problem-details" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.PROBLEM_DETAILS_LABEL' | translate }}<span class="text-red-500">*</span></label>
+              <label for="problem-details" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.PROBLEM_DETAILS_LABEL' | translate }}<span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <textarea id="problem-details" formControlName="problem_details" name="problem-details" rows="3"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -172,20 +189,23 @@
               </div>
               <div
                 *ngIf="form.get('problem_details')?.invalid && (form.get('problem_details')?.dirty || form.get('problem_details')?.touched)">
-                <div *ngIf="form.get('problem_details')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.PROBLEM_DETAILS_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('problem_details')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.PROBLEM_DETAILS_REQUIRED' | translate }}</div>
               </div>
             </div>
 
             
             <div class="sm:col-span-6">
-              <label for="address" class="block text-sm font-medium leading-6 text-gray-900"> {{ 'formProduct.ADDRESS_LABEL' | translate }} <span class="text-red-500">*</span></label>
+              <label for="address" class="block text-sm font-medium leading-6 text-gray-900"> {{
+                'formProduct.ADDRESS_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <input type="text" formControlName="address" id="address" autocomplete="street-address"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                   required [class.border-red-500]="isFieldInvalid('address')" placeholder="{{ 'formProduct.ADDRESS_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('address')?.invalid && (form.get('address')?.dirty || form.get('address')?.touched)">
-                <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.ADDRESS_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.ADDRESS_REQUIRED' | translate }}</div>
               </div>
             </div>
 
@@ -207,7 +227,8 @@
             </div>
 
             <div class="sm:col-span-3">
-              <label for="preferred-contact-method" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.PREFERRED_CONTACT_METHOD_LABEL' | translate }} <span class="text-red-500">*</span></label>
+              <label for="preferred-contact-method" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.PREFERRED_CONTACT_METHOD_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <select id="preferred-contact-method" formControlName="preferred_contact_method"
                   name="preferred-contact-method"
@@ -226,8 +247,8 @@
             </div>
 
             <div class="sm:col-span-3">
-              <label for="state" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.STATE_PLACEHOLDER' | translate }}<span
-                  class="text-red-500">*</span></label>
+              <label for="state" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.STATE_PLACEHOLDER' | translate }}<span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <select id="state" formControlName="state" name="state"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -237,7 +258,8 @@
                 </select>
               </div>
               <div *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
-                <div *ngIf="form.get('state')?.errors?.['required']" class="text-red-500 text-sm"> {{ 'formProduct.STATE_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('state')?.errors?.['required']" class="text-red-500 text-sm"> {{
+                  'formProduct.STATE_REQUIRED' | translate }}</div>
               </div>
             </div>
 
@@ -252,8 +274,10 @@
                   placeholder="(123) 456-7890" pattern="[0-9]*">
                 <div
                   *ngIf="form.get('phone_number')?.invalid && (form.get('phone_number')?.dirty || form.get('phone_number')?.touched)">
-                  <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.STATE_REQUIRED' | translate }}</div>
-                  <div *ngIf="form.get('phone_number')?.errors?.['pattern']" class="text-red-500 text-sm">{{ 'formProduct.PHONE_NUMBER_PATTERN_ERROR' | translate }}</div>
+                  <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">{{
+                    'formProduct.STATE_REQUIRED' | translate }}</div>
+                  <div *ngIf="form.get('phone_number')?.errors?.['pattern']" class="text-red-500 text-sm">{{
+                    'formProduct.PHONE_NUMBER_PATTERN_ERROR' | translate }}</div>
                 </div>
               </div>
             </div>
@@ -262,9 +286,11 @@
 
 
         <div class="mt-6 flex items-center justify-end gap-x-6">
-          <button type="button" class="text-sm font-semibold leading-6 text-gray-900">{{ 'formProduct.CANCEL_BUTTON' | translate }}</button>
+          <button type="button" class="text-sm font-semibold leading-6 text-gray-900">{{ 'formProduct.CANCEL_BUTTON' |
+            translate }}</button>
           <button type="submit"
-            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{ 'formProduct.SUBMIT_BUTTON' | translate }}</button>
+            class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{
+            'formProduct.SUBMIT_BUTTON' | translate }}</button>
         </div>
       </form>
     </div>
