@@ -1,7 +1,8 @@
 <div class="relative min-h-screen flex items-center justify-center bg-gray-50">
   <img [src]="kitchenImage" alt="Fondo" class="absolute inset-0 w-full h-full object-cover z-0">
   <div class="absolute inset-0 bg-gray-900/50 z-0"></div>
-  <div class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 px-4 pt-12 pb-24 sm:px-6 sm:pt-16 sm:pb-32 lg:px-8">
+  <div
+    class="relative z-10 w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 px-4 pt-12 pb-24 sm:px-6 sm:pt-16 sm:pb-32 lg:px-8">
     <div class="relative hidden lg:block">
       <img [src]="kitchenImageTwo" alt="Lado" class="w-full h-full object-cover rounded-lg shadow-lg">
     </div>
@@ -34,7 +35,8 @@
                 [class.border-red-500]="isFieldInvalid('email')"
                 class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
-            <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
+            <div
+              *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)">
               <div *ngIf="loginForm.get('email')?.errors?.['required']" class="text-red-500 text-sm">
                 {{ 'login.requiredFieldError' | translate }}
               </div>
@@ -49,7 +51,8 @@
               {{ 'login.passwordLabel' | translate }} <span class="text-red-500">*</span>
             </label>
             <div class="mt-2 relative">
-              <input [type]="showPassword ? 'text' : 'password'" id="password" name="password" formControlName="password"
+              <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                formControlName="password"
                 class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm pr-10"
                 placeholder="Ingrese su contraseña">
               <button type="button" (click)="togglePasswordVisibility()"
@@ -57,7 +60,8 @@
                 <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
               </button>
             </div>
-            <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
+            <div
+              *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)">
               <div *ngIf="loginForm.get('password')?.errors?.['required']" class="text-red-500 text-sm">
                 {{ 'login.requiredFieldError' | translate }}
               </div>
@@ -77,8 +81,7 @@
 
         <p class="mt-10 text-center text-sm text-gray-500">
           {{ 'login.registerPrompt' | translate }}
-          <a routerLink="/auth/register"
-            class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+          <a routerLink="/auth/register" class="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
             {{ 'login.registerLink' | translate }}
           </a>
         </p>
@@ -86,3 +89,4 @@
     </div>
   </div>
 </div>
+

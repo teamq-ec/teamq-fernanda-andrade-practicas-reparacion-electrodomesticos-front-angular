@@ -84,9 +84,12 @@ export class LoginComponent {
     this.showPassword = !this.showPassword;
   }
   isFieldInvalid(field: string): boolean {
-    const control = this.loginForm.get(field) ?? { invalid: false, dirty: false, touched: false };
+    const control = this.loginForm.get(field) ?? {
+      invalid: false,
+      dirty: false,
+      touched: false,
+    };
     return control.invalid && (control.dirty || control.touched);
   }
-  
 }
 
