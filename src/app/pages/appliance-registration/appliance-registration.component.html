@@ -4,8 +4,20 @@
         <div class="bg-white shadow-lg rounded-lg w-full p-8" style="max-width: 90%">
             <form [formGroup]="form" (ngSubmit)="onSubmit()">
                 <div>
+                    <div class="absolute right-330 z-10" style="margin-top: 2px;">
+                        <button (click)="goToHome()"
+                            class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            title="Go to Home">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 19l-7-7 7-7"></path>
+                            </svg>
+                        </button>
+                    </div>
                     <div class="px-4 py-5 sm:px-6 border-b border-gray-200">
-                        <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{
+
+                        <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 45px;">{{
                             'formProduct.APPLICANT_INFO_TITLE' | translate }}</h2>
                         <p class="mt-1 text-sm text-gray-600">{{ 'formProduct.APPLICANT_INFO_DESCRIPTION' | translate }}
                         </p>
@@ -239,7 +251,8 @@
                                                     aria-hidden="true">
                                                     <path d="M13 3h-2v6H7l5 5 5-5h-4V3z"></path>
                                                 </svg>
-                                                <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</p>
+                                                <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}
+                                                </p>
                                             </div>
                                             <input id="image-upload" type="file" accept="image/*"
                                                 (change)="onFileChange($event)" />
@@ -253,7 +266,8 @@
                             </div>
                         </div>
                         <div class="flex justify-end gap-4 mt-6">
-                            <button type="button" class="text-sm font-semibold leading-6 text-gray-900">
+                            <button type="button" class="text-sm font-semibold leading-6 text-gray-900"
+                                (click)="cancel()">
                                 {{ "formProduct.CANCEL_BUTTON" | translate }}
                             </button>
                             <button type="submit"
