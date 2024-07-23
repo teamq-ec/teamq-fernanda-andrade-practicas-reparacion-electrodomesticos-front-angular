@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { HomeModule } from './pages/home/home.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ApplianceRegistrationModule } from './pages/appliance-registration/appliance-registration.module';
+import { AlertConfirmationModule } from './pages/components/alert-confirmation/alert-confirmation.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +27,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserModule,
     AppRoutingModule,
     HomeModule,
-    ApplianceRegistrationModule,
     DashboardModule,
     ReactiveFormsModule,
     HttpClientModule,

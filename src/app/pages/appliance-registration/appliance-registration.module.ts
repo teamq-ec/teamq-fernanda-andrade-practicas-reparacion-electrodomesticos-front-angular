@@ -8,6 +8,8 @@ import { FooterModule } from '../components/footer/footer.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ApplianceRegistrationComponent } from './appliance-registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { AlertFormModule } from '../components/alert-form/alert-form.module';
+import { AlertConfirmationModule } from '../components/alert-confirmation/alert-confirmation.module';
 
 @NgModule({
   declarations: [ApplianceRegistrationComponent],
@@ -18,6 +20,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     FooterModule,
     TranslateModule,
+    AlertConfirmationModule,
   ],
   exports: [],
 })

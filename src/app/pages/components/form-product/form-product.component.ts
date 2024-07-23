@@ -67,14 +67,18 @@ export class FormProductComponent {
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    const control = this.form.get(field) ?? {
+      invalid: false,
+      dirty: false,
+      touched: false,
+    };
     return control.invalid && (control.dirty || control.touched);
   }
-  
+
   public onSubmit(): void {
     if (this.form.invalid) {
       this.showAlertForm = true;
-      Object.keys(this.form.controls).forEach(key => {
+      Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key)?.markAsTouched();
       });
       return;
@@ -83,13 +87,7 @@ export class FormProductComponent {
     const file = this.files[0];
     const formValueWithFile = {
       ...this.form.value,
-      damaged_appliance_image: file
-        ? {
-            name: file.name,
-            size: file.size,
-            type: file.type,
-          }
-        : null,
+      damaged_appliance_image: file ? file.name : null,
     };
 
     this.dataTransferService.setData(formValueWithFile);
@@ -149,7 +147,7 @@ export class FormProductComponent {
     };
     reader.readAsDataURL(file);
     this.files = [file];
-    this.form.patchValue({ damaged_appliance_image: file });
+    this.form.patchValue({ damaged_appliance_image: file.name });
     this.form.get('damaged_appliance_image')?.updateValueAndValidity();
   }
 
@@ -159,3 +157,4 @@ export class FormProductComponent {
     this.form.get('damaged_appliance_image')?.reset();
   }
 }
+

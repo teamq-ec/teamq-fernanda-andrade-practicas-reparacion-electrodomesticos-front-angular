@@ -55,6 +55,7 @@ export class LoginComponent {
           localStorage.setItem('token', response.accessToken);
           localStorage.setItem('userName', response.user.first_name);
           localStorage.setItem('userLastName', response.user.last_name);
+          localStorage.setItem('userId', response.user.id.toString());
           this.goToHome();
         },
         (error) => {
@@ -78,15 +79,25 @@ export class LoginComponent {
   }
 
   goToHome(): void {
-    this.router.navigate([RoutesConstants.daashboar]);
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+      this.router.navigate([
+        RoutesConstants.dashboard.replace(':userId', userId),
+      ]);
+    } else {
+      this.router.navigate([RoutesConstants.home]);
+    }
   }
+
   public togglePasswordVisibility(): void {
     this.showPassword = !this.showPassword;
   }
   isFieldInvalid(field: string): boolean {
-    const control = this.loginForm.get(field) ?? { invalid: false, dirty: false, touched: false };
+    const control = this.loginForm.get(field) ?? {
+      invalid: false,
+      dirty: false,
+      touched: false,
+    };
     return control.invalid && (control.dirty || control.touched);
   }
-  
 }
-

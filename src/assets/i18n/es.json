@@ -155,6 +155,13 @@
     "REMOVE_IMAGE": "Eliminar imagen",
     "CHANGE_IMAGE": "Cambiar imagen",
     "PHONE_NUMBER_LABEL": "Ingrese su numero celular",
-    "PHONE_NUMBER_PATTERN_ERROR": "Solo se aceptan numeros"
+    "PHONE_NUMBER_PATTERN_ERROR": "Solo se aceptan numeros",
+    "APPLICATION_DATE_LABEL": "Fecha de Solicitud",
+    "APPLICATION_DATE_REQUIRED": "La fecha de solicitud es requerida."
+  },
+  "confirmation": {
+    "SUCCESS_TITLE": "Pedido Enviado",
+    "SUCCESS_MESSAGE": "Su pedido de mantenimiento de electrodoméstico se ha enviado con éxito.",
+    "OK_BUTTON": "Aceptar"
   }
 }
