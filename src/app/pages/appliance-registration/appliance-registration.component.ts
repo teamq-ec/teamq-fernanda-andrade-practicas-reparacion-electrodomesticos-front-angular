@@ -15,8 +15,10 @@ export class ApplianceRegistrationComponent implements OnInit {
   private readonly productService: ProductService = inject(ProductService);
   private readonly route: ActivatedRoute = inject(ActivatedRoute);
   public form: FormGroup;
+
   public imageSrc: SafeUrl | null = null;
   public files: File[] = [];
+
   public showAlert: boolean = false;
   public showAlertForm: boolean = false;
 
@@ -39,9 +41,6 @@ export class ApplianceRegistrationComponent implements OnInit {
 
   private buildForm(): FormGroup {
     return this.formBuilder.group({
-      first_name: ['', [Validators.required]],
-      last_name: ['', [Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
       appliance_type: ['', [Validators.required]],
       brand: [
         '',
@@ -62,23 +61,9 @@ export class ApplianceRegistrationComponent implements OnInit {
       ],
       service_type: ['', [Validators.required]],
       preferred_contact_method: ['', [Validators.required]],
-      phone_number: [''],
-      damaged_appliance_image: [null, Validators.required],
-      state: [
-        '',
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(50),
-        ],
-      ],
+      damaged_appliance_image: [null],
       application_date: [''],
     });
-  }
-
-  private setTodayDate(): void {
-    const today = new Date().toISOString().split('T')[0];
-    this.form.get('application_date')?.setValue(today);
   }
 
   isFieldInvalid(field: string): boolean {
@@ -101,23 +86,24 @@ export class ApplianceRegistrationComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('user_id', this.userId ?? '');
-    formData.append('first_name', this.form.value.first_name);
-    formData.append('last_name', this.form.value.last_name);
-    formData.append('email', this.form.value.email);
     formData.append('appliance_type', this.form.value.appliance_type);
     formData.append('brand', this.form.value.brand);
     formData.append('problem_details', this.form.value.problem_details);
-    formData.append('address', this.form.value.address);
+    formData.append('collection_address', this.form.value.address);
     formData.append('service_type', this.form.value.service_type);
     formData.append(
       'preferred_contact_method',
       this.form.value.preferred_contact_method
     );
-    formData.append('phone_number', this.form.value.phone_number);
+
     if (this.files.length > 0) {
-      formData.append('damaged_appliance_image', this.files[0]);
+      formData.append(
+        'damaged_appliance_image',
+        this.files[0],
+        this.files[0].name
+      );
     }
-    formData.append('state', this.form.value.state);
+
     formData.append('application_date', this.form.value.application_date);
 
     this.productService.registerProduct(formData).subscribe({
@@ -135,7 +121,7 @@ export class ApplianceRegistrationComponent implements OnInit {
     }
   }
 
-  onAlertClosed() : void{
+  onAlertClosed(): void {
     this.showAlert = false;
   }
 
@@ -206,3 +192,4 @@ export class ApplianceRegistrationComponent implements OnInit {
     });
   }
 }
+
