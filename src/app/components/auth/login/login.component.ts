@@ -78,6 +78,10 @@ export class LoginComponent {
     this.router.navigate([RoutesConstants.register]);
   }
 
+  gotoIndex() {
+    this.router.navigate([RoutesConstants.home]);
+  }
+
   goToHome(): void {
     const userId = localStorage.getItem('userId');
     if (userId) {

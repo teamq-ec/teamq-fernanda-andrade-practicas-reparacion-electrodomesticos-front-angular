@@ -191,5 +191,18 @@ export class ApplianceRegistrationComponent implements OnInit {
       reader.readAsDataURL(file);
     });
   }
-}
 
+  goToHome(): void {
+    const userId = this.getUserIdFromRoute();
+    this.router.navigate([`/pages/${userId}/home`]);
+  }
+
+  getUserIdFromRoute(): string {
+    const urlSegments = window.location.pathname.split('/');
+    return urlSegments[urlSegments.indexOf('pages') + 1];
+  }
+
+  cancel(): void {
+    this.form.reset();
+  }
+}
