@@ -19,79 +19,7 @@
                                 <p class="mt-1 text-sm text-gray-600">
                                     {{ "formProduct.APPLICANT_INFO_DESCRIPTION" | translate }}
                                 </p>
-                                <div>
-                                    <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">{{
-                                        'formProduct.FIRST_NAME_LABEL' | translate }}<span
-                                            class="text-red-500">*</span></label>
-                                    <div class="mt-1">
-                                        <input id="first_name" formControlName="first_name" name="first_name"
-                                            type="text" autocomplete="first_name" required
-                                            [class.border-red-500]="isFieldInvalid('first_name')"
-                                            class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                            placeholder="{{ 'formProduct.FIRST_NAME_LABEL' | translate }}">
-                                    </div>
-                                    <div
-                                        *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
-                                        <div *ngIf="form.get('first_name')?.errors?.['required']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.FIRST_NAME_REQUIRED' | translate }}</div>
-                                        <div *ngIf="form.get('first_name')?.errors?.['minlength']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.FIRST_NAME_MINLENGTH' | translate }}</div>
-                                        <div *ngIf="form.get('first_name')?.errors?.['maxlength']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.FIRST_NAME_MAXLENGTH' | translate }}</div>
-                                    </div>
-                                </div>
 
-                                <div>
-                                    <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">{{
-                                        'formProduct.LAST_NAME_LABEL' | translate }} <span
-                                            class="text-red-500">*</span></label>
-                                    <div class="mt-1">
-                                        <input id="last_name" formControlName="last_name" name="last_name" type="text"
-                                            autocomplete="last_name" required
-                                            [class.border-red-500]="isFieldInvalid('last_name')"
-                                            class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                            placeholder="{{ 'formProduct.LAST_NAME_LABEL' | translate }}">
-                                    </div>
-                                    <div
-                                        *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
-                                        <div *ngIf="form.get('last_name')?.errors?.['required']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.LAST_NAME_REQUIRED' | translate }}</div>
-                                        <div *ngIf="form.get('last_name')?.errors?.['minlength']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.LAST_NAME_MINLENGTH' | translate }}</div>
-                                        <div *ngIf="form.get('last_name')?.errors?.['maxlength']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.LAST_NAME_MAXLENGTH' | translate }}</div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <label for="email-address"
-                                        class="block text-sm font-medium leading-6 text-gray-900">{{
-                                        'formProduct.EMAIL_LABEL' | translate }}<span
-                                            class="text-red-500">*</span></label>
-                                    <div class="mt-2">
-                                        <input id="email-address" name="email" type="email" formControlName="email"
-                                            autocomplete="email"
-                                            class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                            required [class.border-red-500]="isFieldInvalid('email')"
-                                            placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
-                                    </div>
-                                    <div
-                                        *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
-                                        <div *ngIf="form.get('email')?.errors?.['required']"
-                                            class="text-red-500 text-sm">{{
-                                            'formProduct.EMAIL_REQUIRED' | translate }}</div>
-                                        <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">
-                                            {{
-                                            'formProduct.EMAIL_INVALID' | translate }}
-                                        </div>
-                                    </div>
-                                </div>
 
                                 <div class="sm:col-span-6">
                                     <label for="address" class="block text-sm font-medium leading-6 text-gray-900"> {{
@@ -272,29 +200,6 @@
                                         </div>
                                     </div>
 
-
-                                    <div class="sm:col-span-3">
-                                        <label for="state" class="block text-sm font-medium leading-6 text-gray-900">{{
-                                            'formProduct.STATE_PLACEHOLDER' | translate }}<span
-                                                class="text-red-500">*</span></label>
-                                        <div class="mt-2">
-                                            <select id="state" formControlName="state" name="state"
-                                                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                required [class.border-red-500]="isFieldInvalid('state')">
-                                                <option value="">{{ 'formProduct.PROVINCE_PLACEHOLDER' | translate }}
-                                                </option>
-                                                <option *ngFor="let province of provinces" [value]="province">{{
-                                                    province }}</option>
-                                            </select>
-                                        </div>
-                                        <div
-                                            *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
-                                            <div *ngIf="form.get('state')?.errors?.['required']"
-                                                class="text-red-500 text-sm"> {{
-                                                'formProduct.STATE_REQUIRED' | translate }}</div>
-                                        </div>
-                                    </div>
-
                                     <div class="sm:col-span-3"
                                         *ngIf="form.get('preferred_contact_method')?.value === 'Celular'">
                                         <label for="phone_number"
@@ -326,54 +231,23 @@
                                     }} <span class="text-red-500">*</span></h3>
                                 <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' |
                                     translate }}</p>
-
-                                <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)"
-                                    style="margin-top: 30px">
-                                    <div class="border-b border-gray-900/10 pb-12">
-                                        <div class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative"
-                                            [class.border-red-500]="
-                                       isFieldInvalid('damaged_appliance_image')
-                                             ">
-                                            <div *ngIf="imageSrc" class="relative">
-                                                <img *ngIf="imageSrc" [src]="imageSrc" alt="Imagen subida"
-                                                    class="mt-4 rounded-md w-48 h-48 object-cover border border-gray-300 shadow-sm" />
-                                                <button type="button"
-                                                    class="absolute top-0 right-0 m-2 bg-red-600 text-white rounded-full p-2 text-xl"
-                                                    (click)="removeImage()">
-                                                    <span class="sr-only">{{
-                                                        "formProduct.REMOVE_IMAGE" | translate
-                                                        }}</span>
-                                                    &times;
-                                                </button>
-                                                <button type="button" pButton label="Cambiar Imagen"
-                                                    class="btn btn-warning mt-3" (click)="chooseFile()"></button>
-                                            </div>
-                                            <div class="text-center" *ngIf="!imageSrc">
-                                                <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24"
-                                                    fill="currentColor" aria-hidden="true">
-                                                    <path fill-rule="evenodd"
-                                                        d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                                                        clip-rule="evenodd" />
+                                <div class="image-upload">
+                                    <div class="upload-area" *ngIf="!imageSrc">
+                                        <label for="image-upload" class="image-upload-label">
+                                            <div class="image-upload-placeholder">
+                                                <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor"
+                                                    aria-hidden="true">
+                                                    <path d="M13 3h-2v6H7l5 5 5-5h-4V3z"></path>
                                                 </svg>
-                                                <div class="mt-4 flex text-sm text-gray-600">
-                                                    <label for="damaged-appliance-image"
-                                                        class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                                                        <span>{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</span>
-                                                        <input id="damaged-appliance-image"
-                                                            formControlName="damaged_appliance_image" type="file"
-                                                            class="sr-only" required (change)="getFile($event)" />
-                                                    </label>
-                                                    <p class="pl-1">
-                                                        {{
-                                                        "formProduct.UPLOAD_FILE_INSTRUCTIONS" | translate
-                                                        }}
-                                                    </p>
-                                                </div>
-                                                <p class="text-xs text-gray-600">
-                                                    {{ "formProduct.FILE_FORMATS_ALLOWED" | translate }}
-                                                </p>
+                                                <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</p>
                                             </div>
-                                        </div>
+                                            <input id="image-upload" type="file" accept="image/*"
+                                                (change)="onFileChange($event)" />
+                                        </label>
+                                    </div>
+                                    <div *ngIf="imageSrc" class="image-preview">
+                                        <img [src]="imageSrc" alt="Imagen cargada" />
+                                        <button type="button" class="remove-image" (click)="removeImage()">×</button>
                                     </div>
                                 </div>
                             </div>
