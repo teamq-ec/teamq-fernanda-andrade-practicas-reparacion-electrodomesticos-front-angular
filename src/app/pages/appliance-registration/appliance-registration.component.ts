@@ -35,7 +35,6 @@ export class ApplianceRegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getLocalStorageData();
     this.userId = this.route.snapshot.paramMap.get('userId');
   }
 
@@ -135,19 +134,6 @@ export class ApplianceRegistrationComponent implements OnInit {
     this.imageSrc = null;
     this.files = [];
     this.form.get('damaged_appliance_image')?.reset();
-  }
-
-  getLocalStorageData(): void {
-    const formData = this.dataTransferService.getData();
-    if (formData) {
-      this.form.patchValue(formData);
-
-      if (formData.damaged_appliance_image) {
-        this.imageSrc = this.sanitizer.bypassSecurityTrustUrl(
-          formData.damaged_appliance_image
-        );
-      }
-    }
   }
 
   public chooseFile(): void {
