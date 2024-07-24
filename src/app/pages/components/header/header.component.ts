@@ -24,15 +24,15 @@ export class HeaderComponent {
     this.closeMenu();
   }
 
-  toggleMenu() {
+  toggleMenu() : void{
     this.isOpen = !this.isOpen;
   }
 
-  toggleMenuI() {
+  toggleMenuI(): void {
     this.showMenuI = !this.showMenuI;
   }
 
-  closeMenu() {
+  closeMenu() : void{
     this.showMenuI = false;
   }
 

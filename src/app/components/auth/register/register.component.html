@@ -36,10 +36,14 @@
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               </div>
-              <div *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
-                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">{{ 'register.first_name_required' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{ 'register.first_name_minlength' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{ 'register.first_name_maxlength' | translate }}</div>
+              <div
+                *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
+                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'register.first_name_required' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
+                  'register.first_name_minlength' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
+                  'register.first_name_maxlength' | translate }}</div>
               </div>
             </div>
             <div>
@@ -51,10 +55,14 @@
                   required [class.border-red-500]="isFieldInvalid('last_name')"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
               </div>
-              <div *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
-                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">{{ 'register.last_name_required' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{ 'register.last_name_minlength' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{ 'register.last_name_maxlength' | translate }}</div>
+              <div
+                *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
+                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'register.last_name_required' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
+                  'register.last_name_minlength' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
+                  'register.last_name_maxlength' | translate }}</div>
               </div>
             </div>
           </div>
@@ -69,8 +77,10 @@
                 class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
-              <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{ 'register.email_required' | translate }}</div>
-              <div *ngIf="form.get('email')?.errors?.['pattern']" class="text-red-500 text-sm">{{ 'register.email_pattern' | translate }}</div>
+              <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{
+                'register.email_required' | translate }}</div>
+              <div *ngIf="form.get('email')?.errors?.['pattern']" class="text-red-500 text-sm">{{
+                'register.email_pattern' | translate }}</div>
             </div>
           </div>
 
@@ -89,9 +99,12 @@
                   <i class="fas" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                 </button>
               </div>
-              <div *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
-                <div *ngIf="form.get('password')?.errors?.['required']" class="text-red-500 text-sm">{{ 'register.password_required' | translate }}</div>
-                <div *ngIf="form.get('password')?.errors?.['pattern']" class="text-red-500 text-sm">{{ 'register.password_pattern' | translate }}</div>
+              <div
+                *ngIf="form.get('password')?.invalid && (form.get('password')?.dirty || form.get('password')?.touched)">
+                <div *ngIf="form.get('password')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'register.password_required' | translate }}</div>
+                <div *ngIf="form.get('password')?.errors?.['pattern']" class="text-red-500 text-sm">{{
+                  'register.password_pattern' | translate }}</div>
               </div>
             </div>
           </div>
@@ -105,8 +118,10 @@
                 placeholder="(123) 456-7890" pattern="[0-9]*">
               <div
                 *ngIf="form.get('phone_number')?.invalid && (form.get('phone_number')?.dirty || form.get('phone_number')?.touched)">
-                <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.STATE_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('phone_number')?.errors?.['pattern']" class="text-red-500 text-sm">{{ 'formProduct.PHONE_NUMBER_PATTERN_ERROR' | translate }}</div>
+                <div *ngIf="form.get('phone_number')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.STATE_REQUIRED' | translate }}</div>
+                <div *ngIf="form.get('phone_number')?.errors?.['pattern']" class="text-red-500 text-sm">{{
+                  'formProduct.PHONE_NUMBER_PATTERN_ERROR' | translate }}</div>
               </div>
             </div>
           </div>
@@ -121,7 +136,8 @@
                 class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
             <div *ngIf="form.get('address')?.invalid && (form.get('address')?.dirty || form.get('address')?.touched)">
-              <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{ 'register.address_required' | translate }}</div>
+              <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{
+                'register.address_required' | translate }}</div>
             </div>
           </div>
 
@@ -144,3 +160,4 @@
 <div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
   <app-alert-form (alertClosed)="onAlertClosed()"></app-alert-form>
 </div>
+

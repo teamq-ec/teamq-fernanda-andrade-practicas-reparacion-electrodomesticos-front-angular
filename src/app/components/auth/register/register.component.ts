@@ -10,7 +10,6 @@ import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 import { TranslateService } from '@ngx-translate/core';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -71,7 +70,11 @@ export class RegisterComponent {
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    const control = this.form.get(field) ?? {
+      invalid: false,
+      dirty: false,
+      touched: false,
+    };
     return control.invalid && (control.dirty || control.touched);
   }
 
@@ -85,7 +88,7 @@ export class RegisterComponent {
   onSubmit(): void {
     if (this.form.invalid) {
       this.showAlertForm = true;
-      Object.keys(this.form.controls).forEach(key => {
+      Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key)?.markAsTouched();
       });
       return;
@@ -111,6 +114,4 @@ export class RegisterComponent {
   onAlertClosed(): void {
     this.showAlertForm = false;
   }
-  
 }
-
