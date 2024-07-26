@@ -179,6 +179,11 @@
     "CONTACT_METHOD_REQUIRED": "El método de contacto preferido es obligatorio.",
     "SERVICE_TYPE_REPAIR": "Reparar",
     "SERVICE_TYPE_MAINTENANCE": "Mantenimiento",
-    "UPLOAD_FILE_LABEL": "Subir un archivo"
+    "UPLOAD_FILE_LABEL": "Subir un archivo",
+    "APPLICATION_DATE_LABEL": "Fecha de aplicacion"
+  },
+  "confirmation": {
+    "SUCCESS_TITLE": "Éxito",
+    "SUCCESS_MESSAGE": "Su pedido de mantenimiento de electrodoméstico se ha enviado con éxito."
   }
 }

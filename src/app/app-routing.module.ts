@@ -15,7 +15,7 @@ const routes: Routes = [
       import('./components/auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'pages',
+    path: 'pages/:userId',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
     canActivate : [loginGuard]

@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DataTransferServiceService } from '../../services/data-transfer-service.service';
 import { Router } from '@angular/router';
 import { PROVINCES_ECUADOR } from 'src/app/constants/constants';
+import { ValidationConstants } from 'src/app/constants/validation.constants';
 
 @Component({
   selector: 'app-form-product',
@@ -38,17 +39,17 @@ export class FormProductComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(50),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.BRAND_MAX_LENGTH),
         ],
       ],
-      problem_details: ['', [Validators.required, Validators.minLength(5)]],
+      problem_details: ['', [Validators.required, Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH)]],
       address: [
         '',
         [
           Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
       service_type: ['', [Validators.required]],
@@ -59,22 +60,26 @@ export class FormProductComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(50),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
     });
   }
 
   isFieldInvalid(field: string): boolean {
-    const control = this.form.get(field) ?? { invalid: false, dirty: false, touched: false };
+    const control = this.form.get(field) ?? {
+      invalid: false,
+      dirty: false,
+      touched: false,
+    };
     return control.invalid && (control.dirty || control.touched);
   }
-  
+
   public onSubmit(): void {
     if (this.form.invalid) {
       this.showAlertForm = true;
-      Object.keys(this.form.controls).forEach(key => {
+      Object.keys(this.form.controls).forEach((key) => {
         this.form.get(key)?.markAsTouched();
       });
       return;
@@ -83,13 +88,7 @@ export class FormProductComponent {
     const file = this.files[0];
     const formValueWithFile = {
       ...this.form.value,
-      damaged_appliance_image: file
-        ? {
-            name: file.name,
-            size: file.size,
-            type: file.type,
-          }
-        : null,
+      damaged_appliance_image: file ? file.name : null,
     };
 
     this.dataTransferService.setData(formValueWithFile);
@@ -149,7 +148,7 @@ export class FormProductComponent {
     };
     reader.readAsDataURL(file);
     this.files = [file];
-    this.form.patchValue({ damaged_appliance_image: file });
+    this.form.patchValue({ damaged_appliance_image: file.name });
     this.form.get('damaged_appliance_image')?.updateValueAndValidity();
   }
 
@@ -159,3 +158,4 @@ export class FormProductComponent {
     this.form.get('damaged_appliance_image')?.reset();
   }
 }
+
