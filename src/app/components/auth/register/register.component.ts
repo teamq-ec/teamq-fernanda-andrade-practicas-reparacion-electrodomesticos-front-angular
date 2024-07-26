@@ -9,6 +9,7 @@ import { RoutesConstants } from 'src/app/constants/routes.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { DataTransferServiceService } from 'src/app/pages/services/data-transfer-service.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ValidationConstants } from 'src/app/constants/validation.constants';
 
 @Component({
   selector: 'app-register',
@@ -44,16 +45,16 @@ export class RegisterComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(40),
+          Validators.minLength(ValidationConstants.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.NAME_MAX_LENGTH),
         ],
       ],
       last_name: [
         '',
         [
           Validators.required,
-          Validators.minLength(1),
-          Validators.maxLength(40),
+          Validators.minLength(ValidationConstants.NAME_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.NAME_MAX_LENGTH),
         ],
       ],
       email: [
