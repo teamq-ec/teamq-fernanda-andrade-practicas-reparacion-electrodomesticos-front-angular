@@ -35,4 +35,12 @@ export class HomeComponent {
       return [RoutesConstants.home];
     }
   }
+
+  goProduct(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.product.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
+  }
 }
