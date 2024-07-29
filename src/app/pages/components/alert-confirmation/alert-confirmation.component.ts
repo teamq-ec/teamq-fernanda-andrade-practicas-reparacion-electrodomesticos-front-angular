@@ -22,8 +22,6 @@ export class AlertConfirmationComponent {
   closeAlert() {
     if (this.userId) {
       this.router.navigate(['/pages', this.userId, 'product']);
-    } else {
-      console.error('User ID is not defined.');
     }
   }
 }
