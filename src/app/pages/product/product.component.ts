@@ -1,12 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { ApplianceServiceService } from '../services/appliance-service.service';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { IconsConstants } from 'src/app/constants/icons.constants';
 import { TranslateService } from '@ngx-translate/core';
-import { Product } from 'src/app/models/product';
-import { ProductModalService } from '../services/product-modal.service';
-import { User } from 'src/app/models/user';
 import { TimeConstants } from 'src/app/constants/time.constants';
 import { PaginationConstants } from 'src/app/constants/pagination.constants';
 
@@ -52,7 +49,6 @@ export class ProductComponent {
     if (userId) {
       this.userId = +userId;
     }
-    console.log('User ID:', this.userId);
   }
 
   loadUserAppliances(page: number = this.initialPage): void {
@@ -60,20 +56,10 @@ export class ProductComponent {
       .getUserAppliances(this.userId!, page)
       .subscribe((response) => {
         this.appliances = response.data;
-        this.user = response.data.user;
         this.currentPage = response.meta.current_page;
         this.totalPages = response.meta.last_page;
         this.totalItems = response.meta.total;
       });
-  }
-
-  goToHome(): void {
-    const userId = this.getUserIdFromRoute();
-    this.router.navigate([`/pages/${userId}/home`]);
-  }
-  getUserIdFromRoute(): string {
-    const urlSegments = window.location.pathname.split('/');
-    return urlSegments[urlSegments.indexOf('pages') + 1];
   }
 
   nextPage(): void {
@@ -83,15 +69,6 @@ export class ProductComponent {
     }
   }
 
-  openProductModal(appliance: Product, user: User) {
-    console.log('esto es delmodalloque envia', appliance, user);
-    this.modalProduct = true;
-    this.productModalService.openModal(appliance, user);
-  }
-
-  onAlertClosed() {
-    this.modalProduct = false;
-  }
   previousPage(): void {
     if (this.currentPage > 1) {
       const previousPage = this.currentPage - 1;
