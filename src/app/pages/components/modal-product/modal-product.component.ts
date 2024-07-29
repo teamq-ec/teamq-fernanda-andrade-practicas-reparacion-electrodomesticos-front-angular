@@ -12,7 +12,7 @@ export class ModalProductComponent implements OnInit {
   @Output() alertClosed = new EventEmitter<void>();
   product: Product | null = null;
   user: User | null = null;
-  isOpenModal = false; // Cambia el nombre para reflejar mejor su propósito
+  isOpenModal = false;
 
   constructor(private productModalService: ProductModalService) {}
 
