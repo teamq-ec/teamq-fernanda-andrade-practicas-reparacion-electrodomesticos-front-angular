@@ -218,5 +218,10 @@
   "APPLIANCE_TYPE_OVEN": "Oven",
   "APPLIANCE_TYPE_DRYER": "Dryer",
   "APPLIANCE_TYPE_MICROWAVE": "Microwave",
-  "APPLIANCE_TYPE_ALL": "All"
+  "APPLIANCE_TYPE_ALL": "All",
+  "INVALID_APPLICATION_DATE": "Invalid application date.",
+  "INVALID_SERVICE_TYPE": "Invalid service type.",
+  "SERVICE_COMPLETED": "The repair/maintenance is complete.",
+  "TIMER_FORMAT": "{{days}}d {{hours}}h {{minutes}}m {{seconds}}s",
+  "DATE_INVALID": "Invalid application date."
 }

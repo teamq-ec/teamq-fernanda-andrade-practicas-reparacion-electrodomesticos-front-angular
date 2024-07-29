@@ -1,4 +1,12 @@
 export const ProductConstants = {
+  MAINTENANCE_DURATION: 7 * 24 * 60 * 60 * 1000,
+  REPAIR_DURATION: 15 * 24 * 60 * 60 * 1000,
+  INITIAL_PAGE: 1,
+  INITIAL_TOTAL_PAGES: 1,
+  INITIAL_TOTAL_ITEMS: 0,
+  MAINTENANCE: 'maintenance',
+  REPAIR: 'repair',
+  APPLIANCE_TYPE_ALL: 'all',
   src: 'https://i.pinimg.com/564x/e6/bf/d2/e6bfd29d843ea47649824286b4142877.jpg',
   srca: 'https://i.pinimg.com/564x/35/3e/d7/353ed734f8daed731235fce4e358d2e6.jpg',
   srcb: 'https://i.pinimg.com/564x/c4/b4/7b/c4b47bf2aa50aa03384a47290fed0f54.jpg',

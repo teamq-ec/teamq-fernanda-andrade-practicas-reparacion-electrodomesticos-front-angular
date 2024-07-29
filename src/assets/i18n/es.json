@@ -219,5 +219,10 @@
   "APPLIANCE_TYPE_OVEN": "Horno",
   "APPLIANCE_TYPE_DRYER": "Secadora",
   "APPLIANCE_TYPE_MICROWAVE": "Microondas",
-  "APPLIANCE_TYPE_ALL": "Todos"
+  "APPLIANCE_TYPE_ALL": "Todos",
+  "INVALID_APPLICATION_DATE": "Fecha de aplicación no válida.",
+  "INVALID_SERVICE_TYPE": "Tipo de servicio no válido.",
+  "SERVICE_COMPLETED": "La reparación/mantenimiento está completo.",
+  "TIMER_FORMAT": "{{days}}d {{hours}}h {{minutes}}m {{seconds}}s",
+  "DATE_INVALID": "Fecha de aplicación no válida."
 }

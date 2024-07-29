@@ -4,6 +4,8 @@ import { ApplianceServiceService } from '../services/appliance-service.service';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { IconsConstants } from 'src/app/constants/icons.constants';
 import { TranslateService } from '@ngx-translate/core';
+import { TimeConstants } from 'src/app/constants/time.constants';
+import { PaginationConstants } from 'src/app/constants/pagination.constants';
 
 @Component({
   selector: 'app-product',
@@ -18,56 +20,59 @@ export class ProductComponent {
 
   urls = ProductConstants;
   icons = IconsConstants;
+
+  initialPage = ProductConstants.INITIAL_PAGE;
+  initialTotalPages = ProductConstants.INITIAL_TOTAL_PAGES;
+  initialTotalItems = ProductConstants.INITIAL_TOTAL_ITEMS;
+
   selectedType: string | null = null;
   private userId?: number;
   appliances: any[] = [];
-  currentPage: number = 1;
-  totalPages: number = 1;
-  totalItems: number = 0;
 
-  timerMessage: string = ''; // Asegúrate de definir esto en el componente
-  timerInterval: any; // Para almacenar el intervalo del temporizador
+  currentPage: number = this.initialPage;
+  totalPages: number = this.initialTotalPages;
+  totalItems: number = this.initialTotalItems;
+  PaginationConstants = PaginationConstants;
+
+  timerMessage: string = '';
+  timerInterval: any;
 
   constructor(private activatedRoute: ActivatedRoute) {
-    const userId = this.activatedRoute.snapshot.paramMap.get('userId');
-    if (userId) {
-      this.userId = +userId;
-    }
-    console.log('User ID:', this.userId);
-
+    this.initializeUserId();
     if (this.userId !== undefined) {
       this.loadUserAppliances(this.currentPage);
     }
   }
 
-  loadUserAppliances(page: number = 1): void {
-    console.log('Loading page:', page);
-    this.applianceService.getUserAppliances(this.userId!, page).subscribe(
-      (response) => {
-        console.log('Data received:', response);
+  private initializeUserId() {
+    const userId = this.activatedRoute.snapshot.paramMap.get('userId');
+    if (userId) {
+      this.userId = +userId;
+    }
+    console.log('User ID:', this.userId);
+  }
+
+  loadUserAppliances(page: number = this.initialPage): void {
+    this.applianceService
+      .getUserAppliances(this.userId!, page)
+      .subscribe((response) => {
         this.appliances = response.data;
         this.currentPage = response.meta.current_page;
         this.totalPages = response.meta.last_page;
         this.totalItems = response.meta.total;
-      },
-      (error) => {
-        console.error('Error fetching appliances:', error);
-      }
-    );
+      });
   }
 
-  nextPage() {
+  nextPage(): void {
     if (this.currentPage < this.totalPages) {
       const nextPage = this.currentPage + 1;
-      console.log('Moving to next page:', nextPage);
       this.loadUserAppliances(nextPage);
     }
   }
 
-  previousPage() {
+  previousPage(): void {
     if (this.currentPage > 1) {
       const previousPage = this.currentPage - 1;
-      console.log('Moving to previous page:', previousPage);
       this.loadUserAppliances(previousPage);
     }
   }
@@ -76,17 +81,12 @@ export class ProductComponent {
     this.translate
       .get(`APPLIANCE_TYPE_${type.toUpperCase()}`)
       .subscribe((translatedType: string) => {
-        console.log(`Original Type: ${type}`);
-        console.log(`Translated Type: ${translatedType}`);
-
-        if (type !== 'all') {
+        if (type !== ProductConstants.APPLIANCE_TYPE_ALL) {
           this.selectedType = translatedType;
-          console.log('Selected Type:', this.selectedType);
           this.applianceService.setSelectedType(translatedType);
           this.loadUserAppliances();
         } else {
           this.selectedType = type;
-          console.log('Selected Type: All');
           this.applianceService.setSelectedType(null);
           this.loadUserAppliances();
         }
@@ -95,7 +95,11 @@ export class ProductComponent {
 
   showTimer(appliance: any): void {
     if (!appliance.application_date) {
-      this.timerMessage = 'Fecha de aplicación no válida.';
+      this.translate
+        .get('INVALID_APPLICATION_DATE')
+        .subscribe((msg: string) => {
+          this.timerMessage = msg;
+        });
       return;
     }
 
@@ -104,16 +108,16 @@ export class ProductComponent {
     }
 
     const startTime = new Date(appliance.application_date).getTime();
-
     let duration = 0;
 
-    // Determinar la duración en milisegundos según el tipo de servicio
-    if (appliance.service_type === 'maintenance') {
-      duration = 7 * 24 * 60 * 60 * 1000; // 1 semana en milisegundos
-    } else if (appliance.service_type === 'repair') {
-      duration = 15 * 24 * 60 * 60 * 1000; // 15 días en milisegundos
+    if (appliance.service_type === ProductConstants.MAINTENANCE) {
+      duration = ProductConstants.MAINTENANCE_DURATION;
+    } else if (appliance.service_type === ProductConstants.REPAIR) {
+      duration = ProductConstants.REPAIR_DURATION;
     } else {
-      this.timerMessage = 'Tipo de servicio no válido.';
+      this.translate.get('INVALID_SERVICE_TYPE').subscribe((msg: string) => {
+        this.timerMessage = msg;
+      });
       return;
     }
 
@@ -125,20 +129,51 @@ export class ProductComponent {
 
       if (distance < 0) {
         clearInterval(this.timerInterval);
-        this.timerMessage = 'La reparación/mantenimiento está completo.';
+        this.translate.get('SERVICE_COMPLETED').subscribe((msg: string) => {
+          this.timerMessage = msg;
+        });
         return;
       }
 
-      // Calcular días, horas, minutos y segundos restantes
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+      const days = Math.floor(
+        distance /
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE *
+            TimeConstants.MINUTES_PER_HOUR *
+            TimeConstants.HOURS_PER_DAY)
       );
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const hours = Math.floor(
+        (distance %
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE *
+            TimeConstants.MINUTES_PER_HOUR *
+            TimeConstants.HOURS_PER_DAY)) /
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE *
+            TimeConstants.MINUTES_PER_HOUR)
+      );
+      const minutes = Math.floor(
+        (distance %
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE *
+            TimeConstants.MINUTES_PER_HOUR)) /
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE)
+      );
+      const seconds = Math.floor(
+        (distance %
+          (TimeConstants.MILLISECONDS_PER_SECOND *
+            TimeConstants.SECONDS_PER_MINUTE)) /
+          TimeConstants.MILLISECONDS_PER_SECOND
+      );
 
-      // Actualizar el mensaje del temporizador
-      this.timerMessage = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      this.translate.get('TIMER_FORMAT').subscribe((format: string) => {
+        this.timerMessage = format
+          .replace('{{days}}', days.toString())
+          .replace('{{hours}}', hours.toString())
+          .replace('{{minutes}}', minutes.toString())
+          .replace('{{seconds}}', seconds.toString());
+      });
     }, 1000);
   }
 }
