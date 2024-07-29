@@ -19,7 +19,7 @@ export class AlertConfirmationComponent {
     }
   }
 
-  closeAlert() {
+  closeAlert(): void {
     if (this.userId) {
       this.router.navigate(['/pages', this.userId, 'product']);
     }
