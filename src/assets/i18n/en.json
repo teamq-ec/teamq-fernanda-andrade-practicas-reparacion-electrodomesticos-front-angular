@@ -233,5 +233,10 @@
   "address": "Address",
   "PAY_NOW": "Pay now",
   "damagedApplianceImageAlt": "Image of the damaged appliance",
-  "applianceTypeAlt": "Type of appliance"
+  "applianceTypeAlt": "Type of appliance",
+    "INVALID_APPLICATION_DATE": "Invalid application date.",
+  "INVALID_SERVICE_TYPE": "Invalid service type.",
+  "SERVICE_COMPLETED": "The repair/maintenance is complete.",
+  "TIMER_FORMAT": "{{days}}d {{hours}}h {{minutes}}m {{seconds}}s",
+  "DATE_INVALID": "Invalid application date."
 }

@@ -234,5 +234,10 @@
   "address": "Dirección",
     "PAY_NOW": "Pagar Ahora",
   "damagedApplianceImageAlt": "Imagen del electrodoméstico dañado",
-  "applianceTypeAlt": "Tipo de electrodoméstico"
+  "applianceTypeAlt": "Tipo de electrodoméstico",
+    "INVALID_APPLICATION_DATE": "Fecha de aplicación no válida.",
+  "INVALID_SERVICE_TYPE": "Tipo de servicio no válido.",
+  "SERVICE_COMPLETED": "La reparación/mantenimiento está completo.",
+  "TIMER_FORMAT": "{{days}}d {{hours}}h {{minutes}}m {{seconds}}s",
+  "DATE_INVALID": "Fecha de aplicación no válida."
 }

@@ -78,7 +78,7 @@ export class LoginComponent {
     this.router.navigate([RoutesConstants.register]);
   }
 
-  gotoIndex() {
+  gotoIndex(): void {
     this.router.navigate([RoutesConstants.home]);
   }
 
