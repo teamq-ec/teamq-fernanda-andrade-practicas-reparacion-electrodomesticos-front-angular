@@ -28,7 +28,7 @@ export class ModalProductComponent implements OnInit {
     });
   }
 
-  closeModal() {
+  closeModal(): void {
     this.alertClosed.emit();
     this.isOpenModal = false;
     this.productModalService.closeModal();
