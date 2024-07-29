@@ -4,6 +4,8 @@ import { DataTransferServiceService } from '../../services/data-transfer-service
 import { Router } from '@angular/router';
 import { PROVINCES_ECUADOR } from 'src/app/constants/constants';
 import { ProductConstants } from 'src/app/constants/product.constants';
+import { ValidationConstants } from 'src/app/constants/validation.constants';
+
 
 @Component({
   selector: 'app-form-product',
@@ -40,17 +42,17 @@ export class FormProductComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(50),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.BRAND_MAX_LENGTH),
         ],
       ],
-      problem_details: ['', [Validators.required, Validators.minLength(5)]],
+      problem_details: ['', [Validators.required, Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH)]],
       address: [
         '',
         [
           Validators.required,
-          Validators.minLength(5),
-          Validators.maxLength(100),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
       service_type: ['', [Validators.required]],
@@ -61,8 +63,8 @@ export class FormProductComponent {
         '',
         [
           Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(50),
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
     });
