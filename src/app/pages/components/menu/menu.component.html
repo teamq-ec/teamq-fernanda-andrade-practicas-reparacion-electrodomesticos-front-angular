@@ -1,7 +1,7 @@
 <header class="bg-white shadow">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <a [routerLink]="goToHome()" class="-m-1.5 p-1.5">
         <span class="sr-only">{{ 'header.empresa' | translate }}</span>
         <img class="h-8 w-auto" [src]="urls.logos.logo" alt="{{ 'header.empresa' | translate }}">
       </a>
@@ -18,24 +18,30 @@
     </div>
 
     <div class="hidden lg:flex lg:gap-x-12">
-      <a routerLink="/auth/register" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.servicios' | translate }}</a>
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.seguimiento_productos' | translate }}</a>
+      <a [routerLink]="getFormRoute()" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.servicios' |
+        translate }}</a>
+      <a [routerLink]="goProduct()" class="text-sm font-semibold leading-6 text-gray-900">{{
+        'header.seguimiento_productos' | translate }}</a>
       <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.gestion_pagos' | translate }}</a>
     </div>
 
-    
+
     <div class="hidden lg:flex lg:ml-8" (clickOutside)="closeMenu()">
       <div class="relative">
-        <button (click)="toggleMenuI()" class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
-          <img [src]="getFlagUrl(currentLanguage)" alt="Current Language" class="block h-auto w-5 flex-shrink-0 rounded-full">
+        <button (click)="toggleMenuI()"
+          class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
+          <img [src]="getFlagUrl(currentLanguage)" alt="Current Language"
+            class="block h-auto w-5 flex-shrink-0 rounded-full">
           <span class="ml-3 block text-sm font-medium">{{ currentLanguage.toUpperCase() }}</span>
         </button>
         <div *ngIf="showMenuI" class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg">
-          <a href="#" (click)="changeLanguage('en', $event)" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+          <a href="#" (click)="changeLanguage('en', $event)"
+            class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <img [src]="getFlagUrl('en')" alt="English" class="block h-auto w-5 flex-shrink-0 rounded-full">
             <span class="ml-3 text-sm font-medium">English</span>
           </a>
-          <a href="#" (click)="changeLanguage('es', $event)" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
+          <a href="#" (click)="changeLanguage('es', $event)"
+            class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <img [src]="getFlagUrl('es')" alt="Spanish" class="block h-auto w-5 flex-shrink-0 rounded-full">
             <span class="ml-3 text-sm font-medium">Español</span>
           </a>
@@ -55,8 +61,10 @@
       </button>
       <div *ngIf="showMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
         style="margin-top: 140px;">
-        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ 'header.perfil' | translate }}</a>
-        <a href="#" (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ 'header.cerrar_sesion' | translate }}</a>
+        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ 'header.perfil' | translate
+          }}</a>
+        <a href="#" (click)="logout()" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{
+          'header.cerrar_sesion' | translate }}</a>
       </div>
     </div>
 

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplianceServiceService } from '../services/appliance-service.service';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { IconsConstants } from 'src/app/constants/icons.constants';
@@ -31,12 +31,18 @@ export class ProductComponent {
 
   modalProduct: boolean = false;
 
-  products: Product[] = [ /* lista de productos */ ];
+  products: Product[] = [
+    /* lista de productos */
+  ];
 
   timerMessage: string = ''; // Asegúrate de definir esto en el componente
   timerInterval: any; // Para almacenar el intervalo del temporizador
 
-  constructor(private activatedRoute: ActivatedRoute, private productModalService: ProductModalService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private productModalService: ProductModalService,
+    private router: Router
+  ) {
     const userId = this.activatedRoute.snapshot.paramMap.get('userId');
     if (userId) {
       this.userId = +userId;
@@ -65,6 +71,15 @@ export class ProductComponent {
     );
   }
 
+  goToHome(): void {
+    const userId = this.getUserIdFromRoute();
+    this.router.navigate([`/pages/${userId}/home`]);
+  }
+  getUserIdFromRoute(): string {
+    const urlSegments = window.location.pathname.split('/');
+    return urlSegments[urlSegments.indexOf('pages') + 1];
+  }
+
   nextPage() {
     if (this.currentPage < this.totalPages) {
       const nextPage = this.currentPage + 1;
@@ -74,7 +89,7 @@ export class ProductComponent {
   }
 
   openProductModal(appliance: Product, user: User) {
-    console.log('esto es delmodalloque envia',appliance,user)
+    console.log('esto es delmodalloque envia', appliance, user);
     this.modalProduct = true;
     this.productModalService.openModal(appliance, user);
   }

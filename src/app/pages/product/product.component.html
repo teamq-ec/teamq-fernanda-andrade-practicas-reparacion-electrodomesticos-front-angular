@@ -1,6 +1,15 @@
 <body>
   <app-menu></app-menu>
   <div class="relative overflow-hidden bg-white" style="margin-left: 50px; margin-right: 50px; margin-top: 50px;">
+    <div class="absolute right-330 z-10" style="margin-top: 30px; margin-left: 50px;">
+      <button (click)="goToHome()"
+        class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        title="Go to Home">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+    </div>
     <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">

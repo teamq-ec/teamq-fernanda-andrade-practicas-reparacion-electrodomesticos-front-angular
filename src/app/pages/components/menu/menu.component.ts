@@ -5,6 +5,7 @@ import { ImageConstants } from 'src/app/constants/images.constants';
 import { UrlsConstants } from 'src/app/constants/urls.constants';
 import { TranslationService } from '../../services/translation.service';
 import { LanguageConstants } from 'src/app/constants/language-constants';
+import { RoutesConstants } from 'src/app/constants/routes.constants';
 
 @Component({
   selector: 'app-menu',
@@ -22,6 +23,7 @@ export class MenuComponent {
   showMenuI: boolean = false;
   currentLanguage: 'en' | 'es' = 'es';
   languages = LanguageConstants;
+  userId: string | null = localStorage.getItem('userId');
 
   constructor(private translationService: TranslationService) {
     this.avatar = ImageConstants.avatar;
@@ -49,7 +51,7 @@ export class MenuComponent {
   }
 
   changeLanguage(language: 'en' | 'es', event: Event) {
-    event.preventDefault(); 
+    event.preventDefault();
     this.translationService.setLanguage(language);
     this.currentLanguage = language;
     this.closeMenu();
@@ -57,5 +59,29 @@ export class MenuComponent {
 
   getFlagUrl(language: 'en' | 'es'): string {
     return LanguageConstants[language];
+  }
+
+  getFormRoute(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.form.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
+  }
+
+  goProduct(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.product.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
+  }
+
+  goToHome(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.dashboard.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
   }
 }
