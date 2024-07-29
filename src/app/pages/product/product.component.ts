@@ -4,6 +4,9 @@ import { ApplianceServiceService } from '../services/appliance-service.service';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { IconsConstants } from 'src/app/constants/icons.constants';
 import { TranslateService } from '@ngx-translate/core';
+import { Product } from 'src/app/models/product';
+import { ProductModalService } from '../services/product-modal.service';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-product',
@@ -21,14 +24,19 @@ export class ProductComponent {
   selectedType: string | null = null;
   private userId?: number;
   appliances: any[] = [];
+  user: User | null = null;
   currentPage: number = 1;
   totalPages: number = 1;
   totalItems: number = 0;
 
+  modalProduct: boolean = false;
+
+  products: Product[] = [ /* lista de productos */ ];
+
   timerMessage: string = ''; // Asegúrate de definir esto en el componente
   timerInterval: any; // Para almacenar el intervalo del temporizador
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private productModalService: ProductModalService) {
     const userId = this.activatedRoute.snapshot.paramMap.get('userId');
     if (userId) {
       this.userId = +userId;
@@ -46,6 +54,7 @@ export class ProductComponent {
       (response) => {
         console.log('Data received:', response);
         this.appliances = response.data;
+        this.user = response.data.user;
         this.currentPage = response.meta.current_page;
         this.totalPages = response.meta.last_page;
         this.totalItems = response.meta.total;
@@ -64,6 +73,15 @@ export class ProductComponent {
     }
   }
 
+  openProductModal(appliance: Product, user: User) {
+    console.log('esto es delmodalloque envia',appliance,user)
+    this.modalProduct = true;
+    this.productModalService.openModal(appliance, user);
+  }
+
+  onAlertClosed() {
+    this.modalProduct = false;
+  }
   previousPage() {
     if (this.currentPage > 1) {
       const previousPage = this.currentPage - 1;
