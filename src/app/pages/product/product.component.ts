@@ -49,7 +49,6 @@ export class ProductComponent {
     if (userId) {
       this.userId = +userId;
     }
-    console.log('User ID:', this.userId);
   }
 
   loadUserAppliances(page: number = this.initialPage): void {

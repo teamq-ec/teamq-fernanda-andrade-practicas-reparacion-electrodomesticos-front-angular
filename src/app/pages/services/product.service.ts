@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { ServiceRequest } from 'src/app/models/product';
+import { Product } from 'src/app/models/product';
+
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -12,7 +13,7 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) {}
 
-  registerProduct(formData: FormData): Observable<ServiceRequest> {
-    return this.httpClient.post<ServiceRequest>(this.apiUrl, formData);
+  registerProduct(formData: FormData): Observable<Product> {
+    return this.httpClient.post<Product>(this.apiUrl, formData);
   }
 }

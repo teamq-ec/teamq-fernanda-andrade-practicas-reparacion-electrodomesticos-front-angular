@@ -6,6 +6,7 @@ import { MenuModule } from '../components/menu/menu.module';
 import { FooterModule } from '../components/footer/footer.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { ProductComponent } from './product.component';
+import { ModalProductModule } from '../components/modal-product/modal-product.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { ProductComponent } from './product.component';
     ProductRoutingModule,
     MenuModule,
     FooterModule,
-    TranslateModule
+    TranslateModule,
+    ModalProductModule
   ],
   exports: [ProductComponent] 
 })

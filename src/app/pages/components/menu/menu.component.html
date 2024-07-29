@@ -1,7 +1,7 @@
 <header class="bg-white shadow">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="#" class="-m-1.5 p-1.5">
+      <a [routerLink]="goToHome()" class="-m-1.5 p-1.5">
         <span class="sr-only">{{ 'header.empresa' | translate }}</span>
         <img class="h-8 w-auto" [src]="urls.logos.logo" alt="{{ 'header.empresa' | translate }}">
       </a>
@@ -18,10 +18,10 @@
     </div>
 
     <div class="hidden lg:flex lg:gap-x-12">
-      <a routerLink="/auth/register" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.servicios' |
+      <a [routerLink]="getFormRoute()" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.servicios' |
         translate }}</a>
-      <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.seguimiento_productos' | translate
-        }}</a>
+      <a [routerLink]="goProduct()" class="text-sm font-semibold leading-6 text-gray-900">{{
+        'header.seguimiento_productos' | translate }}</a>
       <a href="#" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.gestion_pagos' | translate }}</a>
     </div>
 
