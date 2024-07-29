@@ -17,6 +17,7 @@ import { HomeModule } from './pages/home/home.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { ApplianceRegistrationModule } from './pages/appliance-registration/appliance-registration.module';
 import { AlertConfirmationModule } from './pages/components/alert-confirmation/alert-confirmation.module';
+import { ProductModule } from './pages/product/product.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,6 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HomeModule,
     DashboardModule,
+    ProductModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
