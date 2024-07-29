@@ -219,5 +219,20 @@
   "APPLIANCE_TYPE_OVEN": "Horno",
   "APPLIANCE_TYPE_DRYER": "Secadora",
   "APPLIANCE_TYPE_MICROWAVE": "Microondas",
-  "APPLIANCE_TYPE_ALL": "Todos"
+  "APPLIANCE_TYPE_ALL": "Todos",
+  "close": "Cerrar",
+  "productInformation": "Información del Producto*",
+  "brand": "Marca",
+  "problemDetails": "Detalles del Problema",
+  "serviceType": "Tipo de Servicio",
+  "preferredContactMethod": "Método de Contacto Preferido",
+  "applicationDate": "Fecha de Solicitud",
+  "userInformation": "Información del Usuario*",
+  "name": "Nombre",
+  "email": "Correo Electrónico",
+  "phone": "Teléfono",
+  "address": "Dirección",
+    "PAY_NOW": "Pagar Ahora",
+  "damagedApplianceImageAlt": "Imagen del electrodoméstico dañado",
+  "applianceTypeAlt": "Tipo de electrodoméstico"
 }

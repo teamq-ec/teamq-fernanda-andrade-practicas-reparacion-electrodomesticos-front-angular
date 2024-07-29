@@ -218,5 +218,20 @@
   "APPLIANCE_TYPE_OVEN": "Oven",
   "APPLIANCE_TYPE_DRYER": "Dryer",
   "APPLIANCE_TYPE_MICROWAVE": "Microwave",
-  "APPLIANCE_TYPE_ALL": "All"
+  "APPLIANCE_TYPE_ALL": "All",
+  "close": "Close",
+  "productInformation": "Product Information*",
+  "brand": "Brand",
+  "problemDetails": "Problem Details",
+  "serviceType": "Service Type",
+  "preferredContactMethod": "Preferred Contact Method",
+  "applicationDate": "Application Date",
+  "userInformation": "User Information*",
+  "name": "Name",
+  "email": "Email",
+  "phone": "Phone",
+  "address": "Address",
+  "PAY_NOW": "Pay now",
+  "damagedApplianceImageAlt": "Image of the damaged appliance",
+  "applianceTypeAlt": "Type of appliance"
 }
