@@ -17,7 +17,6 @@ export class AlertConfirmationComponent {
     if (userId) {
       this.userId = +userId;
     }
-    console.log('User ID:', this.userId);
   }
 
   closeAlert() {
