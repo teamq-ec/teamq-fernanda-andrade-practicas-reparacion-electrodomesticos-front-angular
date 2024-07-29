@@ -9,10 +9,10 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./modal-product.component.css']
 })
 export class ModalProductComponent implements OnInit {
-  @Output() alertClosed = new EventEmitter<void>(); // Evento para notificar cuando el modal se cierra
+  @Output() alertClosed = new EventEmitter<void>();
   product: Product | null = null;
   user: User | null = null;
-  isOpen = true;
+  isOpenModal = false; // Cambia el nombre para reflejar mejor su propósito
 
   constructor(private productModalService: ProductModalService) {}
 
@@ -23,24 +23,14 @@ export class ModalProductComponent implements OnInit {
     this.productModalService.currentUser.subscribe(user => {
       this.user = user;
       if (this.user && this.product) {
-        this.openModal();
+        this.isOpenModal = true;
       }
     });
   }
 
-  openModal() {
-    const modal = document.getElementById('productModal');
-    if (modal) {
-      modal.style.display = 'block'; // Mostrar el modal
-    }
-  }
-
   closeModal() {
-    this.alertClosed.emit(); // Emitir evento cuando el modal se cierra
-    const modal = document.getElementById('productModal');
-    if (modal) {
-      modal.style.display = 'none'; // Ocultar el modal
-    }
-    this.productModalService.closeModal(); // Cerrar modal en el servicio
+    this.alertClosed.emit();
+    this.isOpenModal = false;
+    this.productModalService.closeModal();
   }
 }
