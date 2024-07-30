@@ -1,6 +1,15 @@
 <body>
   <app-menu></app-menu>
   <div class="relative overflow-hidden bg-white" style="margin-left: 50px; margin-right: 50px; margin-top: 50px;">
+    <div class="absolute right-330 z-10" style="margin-top: 30px; margin-left: 50px;">
+      <button (click)="goToHome()"
+        class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        title="Go to Home">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+    </div>
     <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
       <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
         <div class="sm:max-w-lg">
@@ -108,27 +117,32 @@
     </dt>
 
     <ul role="list" class="divide-y divide-gray-200 mt-8">
-      <li class="flex py-6" *ngFor="let appliance of appliances">
-        <div class="h-28 w-28 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200">
+      <li class="flex py-6 items-center" *ngFor="let appliance of appliances">
+        <div class="h-28 w-28 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 shadow-md">
           <img [src]="appliance.damaged_appliance_image" alt="Appliance image"
             class="h-full w-full object-cover object-center">
         </div>
-
         <div class="ml-4 flex flex-1 flex-col">
-          <div>
-            <div class="flex justify-between text-base font-medium text-gray-900">
-              <h3>
-                <a href="#">{{ appliance.appliance_type }}</a>
-              </h3>
-              <p class="ml-4">{{ appliance.brand }}</p>
-            </div>
-            <p class="mt-1 text-sm text-gray-500">{{ appliance.problem_details }}</p>
+          <div class="flex justify-between items-center text-base font-medium text-gray-900">
+            <h3 class="text-lg font-semibold">
+              <a href="#" class="hover:underline">{{ appliance.appliance_type }}</a>
+            </h3>
+            <p class="ml-4 text-gray-700">{{ appliance.brand }}</p>
           </div>
+          <p class="mt-1 text-sm text-gray-500">{{ appliance.problem_details }}</p>
           <div class="flex flex-1 items-end justify-between text-sm mt-4">
             <p class="text-gray-500">{{ appliance.application_date }}</p>
-            <div class="flex">
-              <button type="button" class="font-medium text-indigo-600 hover:text-indigo-500"
-                (click)="showTimer(appliance)"> {{ 'TIME_BUTTON' | translate }}</button>
+            <div class="flex space-x-4">
+              <button type="button"
+                class="py-2 px-4 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                (click)="showTimer(appliance)">
+                {{ 'TIME_BUTTON' | translate }}
+              </button>
+              <button type="button"
+                class="py-2 px-4 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+                (click)="openProductModal(appliance)">
+                {{ 'PAY_NOW' | translate }}
+              </button>
             </div>
           </div>
         </div>
@@ -151,9 +165,9 @@
         <div>
           <p class="text-sm text-gray-700">
             {{ 'SHOWING_RESULTS' | translate }}
-            <span class="font-medium">{{ (currentPage - 1) * PaginationConstants.PAGE_SIZE + 1 }}</span>
+            <span class="font-medium">{{ (currentPage - 1) * 10 + 1 }}</span>
             {{ 'TO' | translate }}
-            <span class="font-medium">{{ currentPage * PaginationConstants.PAGE_SIZE }}</span>
+            <span class="font-medium">{{ currentPage * 10 }}</span>
             {{ 'OF' | translate }}
             <span class="font-medium">{{ totalItems }}</span>
             {{ 'RESULTS' | translate }}
@@ -161,9 +175,9 @@
         </div>
         <div>
           <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-            <button (click)="previousPage()" [disabled]="currentPage === PaginationConstants.INITIAL_PAGE"
-              [class]="PaginationConstants.BUTTON_DISABLED_COLOR + ' relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ' + PaginationConstants.BUTTON_RING_COLOR + ' ' + PaginationConstants.BUTTON_HOVER_COLOR + ' focus:z-20 focus:outline-offset-0'">
-              <span class="sr-only"> {{ 'PREVIOUS' | translate }}</span>
+            <button (click)="previousPage()" [disabled]="currentPage === 1"
+              class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
+              <span class="sr-only"> {{ 'NEXT' | translate }}</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd"
                   d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
@@ -179,7 +193,7 @@
               </button>
             </ng-container>
             <button (click)="nextPage()" [disabled]="currentPage === totalPages"
-              [class]="PaginationConstants.BUTTON_DISABLED_COLOR + ' relative inline-flex items-center rounded-r-md px-2 py-2 ring-1 ring-inset ' + PaginationConstants.BUTTON_RING_COLOR + ' ' + PaginationConstants.BUTTON_HOVER_COLOR + ' focus:z-20 focus:outline-offset-0'">
+              class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
               <span class="sr-only">{{ 'NEXT' | translate }}</span>
               <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                 <path fill-rule="evenodd"
@@ -193,6 +207,10 @@
     </div>
   </div>
 
+
+  <div *ngIf="modalProduct" class="fixed inset-0 flex items-center justify-center z-50">
+    <app-modal-product (alertClosed)="onAlertClosed()"></app-modal-product>
+  </div>
   <div style="margin-top: 100px;">
     <app-footer></app-footer>
   </div>

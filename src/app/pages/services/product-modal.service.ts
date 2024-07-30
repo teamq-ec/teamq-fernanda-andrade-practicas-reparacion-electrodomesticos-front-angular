@@ -14,9 +14,8 @@ export class ProductModalService {
   currentUser = this.userSource.asObservable();
 
  
-  openModal(product: Product, user: User): void {
+  openModal(product: Product): void {
     this.productSubject.next(product);
-    this.userSource.next(user);
   }
 
   closeModal(): void {
