@@ -32,6 +32,7 @@ export class ProductComponent {
   private userId?: number;
   appliances: any[] = [];
   modalProduct: boolean = false;
+  products: Product[] = [];
 
   currentPage: number = this.initialPage;
   totalPages: number = this.initialTotalPages;
