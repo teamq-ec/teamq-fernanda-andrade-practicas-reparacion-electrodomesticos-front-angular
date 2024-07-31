@@ -24,6 +24,7 @@ export class MenuComponent {
   currentLanguage: 'en' | 'es' = 'es';
   languages = LanguageConstants;
   userId: string | null = localStorage.getItem('userId');
+  paymentId: string | undefined;
 
   constructor(private translationService: TranslationService) {
     this.avatar = ImageConstants.avatar;
@@ -31,15 +32,15 @@ export class MenuComponent {
     this.userLastName = localStorage.getItem('userLastName');
   }
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.showMenu = !this.showMenu;
   }
 
-  toggleMenuI() {
+  toggleMenuI(): void {
     this.showMenuI = !this.showMenuI;
   }
 
-  closeMenu() {
+  closeMenu(): void {
     this.showMenuI = false;
   }
 
@@ -50,7 +51,7 @@ export class MenuComponent {
     this.router.navigate(['']);
   }
 
-  changeLanguage(language: 'en' | 'es', event: Event) {
+  changeLanguage(language: 'en' | 'es', event: Event): void {
     event.preventDefault();
     this.translationService.setLanguage(language);
     this.currentLanguage = language;

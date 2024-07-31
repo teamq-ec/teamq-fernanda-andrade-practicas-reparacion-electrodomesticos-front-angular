@@ -17,14 +17,11 @@ export class AlertConfirmationComponent {
     if (userId) {
       this.userId = +userId;
     }
-    console.log('User ID:', this.userId);
   }
 
-  closeAlert() {
+  closeAlert(): void {
     if (this.userId) {
       this.router.navigate(['/pages', this.userId, 'product']);
-    } else {
-      console.error('User ID is not defined.');
     }
   }
 }

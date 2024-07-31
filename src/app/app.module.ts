@@ -19,6 +19,7 @@ import { ApplianceRegistrationModule } from './pages/appliance-registration/appl
 import { AlertConfirmationModule } from './pages/components/alert-confirmation/alert-confirmation.module';
 import { ProductModule } from './pages/product/product.module';
 import { ModalProductModule } from './pages/components/modal-product/modal-product.module';
+import { PaymentModule } from './pages/payment/payment.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -33,6 +34,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     HomeModule,
     DashboardModule,
     ProductModule,
+    PaymentModule,
     ReactiveFormsModule,
     HttpClientModule,
     TranslateModule.forRoot({
