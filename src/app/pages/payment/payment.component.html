@@ -1,1 +1,155 @@
-<p>payment works!</p>
+<body>
+  <app-menu></app-menu>
+  <div class="relative overflow-hidden bg-white mx-12 my-8">
+    <div class="absolute right-0 top-0 z-10 mt-8 mr-8">
+      <button
+        class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+        title="Go to Home">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+    </div>
+    <div class="flex gap-8">
+      <div class="w-1/2 pr-4">
+        <div class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+          <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ 'contact_sales' | translate }}
+            </h2>
+            <p class="mt-2 text-lg leading-8 text-gray-600">{{ 'contact_sales_description' | translate }}</p>
+          </div>
+          <form [formGroup]="paymentForm" (ngSubmit)="onSubmit()" class="mx-auto mt-16 max-w-xl sm:mt-20 space-y-6">
+            <div>
+              <label for="card_number" class="block text-sm font-semibold text-gray-900">{{ 'card_number' | translate
+                }}</label>
+              <div class="mt-2">
+                <input type="text" id="card_number" formControlName="card_number"
+                  placeholder="{{ 'card_number_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600 text-lg">
+              </div>
+            </div>
+
+            <div>
+              <label for="card_type" class="block text-sm font-semibold text-gray-900">{{ 'CARD_TYPE' | translate
+                }}</label>
+              <div class="mt-2">
+                <select id="card_type" formControlName="card_type"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+                  <option value="" disabled selected>{{ 'SELECT_CARD_TYPE' | translate }}</option>
+                  <option value="Visa">{{ 'VISA' | translate }}</option>
+                  <option value="MasterCard">{{ 'MASTERCARD' | translate }}</option>
+                  <option value="American Express">{{ 'AMERICAN_EXPRESS' | translate }}</option>
+                  <option value="Discover">{{ 'DISCOVER' | translate }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <label for="security_code" class="block text-sm font-semibold text-gray-900">{{ 'security_code' |
+                translate }}</label>
+              <div class="mt-2">
+                <input type="text" id="security_code" formControlName="security_code"
+                  placeholder="{{ 'security_code_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+              </div>
+            </div>
+
+            <div>
+              <label for="full_name" class="block text-sm font-semibold text-gray-900">{{ 'full_name' | translate
+                }}</label>
+              <div class="mt-2">
+                <input type="text" id="full_name" formControlName="full_name"
+                  placeholder="Ingrese su {{ 'full_name_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+              </div>
+            </div>
+
+            <div>
+              <label for="email" class="block text-sm font-semibold text-gray-900">{{ 'email_placeholder' | translate
+                }}</label>
+              <div class="mt-2">
+                <input type="email" id="email" formControlName="email"
+                  placeholder="{{ 'email_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+              </div>
+            </div>
+
+            <div>
+              <label for="telephone_number" class="block text-sm font-semibold text-gray-900">{{ 'telephone_number' |
+                translate }}</label>
+              <div class="mt-2">
+                <input type="text" id="telephone_number" formControlName="telephone_number"
+                  placeholder="{{ 'telephone_number_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+              </div>
+            </div>
+
+            <div>
+              <label for="amount_payable" class="block text-sm font-semibold text-gray-900">{{ 'amount_payable' |
+                translate }}</label>
+              <div class="mt-2">
+                <input type="text" id="amount_payable" formControlName="amount_payable"
+                  placeholder="{{ 'amount_payable_placeholder' | translate }}"
+                  class="block w-full rounded-md border border-purple-500 px-4 py-2 text-gray-900 shadow-sm focus:border-purple-600 focus:ring-1 focus:ring-purple-600">
+              </div>
+            </div>
+
+            <div class="mt-10">
+              <button type="submit"
+                class="block w-full rounded-md bg-indigo-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">{{
+                'submit_button' | translate }}</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="w-1/2 pl-4" style="margin-top: 280px;">
+        <div class="ticket-container bg-white shadow-lg rounded-lg p-6">
+          <div class="ticket">
+            <header class="ticket-header mb-4">
+              <h1 class="ticket-title text-2xl font-bold">{{ 'service_ticket_title' | translate }}</h1>
+              <p class="ticket-date text-gray-600">{{ 'service_ticket_date' | translate }}</p>
+            </header>
+            <section class="ticket-body space-y-2 mb-4">
+              <p><strong>{{ 'client' | translate }}:</strong> <span id="ticket-client">{{ product?.user?.first_name }}
+                  {{ product?.user?.last_name }}</span></p>
+              <p><strong>{{ 'email_label' | translate }}:</strong> <span id="ticket-email">{{ product?.user?.email
+                  }}</span></p>
+              <p><strong>{{ 'phone' | translate }}:</strong> <span id="ticket-phone">{{ product?.user?.phone_number
+                  }}</span></p>
+              <p><strong>{{ 'collection_address' | translate }}:</strong> <span id="ticket-address">{{
+                  product?.collection_address }}</span></p>
+              <p><strong>{{ 'service_type' | translate }}:</strong> <span id="ticket-service">{{ product?.service_type
+                  }}</span></p>
+              <p><strong>{{ 'problem_details' | translate }}:</strong> <span id="ticket-problem">{{
+                  product?.problem_details }}</span></p>
+            </section>
+            <header class="ticket-header mt-4 mb-4">
+              <h1 class="ticket-title text-2xl font-bold">{{ 'payment_ticket_title' | translate }}</h1>
+              <p class="ticket-date text-gray-600">{{ 'payment_ticket_date' | translate }}: <span
+                  id="ticket-form-date">{{ currentDate }}</span></p>
+            </header>
+            <section class="ticket-body space-y-2">
+              <p><strong>{{ 'payment_form_full_name' | translate }}:</strong> <span id="ticket-form-full-name">{{
+                  paymentForm.get('full_name')?.value || 'N/A' }}</span></p>
+              <p><strong>{{ 'payment_form_email' | translate }}:</strong> <span id="ticket-form-email">{{
+                  paymentForm.get('email')?.value || 'N/A' }}</span></p>
+              <p><strong>{{ 'payment_form_phone' | translate }}:</strong> <span id="ticket-form-phone">{{
+                  paymentForm.get('telephone_number')?.value || 'N/A' }}</span></p>
+              <p><strong>{{ 'payment_form_card' | translate }}:</strong> <span id="ticket-form-card">{{
+                  paymentForm.get('card_number')?.value || 'N/A' }}</span></p>
+              <p><strong>{{ 'payment_form_amount' | translate }}:</strong> <span id="ticket-form-amount">{{
+                  paymentForm.get('amount_payable')?.value || '0.00' }}</span></p>
+            </section>
+            <footer class="ticket-footer mt-4">
+              <p>{{ 'thank_you' | translate }}</p>
+            </footer>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</body>

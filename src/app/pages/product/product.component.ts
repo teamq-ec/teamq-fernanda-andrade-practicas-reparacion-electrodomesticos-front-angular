@@ -1,11 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApplianceServiceService } from '../services/appliance-service.service';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { IconsConstants } from 'src/app/constants/icons.constants';
 import { TranslateService } from '@ngx-translate/core';
 import { TimeConstants } from 'src/app/constants/time.constants';
 import { PaginationConstants } from 'src/app/constants/pagination.constants';
+import { Product } from 'src/app/models/product';
+import { User } from 'src/app/models/user';
+import { ProductModalService } from '../services/product-modal.service';
 
 @Component({
   selector: 'app-product',
@@ -28,6 +31,8 @@ export class ProductComponent {
   selectedType: string | null = null;
   private userId?: number;
   appliances: any[] = [];
+  modalProduct: boolean = false;
+  products: Product[] = [];
 
   currentPage: number = this.initialPage;
   totalPages: number = this.initialTotalPages;
@@ -37,7 +42,7 @@ export class ProductComponent {
   timerMessage: string = '';
   timerInterval: any;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private router: Router, private productModalService: ProductModalService) {
     this.initializeUserId();
     if (this.userId !== undefined) {
       this.loadUserAppliances(this.currentPage);
@@ -60,6 +65,25 @@ export class ProductComponent {
         this.totalPages = response.meta.last_page;
         this.totalItems = response.meta.total;
       });
+  }
+
+  openProductModal(appliance: Product) {
+    this.modalProduct = true;
+    this.productModalService.openModal(appliance);
+  }
+
+  getUserIdFromRoute(): string {
+    const urlSegments = window.location.pathname.split('/');
+    return urlSegments[urlSegments.indexOf('pages') + 1];
+  }
+
+  goToHome(): void {
+    const userId = this.getUserIdFromRoute();
+    this.router.navigate([`/pages/${userId}/home`]);
+  }
+
+  onAlertClosed() {
+    this.modalProduct = false;
   }
 
   nextPage(): void {
