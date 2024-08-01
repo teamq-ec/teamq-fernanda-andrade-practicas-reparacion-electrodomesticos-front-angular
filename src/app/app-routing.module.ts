@@ -18,11 +18,11 @@ const routes: Routes = [
     path: 'pages/:userId',
     loadChildren: () =>
       import('./pages/pages.module').then((m) => m.PagesModule),
-    canActivate : [loginGuard]
+    canActivate: [loginGuard],
   },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '',
   },
 ];
 
