@@ -1,23 +1,26 @@
 <div class="bg-white">
   <div
-    class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 py-24 sm:px-6 sm:py-32 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
-    <div>
-      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ 'formProduct.CONTACT_US_TITLE' |
-        translate }}</h2>
-      <p class="mt-4 text-gray-500">{{ 'formProduct.CONTACT_US_DESCRIPTION' | translate }}</p>
-      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8 mt-8">
-        <img  [src]="urls.srcc"
-          alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
+    class="mx-auto grid max-w-2xl grid-cols-1 items-center gap-x-8 gap-y-16 px-4 lg:max-w-7xl lg:grid-cols-2 lg:px-8">
+    <div class="space-y-4 lg:space-y-8">
+      <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+        {{ 'formProduct.CONTACT_US_TITLE' | translate }}
+      </h2>
+      <p class="text-gray-500">
+        {{ 'formProduct.CONTACT_US_DESCRIPTION' | translate }}
+      </p>
+      <div class="grid grid-cols-2 grid-rows-2 gap-4 sm:gap-6 lg:gap-8">
+        <img [src]="urls.srcc" alt="Walnut card tray with white powder coated steel divider and 3 punchout holes."
           class="rounded-lg bg-gray-100">
-        <img [src]="urls.srcd"
-          alt="Top down view of walnut card tray with embedded magnets and card groove." class="rounded-lg bg-gray-100">
-        <img [src]="urls.srce"
-          alt="Side of walnut card tray with card groove and recessed card area." class="rounded-lg bg-gray-100">
-        <img [src]="urls.srcf"
-          alt="Walnut card tray filled with cards and card angled in dedicated groove." class="rounded-lg bg-gray-100">
+        <img [src]="urls.srcd" alt="Top down view of walnut card tray with embedded magnets and card groove."
+          class="rounded-lg bg-gray-100">
+        <img [src]="urls.srce" alt="Side of walnut card tray with card groove and recessed card area."
+          class="rounded-lg bg-gray-100">
+        <img [src]="urls.srcf" alt="Walnut card tray filled with cards and card angled in dedicated groove."
+          class="rounded-lg bg-gray-100">
       </div>
     </div>
-    <div class="bg-gray-50 p-6 rounded-lg shadow-lg">
+
+    <div class="bg-gray-50 p-6 rounded-lg shadow-lg w-full max-w-[50rem] lg:ml-8">
       <form [formGroup]="form" (ngSubmit)="onSubmit()">
         <div class="border-b border-gray-900/10 pb-12">
           <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{
@@ -25,10 +28,10 @@
           <p class="mt-1 text-sm text-gray-600">{{ 'formProduct.APPLICANT_INFO_DESCRIPTION' | translate }}</p>
 
           <div class="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
-
-            <div>
-              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">{{
-                'formProduct.FIRST_NAME_LABEL' | translate }}<span class="text-red-500">*</span></label>
+            <div class="sm:col-span-1">
+              <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">
+                {{ 'formProduct.FIRST_NAME_LABEL' | translate }}<span class="text-red-500">*</span>
+              </label>
               <div class="mt-1">
                 <input id="first_name" formControlName="first_name" name="first_name" type="text"
                   autocomplete="first_name" required [class.border-red-500]="isFieldInvalid('first_name')"
@@ -37,17 +40,22 @@
               </div>
               <div
                 *ngIf="form.get('first_name')?.invalid && (form.get('first_name')?.dirty || form.get('first_name')?.touched)">
-                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.FIRST_NAME_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
-                  'formProduct.FIRST_NAME_MINLENGTH' | translate }}</div>
-                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
-                  'formProduct.FIRST_NAME_MAXLENGTH' | translate }}</div>
+                <div *ngIf="form.get('first_name')?.errors?.['required']" class="text-red-500 text-sm">
+                  {{ 'formProduct.FIRST_NAME_REQUIRED' | translate }}
+                </div>
+                <div *ngIf="form.get('first_name')?.errors?.['minlength']" class="text-red-500 text-sm">
+                  {{ 'formProduct.FIRST_NAME_MINLENGTH' | translate }}
+                </div>
+                <div *ngIf="form.get('first_name')?.errors?.['maxlength']" class="text-red-500 text-sm">
+                  {{ 'formProduct.FIRST_NAME_MAXLENGTH' | translate }}
+                </div>
               </div>
             </div>
-            <div>
-              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">{{
-                'formProduct.LAST_NAME_LABEL' | translate }} <span class="text-red-500">*</span></label>
+
+            <div class="sm:col-span-1">
+              <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">
+                {{ 'formProduct.LAST_NAME_LABEL' | translate }}<span class="text-red-500">*</span>
+              </label>
               <div class="mt-1">
                 <input id="last_name" formControlName="last_name" name="last_name" type="text" autocomplete="last_name"
                   required [class.border-red-500]="isFieldInvalid('last_name')"
@@ -56,107 +64,98 @@
               </div>
               <div
                 *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
-                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.LAST_NAME_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">{{
-                  'formProduct.LAST_NAME_MINLENGTH' | translate }}</div>
-                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">{{
-                  'formProduct.LAST_NAME_MAXLENGTH' | translate }}</div>
+                <div *ngIf="form.get('last_name')?.errors?.['required']" class="text-red-500 text-sm">
+                  {{ 'formProduct.LAST_NAME_REQUIRED' | translate }}
+                </div>
+                <div *ngIf="form.get('last_name')?.errors?.['minlength']" class="text-red-500 text-sm">
+                  {{ 'formProduct.LAST_NAME_MINLENGTH' | translate }}
+                </div>
+                <div *ngIf="form.get('last_name')?.errors?.['maxlength']" class="text-red-500 text-sm">
+                  {{ 'formProduct.LAST_NAME_MAXLENGTH' | translate }}
+                </div>
               </div>
             </div>
 
-            <div>
-              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">{{
-                'formProduct.EMAIL_LABEL' | translate }}<span class="text-red-500">*</span></label>
+            <!-- Fila para Email y Dirección -->
+            <div class="sm:col-span-1">
+              <label for="email-address" class="block text-sm font-medium leading-6 text-gray-900">
+                {{ 'formProduct.EMAIL_LABEL' | translate }}<span class="text-red-500">*</span>
+              </label>
               <div class="mt-2">
                 <input id="email-address" name="email" type="email" formControlName="email" autocomplete="email"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('email')" placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
+                  required [class.border-red-500]="isFieldInvalid('email')"
+                  placeholder="{{ 'formProduct.EMAIL_LABEL' | translate }}">
               </div>
               <div *ngIf="form.get('email')?.invalid && (form.get('email')?.dirty || form.get('email')?.touched)">
-                <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.EMAIL_REQUIRED' | translate }}</div>
-                <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">{{
-                  'formProduct.EMAIL_INVALID' | translate }}
+                <div *ngIf="form.get('email')?.errors?.['required']" class="text-red-500 text-sm">
+                  {{ 'formProduct.EMAIL_REQUIRED' | translate }}
+                </div>
+                <div *ngIf="form.get('email')?.errors?.['email']" class="text-red-500 text-sm">
+                  {{ 'formProduct.EMAIL_INVALID' | translate }}
                 </div>
               </div>
             </div>
-            
-          </div>
-          <hr class="col-span-2 my-6 border-t-2 border-black-300">
-          <h2 class="text-lg font-medium leading-6 text-gray-900" style="margin-top: 30px;">{{
-            'formProduct.SERVICE_REQUEST_TITLE' | translate }}</h2>
-          <p class="mt-1 text-sm text-gray-600">{{ 'formProduct.SERVICE_REQUEST_DESCRIPTION' | translate }}</p>
-          <hr class="col-span-2 my-6 border-t-2 border-black-300">
-          <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)" style="margin-top: 30px;">
-            <div class="border-b border-gray-900/10 pb-12">
-              <h3 class="text-lg font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_IMAGE_LABEL' | translate
-                }} <span class="text-red-500">*</span></h3>
-              <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' | translate }}</p>
-              <div
-                class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative"
-                [class.border-red-500]="isFieldInvalid('damaged_appliance_image')">
 
-                <div *ngIf="imageSrc" class="relative">
-                  <img [src]="imageSrc" alt="Imagen subida"
-                    class="mt-4 rounded-md w-24 h-24 object-cover border border-gray-300 shadow-sm" />
-                  <button type="button"
-                    class="absolute top-0 right-0 m-2 bg-red-600 text-white rounded-full p-2 text-xl"
-                    (click)="removeImage()">
-                    <span class="sr-only">{{ 'formProduct.REMOVE_IMAGE' | translate }}</span>
-                    &times;
-                  </button>
-                  <button type="button" pButton label="Cambiar Imagen" class="btn btn-warning mt-3"
-                    (click)="chooseFile()"></button>
-                </div>
-                <div class="text-center" *ngIf="!imageSrc">
-                  <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                    aria-hidden="true">
-                    <path fill-rule="evenodd"
-                      d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                      clip-rule="evenodd" />
-                  </svg>
-                  <div class="mt-4 flex text-sm text-gray-600">
-                    <label for="damaged-appliance-image"
-                      class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                      <span>{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</span>
-                      <input id="damaged-appliance-image" formControlName="damaged_appliance_image" type="file"
-                        class="sr-only" required (change)="getFile($event)">
-                    </label>
-                    <p class="pl-1">{{ 'formProduct.UPLOAD_FILE_INSTRUCTIONS' | translate }}</p>
-                  </div>
-                  <p class="text-xs text-gray-600">{{ 'formProduct.FILE_FORMATS_ALLOWED' | translate }}</p>
+            <div class="sm:col-span-1">
+              <label for="address" class="block text-sm font-medium leading-6 text-gray-900">
+                {{ 'formProduct.ADDRESS_LABEL' | translate }}<span class="text-red-500">*</span>
+              </label>
+              <div class="mt-2">
+                <input type="text" formControlName="address" id="address" autocomplete="street-address"
+                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required [class.border-red-500]="isFieldInvalid('address')"
+                  placeholder="{{ 'formProduct.ADDRESS_LABEL' | translate }}">
+              </div>
+              <div *ngIf="form.get('address')?.invalid && (form.get('address')?.dirty || form.get('address')?.touched)">
+                <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">
+                  {{ 'formProduct.ADDRESS_REQUIRED' | translate }}
                 </div>
               </div>
+            </div>
 
-
-              <div
-                *ngIf="form.get('damaged_appliance_image')?.invalid && (form.get('damaged_appliance_image')?.dirty || form.get('damaged_appliance_image')?.touched)">
-                <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.IMAGE_REQUIRED' | translate }}</div>
+            <div class="sm:col-span-1">
+              <label for="state" class="block text-sm font-medium leading-6 text-gray-900">
+                {{ 'formProduct.STATE_PLACEHOLDER' | translate }}<span class="text-red-500">*</span>
+              </label>
+              <div class="mt-2">
+                <select id="state" formControlName="state" name="state"
+                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required [class.border-red-500]="isFieldInvalid('state')">
+                  <option value="">{{ 'formProduct.PROVINCE_PLACEHOLDER' | translate }}</option>
+                  <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
+                </select>
+              </div>
+              <div *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
+                <div *ngIf="form.get('state')?.errors?.['required']" class="text-red-500 text-sm">
+                  {{ 'formProduct.STATE_REQUIRED' | translate }}
+                </div>
               </div>
             </div>
           </div>
 
+          <hr class="col-span-2 my-6 border-t-2 border-black-300">
           <div class="mt-4 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6" style="margin-top: 30px;">
-              <div class="sm:col-span-3">
-                <label for="appliance-type" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
-                <div class="mt-2">
-                  <select id="appliance-type" formControlName="appliance_type" name="appliance-type"
-                    class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                    required [class.border-red-500]="isFieldInvalid('appliance_type')">
-                    <option value="">{{ 'formProduct.APPLIANCE_TYPE_PLACEHOLDER' | translate }}</option>
-                    <option value="refrigerator">{{ 'formProduct.APPLIANCE_TYPE_REFRIGERATOR' | translate }}</option>
-                    <option value="washer">{{ 'formProduct.APPLIANCE_TYPE_WASHER' | translate }}</option>
-                    <option value="dryer">{{ 'formProduct.APPLIANCE_TYPE_DRYER' | translate }}</option>
-                    <option value="oven">{{ 'formProduct.APPLIANCE_TYPE_OVEN' | translate }}</option>
-                  </select>
-                </div>
-                <div
-                  *ngIf="form.get('appliance_type')?.invalid && (form.get('appliance_type')?.dirty || form.get('appliance_type')?.touched)">
-                  <div *ngIf="form.get('appliance_type')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.APPLIANCE_TYPE_REQUIRED' | translate }}</div>
-                </div>
+            <div class="sm:col-span-3">
+              <label for="appliance-type" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.APPLIANCE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
+              <div class="mt-2">
+                <select id="appliance-type" formControlName="appliance_type" name="appliance-type"
+                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                  required [class.border-red-500]="isFieldInvalid('appliance_type')">
+                  <option value="">{{ 'formProduct.APPLIANCE_TYPE_PLACEHOLDER' | translate }}</option>
+                  <option value="refrigerator">{{ 'formProduct.APPLIANCE_TYPE_REFRIGERATOR' | translate }}</option>
+                  <option value="washer">{{ 'formProduct.APPLIANCE_TYPE_WASHER' | translate }}</option>
+                  <option value="dryer">{{ 'formProduct.APPLIANCE_TYPE_DRYER' | translate }}</option>
+                  <option value="oven">{{ 'formProduct.APPLIANCE_TYPE_OVEN' | translate }}</option>
+                </select>
               </div>
+              <div
+                *ngIf="form.get('appliance_type')?.invalid && (form.get('appliance_type')?.dirty || form.get('appliance_type')?.touched)">
+                <div *ngIf="form.get('appliance_type')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.APPLIANCE_TYPE_REQUIRED' | translate }}</div>
+              </div>
+            </div>
 
 
             <div class="sm:col-span-3">
@@ -196,24 +195,11 @@
               </div>
             </div>
 
-            
-            <div class="sm:col-span-6">
-              <label for="address" class="block text-sm font-medium leading-6 text-gray-900"> {{
-                'formProduct.ADDRESS_LABEL' | translate }} <span class="text-red-500">*</span></label>
-              <div class="mt-2">
-                <input type="text" formControlName="address" id="address" autocomplete="street-address"
-                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('address')" placeholder="{{ 'formProduct.ADDRESS_LABEL' | translate }}">
-              </div>
-              <div *ngIf="form.get('address')?.invalid && (form.get('address')?.dirty || form.get('address')?.touched)">
-                <div *ngIf="form.get('address')?.errors?.['required']" class="text-red-500 text-sm">{{
-                  'formProduct.ADDRESS_REQUIRED' | translate }}</div>
-              </div>
-            </div>
 
 
             <div class="sm:col-span-3">
-              <label for="service-type" class="block text-sm font-medium leading-6 text-gray-900">{{ 'formProduct.SERVICE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
+              <label for="service-type" class="block text-sm font-medium leading-6 text-gray-900">{{
+                'formProduct.SERVICE_TYPE_LABEL' | translate }} <span class="text-red-500">*</span></label>
               <div class="mt-2">
                 <select id="service-type" formControlName="service_type" name="service-type"
                   class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
@@ -223,10 +209,13 @@
                   <option value="maintenance">{{ 'formProduct.SERVICE_TYPE_MAINTENANCE' | translate }}</option>
                 </select>
               </div>
-              <div *ngIf="form.get('service_type')?.invalid && (form.get('service_type')?.dirty || form.get('service_type')?.touched)">
-                <div *ngIf="form.get('service_type')?.errors?.['required']" class="text-red-500 text-sm">{{ 'formProduct.SERVICE_TYPE_REQUIRED' | translate }}</div>
+              <div
+                *ngIf="form.get('service_type')?.invalid && (form.get('service_type')?.dirty || form.get('service_type')?.touched)">
+                <div *ngIf="form.get('service_type')?.errors?.['required']" class="text-red-500 text-sm">{{
+                  'formProduct.SERVICE_TYPE_REQUIRED' | translate }}</div>
               </div>
             </div>
+
 
             <div class="sm:col-span-3">
               <label for="preferred-contact-method" class="block text-sm font-medium leading-6 text-gray-900">{{
@@ -248,22 +237,7 @@
               </div>
             </div>
 
-            <div class="sm:col-span-3">
-              <label for="state" class="block text-sm font-medium leading-6 text-gray-900">{{
-                'formProduct.STATE_PLACEHOLDER' | translate }}<span class="text-red-500">*</span></label>
-              <div class="mt-2">
-                <select id="state" formControlName="state" name="state"
-                  class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                  required [class.border-red-500]="isFieldInvalid('state')">
-                  <option value="">{{ 'formProduct.PROVINCE_PLACEHOLDER' | translate }}</option>
-                  <option *ngFor="let province of provinces" [value]="province">{{ province }}</option>
-                </select>
-              </div>
-              <div *ngIf="form.get('state')?.invalid && (form.get('state')?.dirty || form.get('state')?.touched)">
-                <div *ngIf="form.get('state')?.errors?.['required']" class="text-red-500 text-sm"> {{
-                  'formProduct.STATE_REQUIRED' | translate }}</div>
-              </div>
-            </div>
+
 
 
             <div class="sm:col-span-3" *ngIf="form.get('preferred_contact_method')?.value === 'Celular'">
@@ -287,6 +261,54 @@
         </div>
 
 
+        <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)" style="margin-top: 30px;">
+          <div class="border-b border-gray-900/10 pb-12">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_IMAGE_LABEL' | translate
+              }} <span class="text-red-500">*</span></h3>
+            <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' | translate }}</p>
+            <div class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative"
+              [class.border-red-500]="isFieldInvalid('damaged_appliance_image')">
+
+              <div *ngIf="imageSrc" class="relative">
+                <img [src]="imageSrc" alt="Imagen subida"
+                  class="mt-4 rounded-md w-24 h-24 object-cover border border-gray-300 shadow-sm" />
+                <button type="button" class="absolute top-0 right-0 m-2 bg-red-600 text-white rounded-full p-2 text-xl"
+                  (click)="removeImage()">
+                  <span class="sr-only">{{ 'formProduct.REMOVE_IMAGE' | translate }}</span>
+                  &times;
+                </button>
+                <button type="button" pButton label="Cambiar Imagen" class="btn btn-warning mt-3"
+                  (click)="chooseFile()"></button>
+              </div>
+              <div class="text-center" *ngIf="!imageSrc">
+                <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd"
+                    d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
+                    clip-rule="evenodd" />
+                </svg>
+                <div class="mt-4 flex text-sm text-gray-600">
+                  <label for="damaged-appliance-image"
+                    class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
+                    <span>{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</span>
+                    <input id="damaged-appliance-image" formControlName="damaged_appliance_image" type="file"
+                      class="sr-only" required (change)="getFile($event)">
+                  </label>
+                  <p class="pl-1">{{ 'formProduct.UPLOAD_FILE_INSTRUCTIONS' | translate }}</p>
+                </div>
+                <p class="text-xs text-gray-600">{{ 'formProduct.FILE_FORMATS_ALLOWED' | translate }}</p>
+              </div>
+            </div>
+
+
+            <div
+              *ngIf="form.get('damaged_appliance_image')?.invalid && (form.get('damaged_appliance_image')?.dirty || form.get('damaged_appliance_image')?.touched)">
+              <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']" class="text-red-500 text-sm">{{
+                'formProduct.IMAGE_REQUIRED' | translate }}</div>
+            </div>
+          </div>
+        </div>
+
+
         <div class="mt-6 flex items-center justify-end gap-x-6">
           <button type="button" class="text-sm font-semibold leading-6 text-gray-900">{{ 'formProduct.CANCEL_BUTTON' |
             translate }}</button>
@@ -305,4 +327,3 @@
 <div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
   <app-alert-form (alertClosed)="onAlertClosed()"></app-alert-form>
 </div>
-
