@@ -85,9 +85,7 @@ export class LoginComponent {
   goToHome(): void {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.router.navigate([
-        RoutesConstants.dashboard.replace(':userId', userId),
-      ]);
+      this.router.navigate([RoutesConstants.home]);
     } else {
       this.router.navigate([RoutesConstants.home]);
     }

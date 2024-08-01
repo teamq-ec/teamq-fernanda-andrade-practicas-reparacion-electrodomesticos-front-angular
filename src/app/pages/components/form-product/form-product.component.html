@@ -320,7 +320,8 @@
     </div>
   </div>
 </div>
-<div *ngIf="showAlert" class="fixed inset-0 flex items-center justify-center z-50">
+
+<div *ngIf="showAlert && !isLoggedIn" class="fixed inset-0 flex items-center justify-center z-50">
   <app-alert-login-register></app-alert-login-register>
 </div>
 

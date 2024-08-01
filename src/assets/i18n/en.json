@@ -84,7 +84,8 @@
     "title": "Having trouble with your appliance?",
     "description": "At Appliance Care, we specialize in high-quality appliance maintenance and repair. Our certified technicians resolve any issues so your appliances work like new.",
     "startButton": "Get Started",
-    "brandsTitle": "Some of the brands we service include"
+    "brandsTitle": "Some of the brands we service include",
+     "profileButton": "Get Started"
   },
   "dashboard": {
     "welcomeMessage": "Welcome, {{ userName }} {{ userLastName }} to Appliance Care!",
