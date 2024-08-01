@@ -50,7 +50,7 @@ export class AuthService {
   redirectIfLoggedIn() {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.router.navigate([`/pages/${userId}/home`]);
+      this.router.navigate(['']);
     } else {
       this.router.navigate(['auth/login']);
     }

@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { PROVINCES_ECUADOR } from 'src/app/constants/constants';
 import { ProductConstants } from 'src/app/constants/product.constants';
 import { ValidationConstants } from 'src/app/constants/validation.constants';
-
+import { AuthService } from 'src/app/components/service/auth.service';
 
 @Component({
   selector: 'app-form-product',
@@ -25,11 +25,13 @@ export class FormProductComponent {
   public files: File[] = [];
   public showAlert: boolean = false;
   public showAlertForm: boolean = false;
+  isLoggedIn: boolean = false;
 
   provinces = PROVINCES_ECUADOR;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.form = this.buildForm();
+    this.isLoggedIn = this.authService.isLoggedIn();
   }
 
   private buildForm(): FormGroup {
@@ -46,7 +48,13 @@ export class FormProductComponent {
           Validators.maxLength(ValidationConstants.BRAND_MAX_LENGTH),
         ],
       ],
-      problem_details: ['', [Validators.required, Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH)]],
+      problem_details: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+        ],
+      ],
       address: [
         '',
         [
@@ -161,4 +169,3 @@ export class FormProductComponent {
     this.form.get('damaged_appliance_image')?.reset();
   }
 }
-

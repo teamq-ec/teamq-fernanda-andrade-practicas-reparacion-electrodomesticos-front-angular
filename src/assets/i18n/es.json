@@ -84,7 +84,8 @@
     "title": "¿Problemas con tu electrodoméstico?",
     "description": "En Appliance Care, nos especializamos en mantenimiento y reparación de electrodomésticos de alta calidad. Nuestros técnicos certificados resuelven cualquier problema para que tus electrodomésticos funcionen como nuevos.",
     "startButton": "Empezar",
-    "brandsTitle": "Algunas de las marcas que atendemos incluyen"
+    "brandsTitle": "Algunas de las marcas que atendemos incluyen",
+    "profileButton": "Empezar"
   },
   "dashboard": {
     "welcomeMessage": "¡Bienvenid@, {{ userName }} {{ userLastName }} a Appliance Care!",

@@ -1,4 +1,4 @@
-<header class="absolute inset-x-0 top-0 z-50" style="background-color: azure;">
+<header class="absolute inset-x-0 top-0 z-50" style="background-color: azure;" *ngIf="!userName">
   <nav class="flex items-center justify-between p-4 lg:px-6" aria-label="Global">
     <div class="flex lg:flex-1">
       <a href="#" class="flex items-center -m-1.5 p-1.5">
@@ -7,6 +7,7 @@
         <span class="text-lg font-semibold">Appliance Care</span>
       </a>
     </div>
+
     <div class="flex lg:hidden">
       <button (click)="toggleMenu()" id="menu-button" type="button"
         class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700">
@@ -21,7 +22,6 @@
       <a routerLink="/auth/login" class="text-sm font-semibold leading-6 text-gray-900">{{ 'header.ingresar' | translate
         }}<span aria-hidden="true">&rarr;</span></a>
     </div>
-
 
     <div class="hidden lg:flex lg:ml-8" (clickOutside)="closeMenu()">
       <div class="relative">
@@ -77,3 +77,5 @@
     </div>
   </div>
 </header>
+
+<app-menu *ngIf="userName"></app-menu>
