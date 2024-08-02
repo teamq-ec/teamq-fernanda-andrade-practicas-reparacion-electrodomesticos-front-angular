@@ -87,4 +87,13 @@ export class MenuComponent {
       return [RoutesConstants.home];
     }
   }
+
+  
+  goToPerfil(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.dashboard.replace(':userId', this.userId)];
+    } else {
+      return [RoutesConstants.home];
+    }
+  }
 }
