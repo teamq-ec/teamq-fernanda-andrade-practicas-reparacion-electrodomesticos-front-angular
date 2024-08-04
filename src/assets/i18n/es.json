@@ -80,6 +80,14 @@
     "customer_satisfaction": "Satisfacción del Cliente",
     "rights_reserved": "Todos los derechos reservados."
   },
+ 
+    "modal": {
+      "title": "Ayuda Necesaria",
+      "description": "Para poder ayudarte mejor, necesitamos que tengas una cuenta válida. Inicia sesión o crea una cuenta en solo unos segundos.",
+      "loginButton": "Iniciar sesión",
+      "registerButton": "Registrarse"
+    }
+ ,
   "home": {
     "title": "¿Problemas con tu electrodoméstico?",
     "description": "En Appliance Care, nos especializamos en mantenimiento y reparación de electrodomésticos de alta calidad. Nuestros técnicos certificados resuelven cualquier problema para que tus electrodomésticos funcionen como nuevos.",

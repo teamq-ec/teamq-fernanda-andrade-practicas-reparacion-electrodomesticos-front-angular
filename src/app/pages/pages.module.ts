@@ -11,7 +11,6 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [
     CommonModule,
     PagesRoutingModule,
-    FormProductModule,
     TranslateModule,
   ],
 })

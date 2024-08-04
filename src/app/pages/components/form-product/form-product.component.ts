@@ -63,7 +63,7 @@ export class FormProductComponent {
           Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
-      service_type: ['', [Validators.required]],
+      service_type: [],
       preferred_contact_method: ['', [Validators.required]],
       phone_number: [],
       damaged_appliance_image: [null, Validators.required],

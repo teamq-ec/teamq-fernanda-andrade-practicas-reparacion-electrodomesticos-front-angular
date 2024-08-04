@@ -80,6 +80,12 @@
     "customer_satisfaction": "Customer Satisfaction",
     "rights_reserved": "All rights reserved."
   },
+  "modal": {
+    "title": "Help Needed",
+    "description": "To assist you better, we need you to have a valid account. Log in or create an account in just a few seconds.",
+    "loginButton": "Log In",
+    "registerButton": "Register"
+  },
   "home": {
     "title": "Having trouble with your appliance?",
     "description": "At Appliance Care, we specialize in high-quality appliance maintenance and repair. Our certified technicians resolve any issues so your appliances work like new.",

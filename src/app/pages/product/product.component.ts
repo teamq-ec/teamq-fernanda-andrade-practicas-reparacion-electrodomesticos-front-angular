@@ -60,6 +60,7 @@ export class ProductComponent {
     this.applianceService
       .getUserAppliances(this.userId!, page)
       .subscribe((response) => {
+        console.log(response)
         this.appliances = response.data;
         this.currentPage = response.meta.current_page;
         this.totalPages = response.meta.last_page;
