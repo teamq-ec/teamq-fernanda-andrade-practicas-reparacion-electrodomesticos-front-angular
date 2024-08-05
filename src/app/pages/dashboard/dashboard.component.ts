@@ -19,12 +19,4 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.isLoggedIn = this.authService.isLoggedIn();
   }
-
-  goToHome(): string[] {
-    if (this.userId) {
-      return [RoutesConstants.dashboard.replace(':userId', this.userId)];
-    } else {
-      return [RoutesConstants.home];
-    }
-  }
 }
