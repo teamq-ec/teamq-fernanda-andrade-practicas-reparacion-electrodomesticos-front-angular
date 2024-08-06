@@ -153,6 +153,11 @@ export class ApplianceRegistrationComponent implements OnInit {
 
   onAlertClosed(): void {
     this.showAlert = false;
+    this.form.reset();
+  }
+
+  onAlertFormClosed(): void {
+    this.showAlertForm = false;
   }
 
   private handleFile(file: File): void {
