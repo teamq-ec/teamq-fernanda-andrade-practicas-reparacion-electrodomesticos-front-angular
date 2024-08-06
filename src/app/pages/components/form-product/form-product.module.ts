@@ -7,6 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AlertLoginRegisterModule } from 'src/app/components/auth/components/alert-login-register/alert-login-register.module';
 import { AlertFormModule } from '../alert-form/alert-form.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { AlertConfirmationModule } from '../alert-confirmation/alert-confirmation.module';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { TranslateModule } from '@ngx-translate/core';
     ReactiveFormsModule,
     AlertLoginRegisterModule,
     AlertFormModule,
-    TranslateModule
+    TranslateModule,
+    AlertConfirmationModule,
   ],
   exports: [FormProductComponent] 
 })

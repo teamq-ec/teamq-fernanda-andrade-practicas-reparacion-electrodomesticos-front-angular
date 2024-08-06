@@ -1,4 +1,4 @@
-<header class="bg-white shadow">
+<header class="bg-white shadow z-20">
   <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
     <div class="flex lg:flex-1">
       <a [routerLink]="goToHome()" class="-m-1.5 p-1.5">
@@ -24,8 +24,7 @@
         'header.seguimiento_productos' | translate }}</a>
     </div>
 
-
-    <div class="hidden lg:flex lg:ml-8" (clickOutside)="closeMenu()">
+    <div class="hidden lg:flex lg:ml-8">
       <div class="relative">
         <button (click)="toggleMenuI()"
           class="flex items-center text-gray-700 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-800">
@@ -33,7 +32,7 @@
             class="block h-auto w-5 flex-shrink-0 rounded-full">
           <span class="ml-3 block text-sm font-medium">{{ currentLanguage.toUpperCase() }}</span>
         </button>
-        <div *ngIf="showMenuI" class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <div *ngIf="showMenuI" class="absolute right-0 mt-2 w-32 bg-white border border-gray-200 rounded-lg shadow-lg z-40">
           <a href="#" (click)="changeLanguage('en', $event)"
             class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100">
             <img [src]="getFlagUrl('en')" alt="English" class="block h-auto w-5 flex-shrink-0 rounded-full">
@@ -58,7 +57,7 @@
         <span class="sr-only">{{ 'header.abrir_menu_usuario' | translate }}</span>
         <img class="h-8 w-8 rounded-full" [src]="avatar" alt="{{ 'header.imagen_clickeable' | translate }}">
       </button>
-      <div *ngIf="showMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg"
+      <div *ngIf="showMenu" class="absolute right-0 mt-2 w-48 bg-white border border-gray-200 rounded-lg shadow-lg z-40"
         style="margin-top: 140px;">
         <a [routerLink]="goToPerfil()" href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">{{ 'header.perfil' | translate
           }}</a>
@@ -66,6 +65,5 @@
           'header.cerrar_sesion' | translate }}</a>
       </div>
     </div>
-
   </nav>
 </header>

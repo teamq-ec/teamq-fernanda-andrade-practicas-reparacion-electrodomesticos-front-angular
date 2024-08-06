@@ -10,6 +10,7 @@ import { ApplianceRegistrationComponent } from './appliance-registration.compone
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertFormModule } from '../components/alert-form/alert-form.module';
 import { AlertConfirmationModule } from '../components/alert-confirmation/alert-confirmation.module';
+import { AlertLoginRegisterModule } from 'src/app/components/auth/components/alert-login-register/alert-login-register.module';
 
 @NgModule({
   declarations: [ApplianceRegistrationComponent],
@@ -21,7 +22,9 @@ import { AlertConfirmationModule } from '../components/alert-confirmation/alert-
     FooterModule,
     TranslateModule,
     AlertConfirmationModule,
+    AlertLoginRegisterModule,
+    AlertFormModule
   ],
-  exports: [],
+  exports: [ApplianceRegistrationComponent],
 })
 export class ApplianceRegistrationModule {}

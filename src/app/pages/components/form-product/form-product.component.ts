@@ -32,6 +32,7 @@ export class FormProductComponent {
   constructor(private authService: AuthService) {
     this.form = this.buildForm();
     this.isLoggedIn = this.authService.isLoggedIn();
+    this.form.patchValue(JSON.parse(localStorage.getItem('user') || '{}'));
   }
 
   private buildForm(): FormGroup {
@@ -63,7 +64,6 @@ export class FormProductComponent {
           Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
-      service_type: [],
       preferred_contact_method: ['', [Validators.required]],
       phone_number: [],
       damaged_appliance_image: [null, Validators.required],

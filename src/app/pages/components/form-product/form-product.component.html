@@ -222,49 +222,38 @@
                 </div>
               </div>
               <div class="space-y-6">
-                <div class="space-y-12" (drop)="onDrop($event)" (dragover)="onDragOver($event)"
-                  style="margin-top: 30px;">
-                  <div class=" pb-12">
-                    <h3 class="text-lg font-medium leading-6 text-gray-900">{{ 'formProduct.APPLIANCE_IMAGE_LABEL' |
-                      translate
-                      }} <span class="text-red-500">*</span></h3>
-                    <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' | translate }}
-                    </p>
-                    <div
-                      class="mt-4 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10 relative"
-                      [class.border-red-500]="isFieldInvalid('damaged_appliance_image')">
-                      <div class="text-center" *ngIf="!imageSrc">
-                        <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor"
-                          aria-hidden="true">
-                          <path fill-rule="evenodd"
-                            d="M1.5 6a2.25 2.25 0 012.25-2.25h16.5A2.25 2.25 0 0122.5 6v12a2.25 2.25 0 01-2.25 2.25H3.75A2.25 2.25 0 011.5 18V6zM3 16.06V18c0 .414.336.75.75.75h16.5A.75.75 0 0021 18v-1.94l-2.69-2.689a1.5 1.5 0 00-2.12 0l-.88.879.97.97a.75.75 0 11-1.06 1.06l-5.16-5.159a1.5 1.5 0 00-2.12 0L3 16.061zm10.125-7.81a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0z"
-                            clip-rule="evenodd" />
-                        </svg>
-                        <div class="mt-4 flex text-sm text-gray-600">
-                          <label for="damaged-appliance-image"
-                            class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 hover:text-indigo-500">
-                            <span>{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}</span>
-                            <input id="damaged-appliance-image" formControlName="damaged_appliance_image" type="file"
-                              class="sr-only" required (change)="getFile($event)">
-                          </label>
-                          <p class="pl-1">{{ 'formProduct.UPLOAD_FILE_INSTRUCTIONS' | translate }}</p>
+                <div class="space-y-6">
+                  <h3 class="text-lg font-medium leading-6 text-gray-900">{{
+                    'formProduct.APPLIANCE_IMAGE_LABEL' | translate
+                    }} <span class="text-red-500">*</span></h3>
+                  <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' |
+                    translate }}</p>
+                  <div class="image-upload">
+                    <div class="upload-area" *ngIf="!imageSrc">
+                      <label for="image-upload" class="image-upload-label">
+                        <div class="image-upload-placeholder">
+                          <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <path d="M13 3h-2v6H7l5 5 5-5h-4V3z"></path>
+                          </svg>
+                          <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' | translate }}
+                          </p>
                         </div>
-                        <p class="text-xs text-gray-600">{{ 'formProduct.FILE_FORMATS_ALLOWED' | translate }}</p>
-                      </div>
-                      <div *ngIf="imageSrc" class="image-preview">
-                        <img [src]="imageSrc" alt="Imagen cargada" />
-                        <button type="button" class="remove-image" (click)="removeImage()">×</button>
-                      </div>
+                        <input id="image-upload" type="file" accept="image/*" (change)="onFileChange($event)" />
+                      </label>
                     </div>
-                    <div
-                      *ngIf="form.get('damaged_appliance_image')?.invalid && (form.get('damaged_appliance_image')?.dirty || form.get('damaged_appliance_image')?.touched)">
-                      <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']"
-                        class="text-red-500 text-sm">{{
-                        'formProduct.IMAGE_REQUIRED' | translate }}</div>
+                    <div *ngIf="imageSrc" class="image-preview">
+                      <img [src]="imageSrc" alt="Imagen cargada" />
+                      <button type="button" class="remove-image" (click)="removeImage()">×</button>
                     </div>
                   </div>
                 </div>
+                <div
+                  *ngIf="form.get('damaged_appliance_image')?.invalid && (form.get('damaged_appliance_image')?.dirty || form.get('damaged_appliance_image')?.touched)">
+                  <div *ngIf="form.get('damaged_appliance_image')?.errors?.['required']" class="text-red-500 text-sm">{{
+                    'formProduct.IMAGE_REQUIRED' | translate }}</div>
+                </div>
               </div>
+
             </div>
             <div class="mt-6 flex items-center justify-end gap-x-6">
               <button type="button" class="text-sm font-semibold leading-6 text-gray-900">{{ 'formProduct.CANCEL_BUTTON'
@@ -281,10 +270,14 @@
   </div>
 </div>
 
-<div *ngIf="showAlert && !isLoggedIn" class="fixed inset-0 flex items-center justify-center z-50">
+<div *ngIf="showAlert " class="fixed inset-0 flex items-center justify-center z-50">
   <app-alert-login-register></app-alert-login-register>
 </div>
 
 <div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
   <app-alert-form (alertClosed)="onAlertClosed()"></app-alert-form>
+</div>
+
+<div *ngIf="showAlert" class="fixed inset-0 flex items-center justify-center z-50">
+  <app-alert-confirmation (alertClosed)="onAlertClosed()"></app-alert-confirmation>
 </div>
