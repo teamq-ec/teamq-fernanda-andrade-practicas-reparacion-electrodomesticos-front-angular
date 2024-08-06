@@ -287,5 +287,12 @@
   "payment_form_phone": "Teléfono",
   "payment_form_card": "Tarjeta",
   "payment_form_amount": "Monto a Pagar",
-  "thank_you": "Gracias por su compra."
+  "thank_you": "Gracias por su compra.",
+  "maintenanceTitle": "Tus Mantenimientos",
+  "registerProduct": "Registrar Producto",
+  "productInfo": "Información del Producto",
+  "problem": "Problema:",
+  "service": "Servicio: reparación",
+  "contact": "Contacto:",
+  "date": "Fecha:"
 }
