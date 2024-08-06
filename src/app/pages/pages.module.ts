@@ -5,9 +5,11 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { FormProductModule } from './components/form-product/form-product.module';
 
 import { TranslateModule } from '@ngx-translate/core';
+import { CarruselComponent } from './components/carrusel/carrusel.component';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     PagesRoutingModule,

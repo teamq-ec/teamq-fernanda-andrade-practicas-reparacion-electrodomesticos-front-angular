@@ -48,6 +48,8 @@ export class MenuComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
     localStorage.removeItem('userLastName');
+    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
     this.router.navigate(['']).then(() => {
       window.location.reload();
     });
