@@ -72,7 +72,6 @@ export class ApplianceRegistrationComponent implements OnInit {
       appliance_type: ['', [Validators.required]],
       preferred_contact_method: ['', [Validators.required]],
       damaged_appliance_image: [null],
-      application_date: [''],
       phone_number: [],
       state: [
         '',
@@ -129,7 +128,6 @@ export class ApplianceRegistrationComponent implements OnInit {
       );
     }
 
-    formData.append('application_date', this.form.value.application_date);
 
     this.productService.registerProduct(formData).subscribe({
       next: (response) => {

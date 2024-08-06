@@ -25,34 +25,6 @@
                         <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-6">
                             <div class="space-y-6" style="margin-left: 30px;">
                                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
-                                    <!-- Last Name Field -->
-                                    <div class="sm:col-span-1">
-                                        <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">
-                                            {{ 'formProduct.LAST_NAME_LABEL' | translate }}<span class="text-red-500">*</span>
-                                        </label>
-                                        <div class="mt-1">
-                                            <input id="last_name" formControlName="last_name" name="last_name" type="text"
-                                                autocomplete="last_name" required
-                                                [class.border-red-500]="isFieldInvalid('last_name')"
-                                                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                                placeholder="{{ 'formProduct.LAST_NAME_LABEL' | translate }}">
-                                        </div>
-                                        <div *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
-                                            <div *ngIf="form.get('last_name')?.errors?.['required']"
-                                                class="text-red-500 text-sm">
-                                                {{ 'formProduct.LAST_NAME_REQUIRED' | translate }}
-                                            </div>
-                                            <div *ngIf="form.get('last_name')?.errors?.['minlength']"
-                                                class="text-red-500 text-sm">
-                                                {{ 'formProduct.LAST_NAME_MINLENGTH' | translate }}
-                                            </div>
-                                            <div *ngIf="form.get('last_name')?.errors?.['maxlength']"
-                                                class="text-red-500 text-sm">
-                                                {{ 'formProduct.LAST_NAME_MAXLENGTH' | translate }}
-                                            </div>
-                                        </div>
-                                    </div>
-                                
                                     <!-- First Name Field -->
                                     <div class="sm:col-span-1">
                                         <label for="first_name" class="block text-sm font-medium leading-6 text-gray-900">
@@ -77,6 +49,34 @@
                                             <div *ngIf="form.get('first_name')?.errors?.['maxlength']"
                                                 class="text-red-500 text-sm">
                                                 {{ 'formProduct.FIRST_NAME_MAXLENGTH' | translate }}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                     <!-- Last Name Field -->
+                                     <div class="sm:col-span-1">
+                                        <label for="last_name" class="block text-sm font-medium leading-6 text-gray-900">
+                                            {{ 'formProduct.LAST_NAME_LABEL' | translate }}<span class="text-red-500">*</span>
+                                        </label>
+                                        <div class="mt-1">
+                                            <input id="last_name" formControlName="last_name" name="last_name" type="text"
+                                                autocomplete="last_name" required
+                                                [class.border-red-500]="isFieldInvalid('last_name')"
+                                                class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+                                                placeholder="{{ 'formProduct.LAST_NAME_LABEL' | translate }}">
+                                        </div>
+                                        <div *ngIf="form.get('last_name')?.invalid && (form.get('last_name')?.dirty || form.get('last_name')?.touched)">
+                                            <div *ngIf="form.get('last_name')?.errors?.['required']"
+                                                class="text-red-500 text-sm">
+                                                {{ 'formProduct.LAST_NAME_REQUIRED' | translate }}
+                                            </div>
+                                            <div *ngIf="form.get('last_name')?.errors?.['minlength']"
+                                                class="text-red-500 text-sm">
+                                                {{ 'formProduct.LAST_NAME_MINLENGTH' | translate }}
+                                            </div>
+                                            <div *ngIf="form.get('last_name')?.errors?.['maxlength']"
+                                                class="text-red-500 text-sm">
+                                                {{ 'formProduct.LAST_NAME_MAXLENGTH' | translate }}
                                             </div>
                                         </div>
                                     </div>
@@ -194,36 +194,6 @@
 
 
                             <div class="space-y-6" style="margin-right: 30px;">
-                                <div class="sm:col-span-6">
-                                    <h3 class="text-lg font-medium leading-6 text-gray-900">{{
-                                        'formProduct.APPLIANCE_IMAGE_LABEL' | translate
-                                        }} <span class="text-red-500">*</span></h3>
-                                    <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' |
-                                        translate }}</p>
-                                    <div class="image-upload">
-                                        <div class="upload-area" *ngIf="!imageSrc">
-                                            <label for="image-upload" class="image-upload-label">
-                                                <div class="image-upload-placeholder">
-                                                    <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor"
-                                                        aria-hidden="true">
-                                                        <path d="M13 3h-2v6H7l5 5 5-5h-4V3z"></path>
-                                                    </svg>
-                                                    <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' |
-                                                        translate }}
-                                                    </p>
-                                                </div>
-                                                <input id="image-upload" type="file" accept="image/*"
-                                                    (change)="onFileChange($event)" />
-                                            </label>
-                                        </div>
-                                        <div *ngIf="imageSrc" class="image-preview">
-                                            <img [src]="imageSrc" alt="Imagen cargada" />
-                                            <button type="button" class="remove-image"
-                                                (click)="removeImage()">×</button>
-                                        </div>
-                                    </div>
-                                </div>
-
                                 <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
                                     <!-- Appliance Type Field -->
                                     <div class="sm:col-span-1">
@@ -304,24 +274,33 @@
                                             'formProduct.PROBLEM_DETAILS_REQUIRED' | translate }}</div>
                                     </div>
                                 </div>
+
                                 <div class="sm:col-span-6">
-                                    <label for="application_date"
-                                        class="block text-sm font-medium leading-6 text-gray-900">
-                                        {{ 'formProduct.APPLICATION_DATE_LABEL' | translate }}<span
-                                            class="text-red-500">*</span>
-                                    </label>
-                                    <div class="mt-1">
-                                        <input id="application_date" formControlName="application_date"
-                                            name="application_date" type="date" autocomplete="application_date" required
-                                            [class.border-red-500]="isFieldInvalid('application_date')"
-                                            class="block w-full px-3 py-2 placeholder-gray-400 border rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
-                                            placeholder="{{ 'formProduct.APPLICATION_DATE_LABEL' | translate }}">
-                                    </div>
-                                    <div
-                                        *ngIf="form.get('application_date')?.invalid && (form.get('application_date')?.dirty || form.get('application_date')?.touched)">
-                                        <div *ngIf="form.get('application_date')?.errors?.['required']"
-                                            class="text-red-500 text-sm">
-                                            {{ 'formProduct.APPLICATION_DATE_REQUIRED' | translate }}
+                                    <h3 class="text-lg font-medium leading-6 text-gray-900">{{
+                                        'formProduct.APPLIANCE_IMAGE_LABEL' | translate
+                                        }} <span class="text-red-500">*</span></h3>
+                                    <p class="mt-2 text-sm text-gray-600">{{ 'formProduct.APPLIANCE_IMAGE_DESCRIPTION' |
+                                        translate }}</p>
+                                    <div class="image-upload">
+                                        <div class="upload-area" *ngIf="!imageSrc">
+                                            <label for="image-upload" class="image-upload-label">
+                                                <div class="image-upload-placeholder">
+                                                    <svg class="upload-icon" viewBox="0 0 24 24" fill="currentColor"
+                                                        aria-hidden="true">
+                                                        <path d="M13 3h-2v6H7l5 5 5-5h-4V3z"></path>
+                                                    </svg>
+                                                    <p class="upload-text">{{ 'formProduct.UPLOAD_FILE_LABEL' |
+                                                        translate }}
+                                                    </p>
+                                                </div>
+                                                <input id="image-upload" type="file" accept="image/*"
+                                                    (change)="onFileChange($event)" />
+                                            </label>
+                                        </div>
+                                        <div *ngIf="imageSrc" class="image-preview">
+                                            <img [src]="imageSrc" alt="Imagen cargada" />
+                                            <button type="button" class="remove-image"
+                                                (click)="removeImage()">×</button>
                                         </div>
                                     </div>
                                 </div>
@@ -350,7 +329,7 @@
       <div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
         <app-alert-form (alertClosed)="onAlertFormClosed()"></app-alert-form>
       </div>
-      
+
       <div *ngIf="showAlertLogin" class="fixed inset-0 flex items-center justify-center z-50">
         <app-alert-login-register></app-alert-login-register>
       </div>
