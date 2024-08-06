@@ -348,7 +348,7 @@
       </div>
       
       <div *ngIf="showAlertForm" class="fixed inset-0 flex items-center justify-center z-50">
-        <app-alert-form></app-alert-form>
+        <app-alert-form (alertClosed)="onAlertFormClosed()"></app-alert-form>
       </div>
       
       <div *ngIf="showAlertLogin" class="fixed inset-0 flex items-center justify-center z-50">
