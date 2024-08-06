@@ -285,5 +285,12 @@
   "VISA": "Visa",
   "MASTERCARD": "MasterCard",
   "AMERICAN_EXPRESS": "American Express",
-  "DISCOVER": "Discover"
+  "DISCOVER": "Discover",
+  "maintenanceTitle": "Your Maintenances",
+  "registerProduct": "Register Product",
+  "productInfo": "Product Information",
+  "problem": "Problem:",
+  "service": "Service: repair",
+  "contact": "Contact:",
+  "date": "Date:"
 }
