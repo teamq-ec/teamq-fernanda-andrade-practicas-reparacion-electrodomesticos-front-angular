@@ -10,12 +10,12 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
-import { MenuModule } from './pages/components/menu/menu.module';
-import { FooterModule } from './pages/components/footer/footer.module';
+
 
 import { HomeModule } from './pages/home/home.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
 import { PaymentModule } from './pages/payment/payment.module';
+import { ProductModule } from './pages/product/product.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -29,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HomeModule,
     DashboardModule,
+    ProductModule,
     PaymentModule,
     ReactiveFormsModule,
     HttpClientModule,

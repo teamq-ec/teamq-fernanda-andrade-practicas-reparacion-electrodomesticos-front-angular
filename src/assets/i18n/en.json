@@ -291,6 +291,18 @@
   "productInfo": "Product Information",
   "problem": "Problem:",
   "service": "Service: repair",
-  "contact": "Contact:",
-  "date": "Date:"
-}
+  "contact": "Contact",
+  "date": "Date:",
+   "repairi":"In repair",
+   "address_time": "Address and Time",
+   "collection": "Collection",
+   "collection_details": "The order was collected at {{ product?.collection_address }}-{{ product?.application_date }} at 10:00 am.",
+   "diagnosis": "Diagnosis",
+   "diagnosis_details": "The technician will perform an initial evaluation of the appliance.",
+   "repair": "Repair",
+   "repair_details": "Necessary repairs are carried out and defective parts are replaced.",
+   "delivery": "Delivery",
+   "delivery_details": "The repaired appliance is delivered to the customer's address.",
+   "completion": "Completion",
+   "completion_details": "A final inspection is carried out to ensure the appliance is functioning correctly."
+ }

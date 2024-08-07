@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ImageConstants } from 'src/app/constants/images.constants';
 import { PaginationConstants } from 'src/app/constants/pagination.constants';
 import { ProductConstants } from 'src/app/constants/product.constants';
@@ -15,6 +15,7 @@ export class HomeComponent {
   private readonly applianceService: ApplianceServiceService = inject(
     ApplianceServiceService
   );
+  private readonly router: Router = inject(Router);
 
   userName: string | null = '';
   userLastName: string | null = '';
@@ -28,13 +29,11 @@ export class HomeComponent {
   initialPage = ProductConstants.INITIAL_PAGE;
   initialTotalPages = ProductConstants.INITIAL_TOTAL_PAGES;
   initialTotalItems = ProductConstants.INITIAL_TOTAL_ITEMS;
-  
+
   currentPage: number = this.initialPage;
   totalPages: number = this.initialTotalPages;
   totalItems: number = this.initialTotalItems;
   PaginationConstants = PaginationConstants;
-
-
 
   constructor(private activatedRoute: ActivatedRoute) {
     this.homepages = ImageConstants.homepages;
@@ -54,7 +53,7 @@ export class HomeComponent {
         this.totalPages = response.meta.last_page;
         this.totalItems = response.meta.total;
       });
-}
+  }
   toggleMenu(): void {
     this.isOpen = !this.isOpen;
   }
@@ -67,11 +66,7 @@ export class HomeComponent {
     }
   }
 
-  goProduct(): string[] {
-    if (this.userId) {
-      return [RoutesConstants.product.replace(':userId', this.userId)];
-    } else {
-      return [RoutesConstants.home];
-    }
+  navigateToProduct(userId: number, productId: number): void {
+    this.router.navigate([`/pages/${userId}/product/${productId}`]);
   }
 }
