@@ -15,10 +15,6 @@ import { FooterModule } from './pages/components/footer/footer.module';
 
 import { HomeModule } from './pages/home/home.module';
 import { DashboardModule } from './pages/dashboard/dashboard.module';
-import { ApplianceRegistrationModule } from './pages/appliance-registration/appliance-registration.module';
-import { AlertConfirmationModule } from './pages/components/alert-confirmation/alert-confirmation.module';
-import { ProductModule } from './pages/product/product.module';
-import { ModalProductModule } from './pages/components/modal-product/modal-product.module';
 import { PaymentModule } from './pages/payment/payment.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -33,7 +29,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppRoutingModule,
     HomeModule,
     DashboardModule,
-    ProductModule,
     PaymentModule,
     ReactiveFormsModule,
     HttpClientModule,

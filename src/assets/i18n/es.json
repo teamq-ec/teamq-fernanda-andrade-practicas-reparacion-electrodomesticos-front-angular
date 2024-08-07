@@ -1,4 +1,5 @@
 {
+  "title": "Appliance Care",
   "login": {
     "title": "Iniciar sesión en su cuenta",
     "emailLabel": "Dirección de correo electrónico",
@@ -80,11 +81,20 @@
     "customer_satisfaction": "Satisfacción del Cliente",
     "rights_reserved": "Todos los derechos reservados."
   },
+ 
+    "modal": {
+      "title": "Ayuda Necesaria",
+      "description": "Para poder ayudarte mejor, necesitamos que tengas una cuenta válida. Inicia sesión o crea una cuenta en solo unos segundos.",
+      "loginButton": "Iniciar sesión",
+      "registerButton": "Registrarse"
+    }
+ ,
   "home": {
     "title": "¿Problemas con tu electrodoméstico?",
     "description": "En Appliance Care, nos especializamos en mantenimiento y reparación de electrodomésticos de alta calidad. Nuestros técnicos certificados resuelven cualquier problema para que tus electrodomésticos funcionen como nuevos.",
     "startButton": "Empezar",
-    "brandsTitle": "Algunas de las marcas que atendemos incluyen"
+    "brandsTitle": "Algunas de las marcas que atendemos incluyen",
+    "profileButton": "Empezar"
   },
   "dashboard": {
     "welcomeMessage": "¡Bienvenid@, {{ userName }} {{ userLastName }} a Appliance Care!",
@@ -278,5 +288,12 @@
   "payment_form_phone": "Teléfono",
   "payment_form_card": "Tarjeta",
   "payment_form_amount": "Monto a Pagar",
-  "thank_you": "Gracias por su compra."
+  "thank_you": "Gracias por su compra.",
+  "maintenanceTitle": "Tus Mantenimientos",
+  "registerProduct": "Registrar Producto",
+  "productInfo": "Información del Producto",
+  "problem": "Problema:",
+  "service": "Servicio: reparación",
+  "contact": "Contacto:",
+  "date": "Fecha:"
 }

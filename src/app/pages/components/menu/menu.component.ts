@@ -48,7 +48,11 @@ export class MenuComponent {
     localStorage.removeItem('token');
     localStorage.removeItem('userName');
     localStorage.removeItem('userLastName');
-    this.router.navigate(['']);
+    localStorage.removeItem('user');
+    localStorage.removeItem('userId');
+    this.router.navigate(['']).then(() => {
+      window.location.reload();
+    });
   }
 
   changeLanguage(language: 'en' | 'es', event: Event): void {
@@ -79,6 +83,14 @@ export class MenuComponent {
   }
 
   goToHome(): string[] {
+    if (this.userId) {
+      return [RoutesConstants.home];
+    } else {
+      return [RoutesConstants.home];
+    }
+  }
+
+  goToPerfil(): string[] {
     if (this.userId) {
       return [RoutesConstants.dashboard.replace(':userId', this.userId)];
     } else {

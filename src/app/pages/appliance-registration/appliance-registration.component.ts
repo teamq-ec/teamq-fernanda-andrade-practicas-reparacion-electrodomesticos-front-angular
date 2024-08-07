@@ -22,6 +22,7 @@ export class ApplianceRegistrationComponent implements OnInit {
 
   public showAlert: boolean = false;
   public showAlertForm: boolean = false;
+  showAlertLogin: boolean = false;
 
   provinces = PROVINCES_ECUADOR;
   userId: string | null = null;
@@ -36,12 +37,15 @@ export class ApplianceRegistrationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = this.route.snapshot.paramMap.get('userId');
+    this.userId = localStorage.getItem('userId');
+    this.form.patchValue(JSON.parse(localStorage.getItem('user') || '{}'));
   }
 
   private buildForm(): FormGroup {
     return this.formBuilder.group({
-      appliance_type: ['', [Validators.required]],
+      first_name: ['', [Validators.required]],
+      last_name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
       brand: [
         '',
         [
@@ -50,7 +54,13 @@ export class ApplianceRegistrationComponent implements OnInit {
           Validators.maxLength(ValidationConstants.BRAND_MAX_LENGTH),
         ],
       ],
-      problem_details: ['', [Validators.required, Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH)]],
+      problem_details: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+        ],
+      ],
       address: [
         '',
         [
@@ -59,10 +69,18 @@ export class ApplianceRegistrationComponent implements OnInit {
           Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
         ],
       ],
-      service_type: ['', [Validators.required]],
+      appliance_type: ['', [Validators.required]],
       preferred_contact_method: ['', [Validators.required]],
       damaged_appliance_image: [null],
-      application_date: [''],
+      phone_number: [],
+      state: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(ValidationConstants.BRAND_MIN_LENGTH),
+          Validators.maxLength(ValidationConstants.ADDRESSS_MAX_LENGTH),
+        ],
+      ],
     });
   }
 
@@ -76,6 +94,12 @@ export class ApplianceRegistrationComponent implements OnInit {
   }
 
   public onSubmit(): void {
+    if (!this.userId) {
+      this.showAlert = false;
+      this.showAlertForm = false;
+      this.showAlertLogin = true;
+      return;
+    }
     if (this.form.invalid) {
       this.showAlertForm = true;
       Object.keys(this.form.controls).forEach((key) => {
@@ -90,7 +114,7 @@ export class ApplianceRegistrationComponent implements OnInit {
     formData.append('brand', this.form.value.brand);
     formData.append('problem_details', this.form.value.problem_details);
     formData.append('collection_address', this.form.value.address);
-    formData.append('service_type', this.form.value.service_type);
+
     formData.append(
       'preferred_contact_method',
       this.form.value.preferred_contact_method
@@ -104,11 +128,15 @@ export class ApplianceRegistrationComponent implements OnInit {
       );
     }
 
-    formData.append('application_date', this.form.value.application_date);
 
     this.productService.registerProduct(formData).subscribe({
       next: (response) => {
+        this.showAlertForm = false;
         this.showAlert = true;
+      },
+      error: () => {
+        this.showAlertForm = false;
+        this.showAlert = false;
       },
     });
   }
@@ -123,6 +151,11 @@ export class ApplianceRegistrationComponent implements OnInit {
 
   onAlertClosed(): void {
     this.showAlert = false;
+    this.form.reset();
+  }
+
+  onAlertFormClosed(): void {
+    this.showAlertForm = false;
   }
 
   private handleFile(file: File): void {

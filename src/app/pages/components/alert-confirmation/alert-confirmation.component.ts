@@ -19,9 +19,9 @@ export class AlertConfirmationComponent {
     }
   }
 
+  @Output() alertClosed = new EventEmitter<void>();
+
   closeAlert(): void {
-    if (this.userId) {
-      this.router.navigate(['/pages', this.userId, 'product']);
-    }
+    this.alertClosed.emit();
   }
 }

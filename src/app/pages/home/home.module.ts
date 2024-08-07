@@ -5,17 +5,18 @@ import { HomeComponent } from './home.component';
 import { MenuModule } from '../components/menu/menu.module';
 import { FooterModule } from '../components/footer/footer.module';
 import { TranslateModule } from '@ngx-translate/core';
-
+import { MobilMenuModule } from '../components/mobil-menu/mobil-menu.module';
 
 @NgModule({
   declarations: [HomeComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     HomeRoutingModule,
     MenuModule,
     FooterModule,
-    TranslateModule
+    TranslateModule,
+    MobilMenuModule,
   ],
-  exports: [HomeComponent] 
+  exports: [HomeComponent],
 })
 export class HomeModule {}

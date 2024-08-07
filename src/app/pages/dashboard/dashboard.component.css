@@ -1,5 +1,14 @@
-body {
-    background: linear-gradient(to right, rgba(0, 0, 255, 0.5), rgba(255, 255, 0, 0.5));
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
+.mx-auto {
+    width: 100%;
+  }
+  
+  .max-w-2xl {
+    max-width: 100%;
+  }
+  
+  .py-16,
+  .sm\:py-24,
+  .lg\:py-32 {
+    padding: 0;
+  }
+  

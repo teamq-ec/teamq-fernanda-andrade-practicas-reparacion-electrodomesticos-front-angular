@@ -56,6 +56,9 @@ export class LoginComponent {
           localStorage.setItem('userName', response.user.first_name);
           localStorage.setItem('userLastName', response.user.last_name);
           localStorage.setItem('userId', response.user.id.toString());
+          if (response.user) {
+            localStorage.setItem('user', JSON.stringify(response.user));
+          }
           this.goToHome();
         },
         (error) => {
@@ -85,9 +88,7 @@ export class LoginComponent {
   goToHome(): void {
     const userId = localStorage.getItem('userId');
     if (userId) {
-      this.router.navigate([
-        RoutesConstants.dashboard.replace(':userId', userId),
-      ]);
+      this.router.navigate([RoutesConstants.home]);
     } else {
       this.router.navigate([RoutesConstants.home]);
     }

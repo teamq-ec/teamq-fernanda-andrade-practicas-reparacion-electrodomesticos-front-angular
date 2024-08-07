@@ -4,9 +4,10 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
 import { FooterModule } from '../components/footer/footer.module';
-import { FormProductModule } from '../components/form-product/form-product.module';
 import { HeaderModule } from '../components/header/header.module';
 import { TranslateModule } from '@ngx-translate/core';
+import { CarruselModule } from "../components/carrusel/carrusel.module";
+import { ApplianceRegistrationModule } from '../appliance-registration/appliance-registration.module';
 
 
 @NgModule({
@@ -15,10 +16,11 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     DashboardRoutingModule,
     FooterModule,
-    FormProductModule,
     HeaderModule,
-    TranslateModule
-  ],
+    TranslateModule,
+    CarruselModule,
+    ApplianceRegistrationModule
+],
   exports: [DashboardComponent] 
 })
 export class DashboardModule { }
