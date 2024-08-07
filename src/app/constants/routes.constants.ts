@@ -4,6 +4,6 @@ export const RoutesConstants = {
   home: '',
   dashboard: '/pages/:userId/home',
   form: '/pages/:userId/form',
-  product: '/pages/:userId/product',
-  payment: '/pages/:userId/payment/:id',
+  //product: '/pages/:userId/product',
+  product: '/pages/:userId/product/:id',
 };

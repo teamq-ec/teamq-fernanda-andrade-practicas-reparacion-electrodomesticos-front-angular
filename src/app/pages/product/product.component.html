@@ -1,217 +1,153 @@
-<body>
-  <app-menu></app-menu>
-  <div class="relative overflow-hidden bg-white" style="margin-left: 50px; margin-right: 50px; margin-top: 50px;">
-    <div class="absolute right-330 z-10" style="margin-top: 30px; margin-left: 50px;">
-      <button (click)="goToHome()"
-        class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-        title="Go to Home">
-        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-        </svg>
-      </button>
-    </div>
-    <div class="pb-80 pt-16 sm:pb-40 sm:pt-24 lg:pb-48 lg:pt-40">
-      <div class="relative mx-auto max-w-7xl px-4 sm:static sm:px-6 lg:px-8">
-        <div class="sm:max-w-lg">
-          <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">{{ 'WELCOME_TITLE' | translate }}</h1>
-          <p class="mt-4 text-xl text-gray-500">{{ 'WELCOME_DESCRIPTION' | translate }}</p>
-        </div>
-        <div>
-          <div class="mt-10">
-            <div aria-hidden="true"
-              class="pointer-events-none lg:absolute lg:inset-y-0 lg:mx-auto lg:w-full lg:max-w-7xl">
-              <div
-                class="absolute transform sm:left-1/2 sm:top-0 sm:translate-x-8 lg:left-1/2 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-8">
-                <div class="flex items-center space-x-6 lg:space-x-8">
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-lg sm:opacity-0 lg:opacity-100">
-                      <img [src]="urls.src" alt="{{ 'APPLIANCE_IMAGE_ALT_1' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srca" alt="{{ 'APPLIANCE_IMAGE_ALT_2' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srcb" alt="{{ 'APPLIANCE_IMAGE_ALT_3' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srcc" alt="{{ 'APPLIANCE_IMAGE_ALT_4' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srcd" alt="{{ 'APPLIANCE_IMAGE_ALT_5' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                  <div class="grid flex-shrink-0 grid-cols-1 gap-y-6 lg:gap-y-8">
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srce" alt="{{ 'APPLIANCE_IMAGE_ALT_6' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                    <div class="h-64 w-44 overflow-hidden rounded-lg">
-                      <img [src]="urls.srcf" alt="{{ 'APPLIANCE_IMAGE_ALT_7' | translate }}"
-                        class="h-full w-full object-cover object-center">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+<app-menu></app-menu>
+<div class="custom-position">
+  <button (click)="goToHome()"
+    class="inline-flex items-center justify-center w-10 h-10 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    title="Go to Home">
+    <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </button>
+</div>
+
+<div class="card">
+  <div class="mx-auto grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 sm:gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-2">
+    <div class="lg:pr-8 lg:pt-4">
+      <div class="lg:max-w-lg">
+        <h2 class="text-base font-semibold leading-7 text-indigo-600">{{ 'repair' | translate }}</h2>
+        <p class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">{{ product?.appliance_type
+          }}-{{ product?.brand }}</p>
+        <p class="mt-6 text-lg leading-8 text-gray-600">{{ product?.problem_details}}</p>
+        <dl class="mt-10 max-w-xl space-y-8 text-base leading-7 text-gray-600 lg:max-w-none">
+          <div class="relative pl-9">
+            <dt class="inline font-semibold text-gray-900">
+              <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.5 17a4.5 4.5 0 01-1.44-8.765 4.5 4.5 0 018.302-3.046 3.5 3.5 0 014.504 4.272A4 4 0 0115 17H5.5zm3.75-2.75a.75.75 0 001.5 0V9.66l1.95 2.1a.75.75 0 101.1-1.02l-3.25-3.5a.75.75 0 00-1.1 0l-3.25 3.5a.75.75 0 101.1 1.02l1.95-2.1v4.59z"
+                  clip-rule="evenodd" />
+              </svg>
+              {{ 'service' | translate }}
+            </dt>
+            <br>
+            <dd class="inline">{{ product?.service_type}}</dd>
           </div>
-        </div>
+          <div class="relative pl-9">
+            <dt class="inline font-semibold text-gray-900">
+              <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M10 1a4.5 4.5 0 00-4.5 4.5V9H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2v-6a2 2 0 00-2-2h-.5V5.5A4.5 4.5 0 0010 1zm3 8V5.5a3 3 0 10-6 0V9h6z"
+                  clip-rule="evenodd" />
+              </svg>
+              {{ 'contact' | translate }}
+            </dt>
+            <br>
+            <dd class="inline">{{ product?.preferred_contact_method}}</dd>
+            <br>
+            <dd class="inline">{{ product?.user?.email}}</dd>
+            <br>
+            <dd class="inline">{{ product?.user?.phone_number}}</dd>
+          </div>
+          <div class="relative pl-9">
+            <dt class="inline font-semibold text-gray-900">
+              <svg class="absolute left-1 top-1 h-5 w-5 text-indigo-600" viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path
+                  d="M4.632 3.533A2 2 0 016.577 2h6.846a2 2 0 011.945 1.533l1.976 8.234A3.489 3.489 0 0016 11.5H4c-.476 0-.93.095-1.344.267l1.976-8.234z" />
+                <path fill-rule="evenodd"
+                  d="M4 13a2 2 0 100 4h12a2 2 0 100-4H4zm11.24 2a.75.75 0 01.75-.75H16a.75.75 0 01.75.75v.01a.75.75 0 01-.75.75h-.01a.75.75 0 01-.75-.75V15zm-2.25-.75a.75.75 0 00-.75.75v.01c0 .414.336.75.75.75H13a.75.75 0 00.75-.75V15a.75.75 0 00-.75-.75h-.01z"
+                  clip-rule="evenodd" />
+              </svg>
+              {{ 'collection_address' | translate }}
+            </dt>
+            <br>
+            <dd class="inline">{{ product?.collection_address}}-{{ product?.application_date}}</dd>
+          </div>
+        </dl>
+
       </div>
     </div>
+    <img [src]="product?.damaged_appliance_image" alt="Product screenshot"
+      class="w-[48rem] max-w-none rounded-xl shadow-xl ring-1 ring-gray-400/10 sm:w-[30rem] md:-ml-4 lg:-ml-0"
+      width="2432" height="1442">
   </div>
+</div>
 
-  <div class="mx-auto flex flex-col gap-y-8 mt-12 p-8 bg-gray-50 rounded-xl shadow-lg"
-    style="margin-left: 50px; margin-right: 50px; margin-top: 50px;">
-    <h2 class="text-3xl font-bold tracking-tight text-gray-900 mb-8 text-center" style="margin-top: 30px;">
-      {{ 'APPLIANCE_MAINTENANCE_REPAIR' | translate }}
-    </h2>
-    <div class="max-w-7xl mx-auto px-6 lg:px-8">
-      <h2 class="text-center text-lg font-semibold leading-8 text-gray-900 mb-6">
-        {{ 'TRUSTED_APPLIANCES' | translate }}
-      </h2>
-      <div class="mx-auto flex justify-center flex-wrap gap-x-8 gap-y-10">
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('refrigerator')">
-          <img class="w-16 h-16 object-contain" [src]="icons.iconb" alt="{{ 'REFRIGERATOR' | translate }}">
-        </button>
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('washer')">
-          <img class="w-16 h-16 object-contain" [src]="icons.icona" alt="{{ 'WASHING_MACHINE' | translate }}">
-        </button>
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('all')">
-          <img class="w-16 h-16 object-contain" [src]="icons.icond" alt="all">
-        </button>
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('oven')">
-          <img class="w-16 h-16 object-contain" [src]="icons.iconc" alt="{{ 'OVEN' | translate }}">
-        </button>
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('dryer')">
-          <img class="w-16 h-16 object-contain" [src]="icons.icon" alt="{{ 'DRYER' | translate }}">
-        </button>
-        <button
-          class="flex items-center justify-center w-24 h-24 rounded-full bg-white border border-gray-200 hover:bg-gray-100 transition-shadow shadow-lg hover:shadow-xl transform hover:scale-105"
-          (click)="onClickType('microwave')">
-          <img class="w-16 h-16 object-contain" [src]="icons.icone" alt="{{ 'MICROWAVE' | translate }}">
-        </button>
-      </div>
-    </div>
-
-    <dd class="text-5xl font-bold tracking-tight sm:text-6xl gradient-background" *ngIf="timerMessage">
-      {{ timerMessage }} {{ 'LETFTOVER' | translate }}
-    </dd>
-    <dt class="text-xl leading-7 text-gray-600 mt-4 text-center">
-      {{ 'TIMER_MESSAGE' | translate }}
-    </dt>
-
-    <ul role="list" class="divide-y divide-gray-200 mt-8">
-      <li class="flex py-6 items-center" *ngFor="let appliance of appliances">
-        <div class="h-28 w-28 flex-shrink-0 overflow-hidden rounded-lg border border-gray-200 shadow-md">
-          <img [src]="appliance.damaged_appliance_image" alt="Appliance image"
-            class="h-full w-full object-cover object-center">
-        </div>
-        <div class="ml-4 flex flex-1 flex-col">
-          <div class="flex justify-between items-center text-base font-medium text-gray-900">
-            <h3 class="text-lg font-semibold">
-              <a href="#" class="hover:underline">{{ appliance.appliance_type }}</a>
-            </h3>
-            <p class="ml-4 text-gray-700">{{ appliance.brand }}</p>
+<div class="bg-white mt-8 ml-10 mr-10">
+  <div
+    class="relative isolate overflow-hidden bg-white-900 px-6 pt-16 shadow-2xl sm:rounded-3xl sm:px-16 md:pt-24 lg:px-24 lg:pt-0">
+    <ul role="list" class="divide-y divide-gray-100">
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex min-w-0 gap-x-4">
+          <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center">
+            <svg class="h-6 w-6 text-blue-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M12 2a2 2 0 00-2 2v4a2 2 0 00-2 2v4a2 2 0 002 2h4a2 2 0 002-2V8a2 2 0 00-2-2V4a2 2 0 00-2-2z" />
+            </svg>
           </div>
-          <p class="mt-1 text-sm text-gray-500">{{ appliance.problem_details }}</p>
-          <div class="flex flex-1 items-end justify-between text-sm mt-4">
-            <p class="text-gray-500">{{ appliance.application_date }}</p>
-            <div class="flex space-x-4">
-              <button type="button"
-                class="py-2 px-4 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                (click)="showTimer(appliance)">
-                {{ 'TIME_BUTTON' | translate }}
-              </button>
-              <button type="button"
-                class="py-2 px-4 bg-green-600 text-white font-medium rounded-lg shadow-md hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
-                (click)="openProductModal(appliance)">
-                {{ 'PAY_NOW' | translate }}
-              </button>
-            </div>
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">{{ 'collection' | translate }}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ 'collection_details' | translate }} {{
+              product?.collection_address}}-{{ product?.application_date}}.</p>
+          </div>
+        </div>
+      </li>
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex min-w-0 gap-x-4">
+          <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center">
+            <svg class="h-6 w-6 text-green-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M5 3h10a1 1 0 011 1v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4a1 1 0 011-1z" />
+              <path d="M3 4h14v1H3V4z" />
+            </svg>
+          </div>
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">{{ 'diagnosis' | translate }}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ 'diagnosis_details' | translate }}</p>
+          </div>
+        </div>
+      </li>
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex min-w-0 gap-x-4">
+          <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center">
+            <svg class="h-6 w-6 text-yellow-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M6 9h8V7H6v2zm0 4h8v-2H6v2z" />
+            </svg>
+          </div>
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">{{ 'repair' | translate }}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ 'repair_details' | translate }}</p>
+          </div>
+        </div>
+      </li>
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex min-w-0 gap-x-4">
+          <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center">
+            <svg class="h-6 w-6 text-red-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M10 3.5a1 1 0 00-1 1v7a1 1 0 002 0v-7a1 1 0 00-1-1zM10 13.5a1 1 0 100 2 1 1 0 000-2z" />
+            </svg>
+          </div>
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">{{ 'delivery' | translate }}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ 'delivery_details' | translate }}</p>
+          </div>
+        </div>
+      </li>
+      <li class="flex justify-between gap-x-6 py-5">
+        <div class="flex min-w-0 gap-x-4">
+          <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center">
+            <svg class="h-6 w-6 text-purple-600" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+              <path d="M8 4v4H6v4h2v4h4v-4h2V8h-2V4H8z" />
+            </svg>
+          </div>
+          <div class="min-w-0 flex-auto">
+            <p class="text-sm font-semibold leading-6 text-gray-900">{{ 'completion' | translate }}</p>
+            <p class="mt-1 truncate text-xs leading-5 text-gray-500">{{ 'completion_details' | translate }}</p>
           </div>
         </div>
       </li>
     </ul>
-
-    <div *ngIf="appliances.length === 0" class="text-center text-gray-500 mt-8">
-      <p> {{ 'NO_APPLIANCES_FOUND' | translate }}</p>
-    </div>
-
-    <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6 mt-8">
-      <div class="flex flex-1 justify-between sm:hidden">
-        <button (click)="previousPage()" [disabled]="currentPage === 1"
-          class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</button>
-        <button (click)="nextPage()" [disabled]="currentPage === totalPages"
-          class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">{{
-          'NEXT' | translate }}</button>
-      </div>
-      <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p class="text-sm text-gray-700">
-            {{ 'SHOWING_RESULTS' | translate }}
-            <span class="font-medium">{{ (currentPage - 1) * 10 + 1 }}</span>
-            {{ 'TO' | translate }}
-            <span class="font-medium">{{ currentPage * 10 }}</span>
-            {{ 'OF' | translate }}
-            <span class="font-medium">{{ totalItems }}</span>
-            {{ 'RESULTS' | translate }}
-          </p>
-        </div>
-        <div>
-          <nav class="inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
-            <button (click)="previousPage()" [disabled]="currentPage === 1"
-              class="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-              <span class="sr-only"> {{ 'NEXT' | translate }}</span>
-              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
-            <ng-container *ngFor="let page of [].constructor(totalPages); let i = index">
-              <button (click)="loadUserAppliances(i + 1)" [class.bg-indigo-600]="currentPage === (i + 1)"
-                [class.text-white]="currentPage === (i + 1)" [class.text-gray-900]="currentPage !== (i + 1)"
-                [class.bg-gray-50]="currentPage !== (i + 1)"
-                class="relative inline-flex items-center px-4 py-2 text-sm font-semibold ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-                {{ i + 1 }}
-              </button>
-            </ng-container>
-            <button (click)="nextPage()" [disabled]="currentPage === totalPages"
-              class="relative inline-flex items-center rounded-r-md px-2 py-2 text-gray-400 ring-1 ring-inset ring-gray-300 hover:bg-gray-50 focus:z-20 focus:outline-offset-0">
-              <span class="sr-only">{{ 'NEXT' | translate }}</span>
-              <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                <path fill-rule="evenodd"
-                  d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z"
-                  clip-rule="evenodd" />
-              </svg>
-            </button>
-          </nav>
-        </div>
-      </div>
-    </div>
   </div>
+</div>
 
-
-  <div *ngIf="modalProduct" class="fixed inset-0 flex items-center justify-center z-50">
-    <app-modal-product (alertClosed)="onAlertClosed()"></app-modal-product>
-  </div>
-  <div style="margin-top: 100px;">
-    <app-footer></app-footer>
-  </div>
-</body>
+<div class="mt-24">
+  <app-footer></app-footer>
+</div>

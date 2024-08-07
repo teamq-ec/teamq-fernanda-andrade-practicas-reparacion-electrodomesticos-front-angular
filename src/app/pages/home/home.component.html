@@ -10,14 +10,15 @@
             </h2>
         </div>
     </div>
-    
+
     <div class="div" style="margin-left: 100px; margin-right: 100px;">
         <div class="bg-blue-50 p-6 rounded-lg shadow-sm mx-auto mt-8 px-4 sm:px-6 lg:px-8">
             <div class="flex justify-end mb-4">
                 <a [routerLink]="getFormRoute()"
                     class="inline-flex items-center justify-center px-4 py-2 bg-indigo-600 rounded-md shadow-sm text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 text-lg font-semibold"
                     title="Registrar Producto">
-                    <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="h-5 w-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
                     </svg>
                     {{ 'registerProduct' | translate }}
@@ -27,99 +28,36 @@
                 <div class="bg-white p-5 rounded-lg shadow-sm border border-blue-100 flex-shrink-0 min-w-[300px] max-w-sm hover:shadow-md transition-shadow duration-300"
                     *ngFor="let appliance of appliances">
                     <div class="space-y-4">
+                        <div class="flex items-center gap-x-4 text-xs">
+                            <a href="#"
+                                class="relative z-10 rounded-full bg-yellow-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-yellow-100">{{
+                                'repair' | translate }}</a>
+                        </div>
                         <div class="flex items-center mb-4">
                             <img [src]="appliance.damaged_appliance_image" alt="Producto"
                                 class="h-16 w-16 rounded-full bg-blue-100 border border-blue-200 mr-4">
                             <div class="flex flex-col">
-                                <h3 class="text-lg font-semibold mb-2 text-gray-700">{{ 'productInfo' | translate }}</h3>
+                                <h3 class="text-lg font-semibold mb-2 text-gray-700">{{ 'productInfo' | translate }}
+                                </h3>
                                 <div class="text-sm text-gray-600">
                                     <p class="mb-1"><strong>{{ 'brand' | translate }}</strong> {{ appliance.brand }}</p>
-                                    <p class="mb-1"><strong>{{ 'problem' | translate }}</strong> {{ appliance.problem_details }}</p>
+                                    <p class="mb-1"><strong>{{ 'problem' | translate }}</strong> {{
+                                        appliance.problem_details }}</p>
                                     <p class="mb-1"><strong>{{ 'service' | translate }}</strong></p>
-                                    <p class="mb-1"><strong>{{ 'contact' | translate }}</strong> {{ appliance.preferred_contact_method }}</p>
+                                    <p class="mb-1"><strong>{{ 'contact' | translate }}</strong> {{
+                                        appliance.preferred_contact_method }}</p>
                                     <p><strong>{{ 'date' | translate }}</strong> {{ appliance.application_date }}</p>
                                 </div>
                             </div>
                         </div>
+                        <button (click)="navigateToProduct(appliance.user.id, appliance.id)" type="submit"
+                            class="flex-none rounded-md bg-indigo-500 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">
+                            Detalles</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    
-
-    <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-8 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3"
-    style="margin-left: 100px; margin-right: 100px;">
-    <article class="max-w-xl rounded-lg overflow-hidden shadow-lg bg-white transition duration-300 transform hover:scale-105">
-        <div class="p-4">
-            <div class="flex items-center gap-x-4 text-xs">
-                <a [routerLink]="getFormRoute()"
-                    class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">
-                    Servicio
-                </a>
-            </div>
-            <div class="group relative mt-3">
-                <h3 class="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a [routerLink]="getFormRoute()">
-                        <span class="absolute inset-0"></span>
-                        {{ 'dashboard.articles.registration.title' | translate }}
-                    </a>
-                </h3>
-            </div>
-        </div>
-        <div class="p-4 bg-gray-50 border-t border-gray-200">
-            <div class="flex items-center gap-x-4">
-                <img [src]="avatar" alt="Avatar" class="h-10 w-10 rounded-full bg-gray-100">
-                <div class="text-sm leading-5">
-                    <p class="font-semibold text-gray-900">
-                        <a [routerLink]="getFormRoute()">
-                            <span class="absolute inset-0"></span>
-                            {{ userName }} {{ userLastName }}
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <a [routerLink]="getFormRoute()"
-            class="block w-full py-2 text-center text-sm font-medium text-white bg-blue-500 hover:bg-blue-600">
-            Ver detalles
-        </a>
-    </article>
-    <article class="max-w-xl rounded-lg overflow-hidden shadow-lg bg-white transition duration-300 transform hover:scale-105">
-        <div class="p-4">
-            <div class="flex items-center gap-x-4 text-xs">
-                <a href="#"
-                    class="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">Pago</a>
-            </div>
-            <div class="group relative mt-3">
-                <h3 class="text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
-                    <a href="#">
-                        <span class="absolute inset-0"></span>
-                        {{ 'dashboard.articles.payments.title' | translate }}
-                    </a>
-                </h3>
-            </div>
-        </div>
-        <div class="p-4 bg-gray-50 border-t border-gray-200">
-            <div class="flex items-center gap-x-4">
-                <img [src]="avatar" alt="Avatar" class="h-10 w-10 rounded-full bg-gray-100">
-                <div class="text-sm leading-5">
-                    <p class="font-semibold text-gray-900">
-                        <a href="#">
-                            <span class="absolute inset-0"></span>
-                            {{ userName }} {{ userLastName }}
-                        </a>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <a href=""
-            class="block w-full py-2 text-center text-sm font-medium text-white bg-blue-500 hover:bg-blue-600">
-            Ver detalles
-        </a>
-    </article>
-</div>
 
     <div style="margin-top: 100px;">
         <app-footer></app-footer>

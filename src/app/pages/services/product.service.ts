@@ -16,4 +16,9 @@ export class ProductService {
   registerProduct(formData: FormData): Observable<Product> {
     return this.httpClient.post<Product>(this.apiUrl, formData);
   }
+
+  getProduct(productId: number): Observable<any> {
+    const url = `${this.apiUrl}/${productId}`;
+    return this.httpClient.get<any>(url);
+  }
 }

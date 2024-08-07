@@ -1,4 +1,5 @@
 {
+  "title": "Appliance Care",
   "login": {
     "title": "Iniciar sesión en su cuenta",
     "emailLabel": "Dirección de correo electrónico",
@@ -293,6 +294,18 @@
   "productInfo": "Información del Producto",
   "problem": "Problema:",
   "service": "Servicio: reparación",
-  "contact": "Contacto:",
-  "date": "Fecha:"
+  "contact": "Contacto",
+  "date": "Fecha:",
+  "repairi":"En reparación ",
+  "repair": "Reparación",
+  "address_time": "Dirección y Hora",
+  "collection": "Recolección",
+  "collection_details": "A las 10:00 am se recogió el pedido en",
+  "diagnosis": "Diagnóstico",
+  "diagnosis_details": "El técnico realizará una evaluación inicial del electrodoméstico.",
+  "repair_details": "Se llevan a cabo las reparaciones necesarias y se reemplazan las piezas defectuosas.",
+  "delivery": "Entrega",
+  "delivery_details": "Se entrega el electrodoméstico reparado en la dirección del cliente.",
+  "completion": "Finalización",
+  "completion_details": "Se realiza una inspección final para asegurar que el electrodoméstico funciona correctamente."
 }

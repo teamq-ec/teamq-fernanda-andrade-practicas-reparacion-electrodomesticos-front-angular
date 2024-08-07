@@ -1,13 +1,14 @@
 .mx-auto {
-    width: 100%; /* Asegúrate de que el contenedor ocupe el 100% del ancho */
+    width: 100%;
   }
   
   .max-w-2xl {
-    max-width: 100%; /* Asegúrate de que el contenedor no esté limitado en su ancho */
+    max-width: 100%;
   }
   
   .py-16,
   .sm\:py-24,
   .lg\:py-32 {
-    padding: 0; /* Ajusta el padding si es necesario */
+    padding: 0;
   }
+  

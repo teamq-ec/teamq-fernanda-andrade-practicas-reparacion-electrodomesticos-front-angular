@@ -3,3 +3,10 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
+
+.custom-position {
+    position: absolute;
+    top: 200px; 
+    z-index: 10;
+    margin-left: 1750px;
+  }
