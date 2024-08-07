@@ -90,7 +90,6 @@ export class MenuComponent {
     }
   }
 
-  
   goToPerfil(): string[] {
     if (this.userId) {
       return [RoutesConstants.dashboard.replace(':userId', this.userId)];

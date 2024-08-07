@@ -49,7 +49,6 @@ export class HomeComponent {
     this.applianceService
       .getUserAppliances(userIdNumber, page)
       .subscribe((response) => {
-        console.log(response);
         this.appliances = response.data;
         this.currentPage = response.meta.current_page;
         this.totalPages = response.meta.last_page;

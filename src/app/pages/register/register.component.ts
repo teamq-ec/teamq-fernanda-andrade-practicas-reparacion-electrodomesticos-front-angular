@@ -4,12 +4,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-
-  constructor( private router: Router) {
-  }
+  constructor(private router: Router) {}
 
   getUserIdFromRoute(): string {
     const urlSegments = window.location.pathname.split('/');
@@ -19,5 +17,4 @@ export class RegisterComponent {
     const userId = this.getUserIdFromRoute();
     this.router.navigate([`/pages/${userId}/home`]);
   }
-
 }

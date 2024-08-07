@@ -7,17 +7,16 @@ import { FooterModule } from '../components/footer/footer.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { MobilMenuModule } from '../components/mobil-menu/mobil-menu.module';
 
-
 @NgModule({
   declarations: [HomeComponent],
   imports: [
-    CommonModule, 
+    CommonModule,
     HomeRoutingModule,
     MenuModule,
     FooterModule,
     TranslateModule,
-    MobilMenuModule
+    MobilMenuModule,
   ],
-  exports: [HomeComponent] 
+  exports: [HomeComponent],
 })
 export class HomeModule {}
